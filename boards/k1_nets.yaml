@@ -1,0 +1,300 @@
+nets:
+  I2C1_SCL:
+  - U1/I2C1_SCL
+  - R31/A
+  - E1/SCL
+  - U6/D_P
+  I2C1_SDA:
+  - U1/I2C1_SDA
+  - R32/A
+  - E1/SDA
+  - U6/D_N
+  PERSTA#:
+  - U1/PERST_SENSE
+  - U1/PERST_OUT
+  - R1/A
+  - C87/A
+  PWR_BTN_OUT:
+  - U1/PWR_BTN_OUT
+  - R3/A
+  PWR_BTN_ISO:
+  - R3/B
+  - U5/ANODE
+  PWR_CTRL_OUT:
+  - U5/COLLECTOR
+  - J6/PWR_BTN#
+  GPIO_LED:
+  - U1/GPIO_LED
+  - R21/A
+  LED_A:
+  - R21/B
+  - D1/A
+  UART_TX:
+  - U1/UART_TX
+  - J9/TX
+  UART_RX:
+  - U1/UART_RX
+  - J9/RX
+  P3V3_AUX:
+  - U1/3V3_AUX_SENSE
+  - R1/B
+  - C90/A
+  - U6/VCC
+  - R30/A
+  - U10/VOUT
+  - C91/A
+  - U11/VDD
+  - U11/VDD_2
+  - U11/VDD_3
+  - U11/VDD_4
+  - U11/VDD_5
+  - U11/VDD_6
+  MCU_VDD:
+  - U1/VDD
+  - J9/VCC
+  - R29/B
+  - J13/VCC
+  - R31/B
+  - R32/B
+  - C85/A
+  - C86/A
+  - E1/VCC
+  - R30/B
+  12V_IN:
+  - J10/VIN_12V
+  - U8/VIN
+  - U8/EN
+  - C88/A
+  GND:
+  - U1/VSS
+  - U1/PC14_OSC32_IN
+  - U1/PC15_OSC32_OUT
+  - U1/PB1
+  - U1/PC6
+  - U1/PB4
+  - U1/PB5
+  - U1/EP
+  - U5/CATHODE
+  - U5/EMITTER
+  - J6/GND
+  - D1/K
+  - J9/GND
+  - R28/B
+  - C73/B
+  - J13/GND
+  - C85/B
+  - C86/B
+  - C87/B
+  - C90/B
+  - J1/GND
+  - J10/GND
+  - U6/GND
+  - U8/GND
+  - U10/GND
+  - U9/GND
+  - U9/NC
+  - E1/VSS
+  - E1/A0
+  - E1/A1
+  - E1/A2
+  - E1/WP
+  - R16/B
+  - R37/B
+  - C88/B
+  - C89/B
+  - C91/B
+  - C92/B
+  - U12/GND
+  - J14/GND
+  - U11/GND
+  NRST:
+  - U1/NRST
+  - R29/A
+  - C73/A
+  SWCLK_BOOT0:
+  - U1/SWCLK_BOOT0
+  - R28/A
+  - J13/RX
+  SWDIO:
+  - U1/SWDIO
+  - J13/TX
+  KEY_D_P:
+  - J1/D_P
+  - U9/IO1
+  KEY_D_N:
+  - J1/D_N
+  - U9/IO2
+  SBU_SEL:
+  - U6/SEL
+  - R16/A
+  SBU_EN:
+  - U6/OE#
+  PCIE_TX0_P:
+  - J1/TX_P
+  - U11/A0+
+  - U9/IO3
+  PCIE_TX0_N:
+  - J1/TX_N
+  - U11/A0-
+  - U9/IO4
+  PCIE_RX0_P:
+  - J1/RX_P
+  - U11/A1+
+  - U9/IO5
+  PCIE_RX0_N:
+  - J1/RX_N
+  - U11/A1-
+  - U9/IO6
+  PCIE_TX1_P:
+  - J1/TX2_P
+  - U11/A2+
+  PCIE_TX1_N:
+  - J1/TX2_N
+  - U11/A2-
+  PCIE_RX1_P:
+  - J1/RX2_P
+  - U11/A3+
+  PCIE_RX1_N:
+  - J1/RX2_N
+  - U11/A3-
+  OCuLink_TX0_P:
+  - U11/C0+
+  - J14/PCIE_TX0+
+  OCuLink_TX0_N:
+  - U11/C0-
+  - J14/PCIE_TX0-
+  OCuLink_RX0_P:
+  - U11/C1+
+  - J14/PCIE_RX0+
+  OCuLink_RX0_N:
+  - U11/C1-
+  - J14/PCIE_RX0-
+  OCuLink_TX1_P:
+  - U11/C2+
+  - J14/PCIE_TX1+
+  OCuLink_TX1_N:
+  - U11/C2-
+  - J14/PCIE_TX1-
+  OCuLink_RX1_P:
+  - U11/C3+
+  - J14/PCIE_RX1+
+  OCuLink_RX1_N:
+  - U11/C3-
+  - J14/PCIE_RX1-
+  MUX_SEL:
+  - U11/SEL1
+  - U11/SEL2
+  - U1/MUX_SEL
+  MUX_PD:
+  - U11/PD1
+  - U11/PD2
+  PWR_5V_KEY:
+  - U8/VOUT
+  - U12/IN
+  - C89/A
+  - U10/VIN
+  - U10/EN
+  PWR_5V_PREAUTH:
+  - U12/VOUT
+  - J1/VBUS
+  - R35/A
+  - R36/A
+  - C92/A
+  TPS_EN:
+  - U12/ON
+  CC1:
+  - J1/CC1
+  - R35/B
+  CC2:
+  - J1/CC2
+  - R36/B
+  SBU1:
+  - J1/SBU1
+  - U6/D_P_A
+  - R37/A
+  SBU2:
+  - J1/SBU2
+  - U6/D_N_A
+nc:
+- - J14
+  - BP_TYPE
+- - J14
+  - CLOCK+
+- - J14
+  - CLOCK-
+- - J14
+  - NC1
+- - J14
+  - NC2
+- - J14
+  - NC3
+- - J14
+  - NC4
+- - J14
+  - PCIE_RX2+
+- - J14
+  - PCIE_RX2-
+- - J14
+  - PCIE_RX3+
+- - J14
+  - PCIE_RX3-
+- - J14
+  - PCIE_TX2+
+- - J14
+  - PCIE_TX2-
+- - J14
+  - PCIE_TX3+
+- - J14
+  - PCIE_TX3-
+- - J14
+  - RST
+- - J14
+  - SMB_CLK
+- - J14
+  - SMB_DAT
+- - J14
+  - WAKE#
+- - U1
+  - RST_IN
+- - U1
+  - USB_D_N
+- - U1
+  - USB_D_P
+- - U1
+  - WAKE_IN
+- - U10
+  - NC_ADJ
+- - U11
+  - B0+
+- - U11
+  - B0-
+- - U11
+  - B1+
+- - U11
+  - B1-
+- - U11
+  - B2+
+- - U11
+  - B2-
+- - U11
+  - B3+
+- - U11
+  - B3-
+- - U11
+  - NC
+- - U11
+  - NC_2
+- - U12
+  - NC
+- - U12
+  - QOD
+- - U6
+  - D_N_B
+- - U6
+  - D_P_B
+- - U8
+  - FB
+- - U8
+  - SW
+source: ioconvert_v2.yaml (双卡) ∩ sch_k1 实际连接网
+k1_device_count: 37

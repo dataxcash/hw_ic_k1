@@ -1,0 +1,1307 @@
+# ==============================================================================
+# K1 卡 (Master 门禁卡) — 板级真源 (board truth source)
+#
+# 文件:     revA/boards/k1_board.yaml
+# 任务:     k1-l1-bid-infra T1 — k1_board.yaml 真源构建 + 器件 refdes 对账
+# 日期:     2026-08-21
+# 权威:     revA/boards/k1_nets.yaml (refdes/net 权威, J14/U11/U6)
+#           revA/sch_k1/*.kicad_sch (器件实例/符号/引脚数)
+#           revA/pcb/export/ForgeOS.pretty/*.kicad_mod (footprint 实测 bbox)
+#           AppDir KiCad 标准库 footprint (实测 bbox)
+# 运行环境: 普通 python3 (无 pcbnew 依赖)
+# 覆盖检查: revA/boards/k1_coverage_check.py
+#
+# refdes 命名: 以 k1_nets.yaml 为准 (J14=OCuLink, U11=PI3DBS16412, U6=TS3USB221A)。
+#   README 概念名仅存注释: J_OCULINK=J14, U_PI3=U11, U_TPS=U12。
+# 几何事实来源: geometry.source ∈ {footprint, datasheet, estimated}; 估算必带
+#   estimated:true + 理由 (防逃逸预算虚高)。bbox 单位 mm, 全部来自 kicad_mod 实测。
+# ==============================================================================
+board:
+  name: K1 (Master gate card, IOCONVERT V2.0 转换卡 1)
+  card: K1
+  dimension_mm:
+  - 80
+  - 38
+  layers: 4
+  card_type: Master 门禁卡 (PCIe 2.1 x2 注入 + 预鉴权)
+  fixed_constraints:
+  - 板框 80×38mm 4 层
+  - 'J1 Type-C 卧式左缘 (horizontal, edge: left)'
+  - 'J14 OCuLink 立式右缘 (vertical, edge: right)'
+  - '无 ReDriver、无 AC 电容墙 (ECO31 补充说明: PCIe 2.0/2.1 5GT/s 短距直连, 不做均衡放大)'
+  - K1/KEY 双公头线缆 (Mode B); Mode A 下 KEY 直插 PC, K1 不参与 (J7 已移除)
+  l1_bid:
+    strategy_type: mux_segmentation
+    axes:
+      mux_position:
+      - center
+      - near_j1
+      - near_oculink
+      power_island:
+      - left
+      - right
+      mcu_partition:
+      - independent
+      - with_power
+      - with_interface
+  process:
+    line_width_min_mm: 0.09
+    spacing_min_mm: 0.1
+    edge_clearance_min_mm: 0.3
+    annular_ring_min_mm: 0.075
+    stackup: 4 层 (F.Cu / In1 / In2 / B.Cu) — 叠层分配待 L2, 板厂确认档待定
+devices:
+  U1:
+    value: STM32G0B1KBU6
+    function: K1 MCU — 门禁鉴权 (SBU I2C Master 预鉴权) + MUX 切换 + 光耦开机 + OOB UART
+    footprint: ForgeOS:MCU_STM32G0_QFN32
+    sch_pins: 31
+    fp_pads: 33
+    geometry:
+      bbox:
+      - 5.9
+      - 5.9
+      pad_bbox:
+      - 5.4
+      - 5.4
+      source: footprint
+      provenance: revA/pcb/export/ForgeOS.pretty/MCU_STM32G0_QFN32.kicad_mod
+    nets:
+    - I2C1_SCL
+    - I2C1_SDA
+    - PERSTA#
+    - PWR_BTN_OUT
+    - GPIO_LED
+    - UART_TX
+    - UART_RX
+    - P3V3_AUX
+    - MCU_VDD
+    - GND
+    - NRST
+    - SWCLK_BOOT0
+    - SWDIO
+    - SBU_SEL
+    - SBU_EN
+    - MUX_SEL
+    - MUX_PD
+    - TPS_EN
+    - SBU1
+  U11:
+    value: PI3DBS16412
+    function: 4 对差分 lane 翻转 MUX (K1 侧 Type-C 后端, ECO31 裁定 8) — README 概念名 U_PI3
+    footprint: ForgeOS:PI3DBS16412
+    sch_pins: 43
+    fp_pads: 57
+    geometry:
+      bbox:
+      - 5.1
+      - 10.26
+      pad_bbox:
+      - 3.38
+      - 8.88
+      source: footprint
+      provenance: revA/pcb/export/ForgeOS.pretty/PI3DBS16412.kicad_mod
+      note: 42 信号 pad (1-42) + CP + 14 未编号; 计划参考 3.38×11.66 — 宽度一致, 长度以实测为准
+    nets:
+    - P3V3_AUX
+    - GND
+    - PCIE_TX0_P
+    - PCIE_TX0_N
+    - PCIE_RX0_P
+    - PCIE_RX0_N
+    - PCIE_TX1_P
+    - PCIE_TX1_N
+    - PCIE_RX1_P
+    - PCIE_RX1_N
+    - OCuLink_TX0_P
+    - OCuLink_TX0_N
+    - OCuLink_RX0_P
+    - OCuLink_RX0_N
+    - OCuLink_TX1_P
+    - OCuLink_TX1_N
+    - OCuLink_RX1_P
+    - OCuLink_RX1_N
+    - MUX_SEL
+    - MUX_PD
+  U6:
+    value: TS3USB221A
+    function: SBU 隔离开关候选 (I2C 预鉴权通道; B 通道 NC) — ECO31 裁定 3 / Open Item 4
+    footprint: ForgeOS:TS3USB221A_UQFN10
+    sch_pins: 10
+    fp_pads: 10
+    geometry:
+      bbox:
+      - 3.05
+      - 2.1
+      pad_bbox:
+      - 2.8
+      - 1.8
+      source: footprint
+      provenance: revA/pcb/export/ForgeOS.pretty/TS3USB221A_UQFN10.kicad_mod
+    nets:
+    - I2C1_SCL
+    - I2C1_SDA
+    - P3V3_AUX
+    - GND
+    - SBU_SEL
+    - SBU_EN
+    - SBU1
+    - SBU2
+  U8:
+    value: DCDC_12V_5V
+    function: 12V→5V DCDC (主电源)
+    footprint: Package_SO:SOIC-8_5.3x5.3mm_P1.27mm
+    sch_pins: 6
+    fp_pads: 8
+    geometry:
+      bbox:
+      - 9.3
+      - 5.87
+      pad_bbox:
+      - 7.17
+      - 3.81
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Package_SO.pretty/SOIC-8_5.3x5.3mm_P1.27mm.kicad_mod
+    nets:
+    - 12V_IN
+    - GND
+    - PWR_5V_KEY
+  U10:
+    value: LDO_5V_3V3
+    function: 5V→3V3 LDO (P3V3_AUX 轨)
+    footprint: Package_TO_SOT_SMD:SOT-23
+    sch_pins: 5
+    fp_pads: 3
+    geometry:
+      bbox:
+      - 3.86
+      - 3.4
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Package_TO_SOT_SMD.pretty/SOT-23.kicad_mod
+      estimated: true
+      note: 符号 5 pin vs SOT-23 3 pad 不匹配 (reconciliation OPEN-2); 实际器件应为 SOT-23-5 (实测 bbox 4.10×3.54), 布局预算按 SOT-23-5 取
+    nets:
+    - P3V3_AUX
+    - MCU_VDD
+    - GND
+    - PWR_5V_KEY
+  U12:
+    value: TPS22919
+    function: 预鉴权供电软启动 Load Switch (裁定 7) — README 概念名 U_TPS
+    footprint: ForgeOS:TPS22919
+    sch_pins: 6
+    fp_pads: 6
+    geometry:
+      bbox:
+      - 2.9
+      - 2.39
+      pad_bbox:
+      - 1.68
+      - 1.3
+      source: footprint
+      provenance: revA/pcb/export/ForgeOS.pretty/TPS22919.kicad_mod
+    nets:
+    - GND
+    - PWR_5V_KEY
+    - PWR_5V_PREAUTH
+    - TPS_EN
+  U9:
+    value: TPD6E05U06
+    function: USB3 六线 TVS (D± + PCIe Lane0 4 线 ESD 保护)
+    footprint: ForgeOS:TPD6E05U06_RVZ
+    sch_pins: 14
+    fp_pads: 14
+    geometry:
+      bbox:
+      - 2.6
+      - 4.05
+      pad_bbox:
+      - 1.35
+      - 3.0
+      source: footprint
+      provenance: revA/pcb/export/ForgeOS.pretty/TPD6E05U06_RVZ.kicad_mod
+    nets:
+    - GND
+    - KEY_D_P
+    - KEY_D_N
+    - PCIE_TX0_P
+    - PCIE_TX0_N
+    - PCIE_RX0_P
+    - PCIE_RX0_N
+  U5:
+    value: OPTO_LTV356T
+    function: PWR_BTN# 硬开机隔离光耦
+    footprint: ForgeOS:OPTO_LTV356T
+    sch_pins: 4
+    fp_pads: 4
+    geometry:
+      bbox:
+      - 3.1
+      - 2.5
+      pad_bbox:
+      - 2.6
+      - 1.8
+      source: footprint
+      provenance: revA/pcb/export/ForgeOS.pretty/OPTO_LTV356T.kicad_mod
+    nets:
+    - PWR_BTN_ISO
+    - PWR_CTRL_OUT
+    - GND
+  E1:
+    value: FRU_EEPROM
+    function: '板卡硬件身份 (KEY 固件读取 FRU 校验身份, ECO #11)'
+    footprint: ForgeOS:SOIC8_FRU
+    sch_pins: 8
+    fp_pads: 8
+    geometry:
+      bbox:
+      - 4.5
+      - 4.71
+      pad_bbox:
+      - 3.9
+      - 3.81
+      source: footprint
+      provenance: revA/pcb/export/ForgeOS.pretty/SOIC8_FRU.kicad_mod
+    nets:
+    - I2C1_SCL
+    - I2C1_SDA
+    - MCU_VDD
+    - GND
+  J1:
+    value: USB_C_RECEPT
+    footprint: Connector_USB:USB_C_Receptacle_Amphenol_12401548E4-2A
+    function: KEY 接口 (PCIe x2 差分 + SBU 预鉴权 + CC/VCONN) — ECO31 裁定 4; 24-pin full-featured 换件 PM 2026-08-22 裁决
+    sch_pins: 16
+    fp_pads: 30
+    geometry:
+      bbox:
+      - 9.0
+      - 7.86
+      pad_bbox:
+      - 9.0
+      - 7.86
+      source: footprint
+      provenance: AppDir/share/kicad/footprints/Connector_USB.pretty/USB_C_Receptacle_Amphenol_12401548E4-2A.kicad_mod
+      note: Amphenol 12401548E4-2A 24-pin full-featured 实测 (pad bbox x∈[-4.49,4.49] y∈[-5.02,2.84] → 8.98×7.86, 取一位圆整 9.0×7.86); 28 命名 pad (A1-A12/B1-B12 + 4×SH) + 2 NPTH; SS 8 焊盘 A2/A3/A10/A11/B2/B3/B10/B11 全在 — OPEN-1 已裁决关闭
+    nets:
+    - GND
+    - KEY_D_P
+    - KEY_D_N
+    - PCIE_TX0_P
+    - PCIE_TX0_N
+    - PCIE_RX0_P
+    - PCIE_RX0_N
+    - PCIE_TX1_P
+    - PCIE_TX1_N
+    - PCIE_RX1_P
+    - PCIE_RX1_N
+    - PWR_5V_PREAUTH
+    - CC1
+    - CC2
+    - SBU1
+    - SBU2
+  J14:
+    value: OCuLink_SFF8612
+    footprint: ForgeOS:OCuLink_SFF8612
+    function: HOST 出口 (PCIe 2.1 x2 + 功率脚/边带), ECO31 裁定 1 — 立式右缘 — README 概念名 J_OCULINK
+    sch_pins: 42
+    fp_pads: 42
+    geometry:
+      bbox:
+      - 11.0
+      - 4.31
+      pad_bbox:
+      - 10.0
+      - 1.91
+      source: footprint
+      provenance: revA/pcb/export/ForgeOS.pretty/OCuLink_SFF8612.kicad_mod
+      note: 计划参考 '10.0×8.0mm' 为壳体型 datasheet 图, 板上占位以实测 11.00×4.31 为准
+    nets:
+    - GND
+    - OCuLink_TX0_P
+    - OCuLink_TX0_N
+    - OCuLink_RX0_P
+    - OCuLink_RX0_N
+    - OCuLink_TX1_P
+    - OCuLink_TX1_N
+    - OCuLink_RX1_P
+    - OCuLink_RX1_N
+  J9:
+    value: J_OOB_HEADER
+    footprint: ForgeOS:PinHeader_1x04
+    sch_pins: 4
+    fp_pads: 4
+    function: OOB UART 4-pin 排针
+    geometry:
+      bbox:
+      - 1.5
+      - 9.12
+      source: footprint
+      provenance: revA/pcb/export/ForgeOS.pretty/PinHeader_1x04.kicad_mod
+    nets:
+    - UART_TX
+    - UART_RX
+    - MCU_VDD
+    - GND
+  J13:
+    value: J_OOB_HEADER
+    footprint: ForgeOS:PinHeader_1x04
+    sch_pins: 4
+    fp_pads: 4
+    function: SWD 4-pin 调试口 (工厂烧录 + SWCLK_BOOT0)
+    geometry:
+      bbox:
+      - 1.5
+      - 9.12
+      source: footprint
+      provenance: revA/pcb/export/ForgeOS.pretty/PinHeader_1x04.kicad_mod
+    nets:
+    - MCU_VDD
+    - GND
+    - SWCLK_BOOT0
+    - SWDIO
+  J6:
+    value: J_PWR_CTRL
+    footprint: ForgeOS:PinHeader_1x02
+    sch_pins: 2
+    fp_pads: 2
+    function: PWR_BTN# 输出 2-pin 排针 (EPYC/HOST 开机)
+    geometry:
+      bbox:
+      - 1.5
+      - 4.04
+      source: footprint
+      provenance: revA/pcb/export/ForgeOS.pretty/PinHeader_1x02.kicad_mod
+    nets:
+    - PWR_CTRL_OUT
+    - GND
+  J10:
+    value: J_12V_IN
+    footprint: ForgeOS:PinHeader_1x02
+    sch_pins: 2
+    fp_pads: 2
+    function: 12V 待机电源输入 2-pin 排针
+    geometry:
+      bbox:
+      - 1.5
+      - 4.04
+      source: footprint
+      provenance: revA/pcb/export/ForgeOS.pretty/PinHeader_1x02.kicad_mod
+    nets:
+    - 12V_IN
+    - GND
+  D1:
+    value: LED
+    footprint: LED_SMD:LED_0603_1608Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: 状态指示 LED
+    geometry:
+      bbox:
+      - 2.96
+      - 1.47
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/LED_SMD.pretty/LED_0603_1608Metric.kicad_mod
+    nets:
+    - LED_A
+    - GND
+  C73:
+    value: 100nF
+    footprint: Capacitor_SMD:C_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: NRST 去耦
+    geometry:
+      bbox:
+      - 1.82
+      - 0.92
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Capacitor_SMD.pretty/C_0402_1005Metric.kicad_mod
+    nets:
+    - GND
+    - NRST
+  C85:
+    value: 100nF
+    footprint: Capacitor_SMD:C_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: MCU_VDD 去耦
+    geometry:
+      bbox:
+      - 1.82
+      - 0.92
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Capacitor_SMD.pretty/C_0402_1005Metric.kicad_mod
+    nets:
+    - GND
+    - MCU_VDD
+  C86:
+    value: 4.7uF
+    footprint: Capacitor_SMD:C_0603_1608Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: MCU_VDD 储能
+    geometry:
+      bbox:
+      - 2.96
+      - 1.46
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Capacitor_SMD.pretty/C_0603_1608Metric.kicad_mod
+    nets:
+    - GND
+    - MCU_VDD
+  C87:
+    value: 100nF
+    footprint: Capacitor_SMD:C_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: PERSTA# 滤波
+    geometry:
+      bbox:
+      - 1.82
+      - 0.92
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Capacitor_SMD.pretty/C_0402_1005Metric.kicad_mod
+    nets:
+    - GND
+    - PERSTA#
+  C88:
+    value: 1uF
+    footprint: Capacitor_SMD:C_0603_1608Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: 12V_IN 输入去耦
+    geometry:
+      bbox:
+      - 2.96
+      - 1.46
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Capacitor_SMD.pretty/C_0603_1608Metric.kicad_mod
+    nets:
+    - 12V_IN
+    - GND
+  C89:
+    value: 4.7uF
+    footprint: Capacitor_SMD:C_0603_1608Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: PWR_5V_KEY 储能
+    geometry:
+      bbox:
+      - 2.96
+      - 1.46
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Capacitor_SMD.pretty/C_0603_1608Metric.kicad_mod
+    nets:
+    - GND
+    - PWR_5V_KEY
+  C90:
+    value: 100nF
+    footprint: Capacitor_SMD:C_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: P3V3_AUX 去耦
+    geometry:
+      bbox:
+      - 1.82
+      - 0.92
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Capacitor_SMD.pretty/C_0402_1005Metric.kicad_mod
+    nets:
+    - GND
+    - P3V3_AUX
+  C91:
+    value: 1uF
+    footprint: Capacitor_SMD:C_0603_1608Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: P3V3_AUX 储能
+    geometry:
+      bbox:
+      - 2.96
+      - 1.46
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Capacitor_SMD.pretty/C_0603_1608Metric.kicad_mod
+    nets:
+    - GND
+    - P3V3_AUX
+  C92:
+    value: 100nF
+    footprint: Capacitor_SMD:C_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: PWR_5V_PREAUTH 输出去耦
+    geometry:
+      bbox:
+      - 1.82
+      - 0.92
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Capacitor_SMD.pretty/C_0402_1005Metric.kicad_mod
+    nets:
+    - PWR_5V_PREAUTH
+    - GND
+  R1:
+    value: 10K
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: PERSTA# 上拉
+    geometry:
+      bbox:
+      - 1.86
+      - 0.94
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod
+    nets:
+    - PERSTA#
+    - P3V3_AUX
+  R3:
+    value: 220R
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: 光耦 LED 限流
+    geometry:
+      bbox:
+      - 1.86
+      - 0.94
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod
+    nets:
+    - PWR_BTN_OUT
+    - PWR_BTN_ISO
+  R16:
+    value: 10K
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: SBU_SEL 上拉
+    geometry:
+      bbox:
+      - 1.86
+      - 0.94
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod
+    nets:
+    - SBU_SEL
+    - GND
+  R21:
+    value: 1K
+    footprint: Resistor_SMD:R_0603_1608Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: LED 限流
+    geometry:
+      bbox:
+      - 2.96
+      - 1.46
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0603_1608Metric.kicad_mod
+    nets:
+    - GPIO_LED
+    - LED_A
+  R28:
+    value: 10K
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: SWCLK_BOOT0 上拉 (BOOT0)
+    geometry:
+      bbox:
+      - 1.86
+      - 0.94
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod
+    nets:
+    - GND
+    - SWCLK_BOOT0
+  R29:
+    value: 10K
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: NRST 上拉
+    geometry:
+      bbox:
+      - 1.86
+      - 0.94
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod
+    nets:
+    - MCU_VDD
+    - NRST
+  R30:
+    value: 0R
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: P3V3_AUX→MCU_VDD bypass (OR_BYPASS, 焊接)
+    geometry:
+      bbox:
+      - 1.86
+      - 0.94
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod
+    nets:
+    - P3V3_AUX
+    - MCU_VDD
+  R31:
+    value: 4.7k
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: I2C1_SCL 上拉
+    geometry:
+      bbox:
+      - 1.86
+      - 0.94
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod
+    nets:
+    - I2C1_SCL
+    - MCU_VDD
+  R32:
+    value: 4.7k
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: I2C1_SDA 上拉
+    geometry:
+      bbox:
+      - 1.86
+      - 0.94
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod
+    nets:
+    - I2C1_SDA
+    - MCU_VDD
+  R35:
+    value: 56K
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: CC1 Rp 上拉 (自 PWR_5V_PREAUTH)
+    geometry:
+      bbox:
+      - 1.86
+      - 0.94
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod
+    nets:
+    - PWR_5V_PREAUTH
+    - CC1
+  R36:
+    value: 56K
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: CC2 Rp 上拉 (自 PWR_5V_PREAUTH)
+    geometry:
+      bbox:
+      - 1.86
+      - 0.94
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod
+    nets:
+    - PWR_5V_PREAUTH
+    - CC2
+  R37:
+    value: 10K
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    function: SBU1 KEY_DET 下拉
+    geometry:
+      bbox:
+      - 1.86
+      - 0.94
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod
+    nets:
+    - GND
+    - SBU1
+interfaces:
+  J1:
+    connector: USB_C_RECEPT (Amphenol 12401548E4-2A 24-pin full-featured)
+    edge: left
+    orientation: horizontal
+    opening: 朝板外左方 (KEY 线缆接入)
+    pins: 16
+    fp_pads: 30
+    bbox_mm:
+    - 9.0
+    - 7.86
+    capability_note: "✅ 24-pin full-featured (SS 8/8: A2/A3/A10/A11/B2/B3/B10/B11) — PCIe x2 物理承载落实 (PM 2026-08-22 换件裁决)"
+  J14:
+    connector: OCuLink SFF-8612 (立式)
+    edge: right
+    orientation: vertical
+    opening: 朝板外右方 (HOST 线缆接入)
+    pins: 42
+    fp_pads: 42
+    bbox_mm:
+    - 11.0
+    - 4.31
+  J6:
+    connector: J_PWR_CTRL 2-pin
+    note: 低速边带, 位置归候选变量
+  J9:
+    connector: J_OOB_HEADER 4-pin
+    note: OOB UART, 位置归候选变量
+  J10:
+    connector: J_12V_IN 2-pin
+    note: 12V 待机输入, 位置归候选变量
+  J13:
+    connector: J_OOB_HEADER 4-pin
+    note: SWD 调试, 位置归候选变量
+high_speed_links:
+- link: PCIe Lane0 TX
+  pairs:
+  - PCIE_TX0_P
+  - PCIE_TX0_N
+  path: J1/TX_P → U9/IO3,IO4 (TVS tap) → U11/A0+,- → J14/PCIE_TX0+,-
+- link: PCIe Lane0 RX
+  pairs:
+  - PCIE_RX0_P
+  - PCIE_RX0_N
+  path: J1/RX_P → U9/IO5,IO6 (TVS tap) → U11/A1+,- → J14/PCIE_RX0+,-
+- link: PCIe Lane1 TX
+  pairs:
+  - PCIE_TX1_P
+  - PCIE_TX1_N
+  path: J1/TX2_P → U11/A2+,- → J14/PCIE_TX1+,-
+- link: PCIe Lane1 RX
+  pairs:
+  - PCIE_RX1_P
+  - PCIE_RX1_N
+  path: J1/RX2_P → U11/A3+,- → J14/PCIE_RX1+,-
+- notes:
+  - 'MUX 分段策略 (SPEC l1_bid.strategy_type): U11 位置 = 轴一 mux_position 候选差异'
+  - REFCLK/PERST#/SRIS 为 ECO31 Open Items 2/3 — 不在本卡生成 (KEY 侧), 高速链不含时钟对
+power_tree:
+- rail: 12V_IN
+  source: J10 (2-pin 待机输入)
+  consumers:
+  - U8/VIN
+  - U8/EN
+  - C88
+- rail: PWR_5V_KEY
+  source: U8/VOUT (DCDC 12V→5V)
+  consumers:
+  - U12/IN
+  - U10/VIN
+  - U10/EN
+  - C89
+- rail: PWR_5V_PREAUTH
+  source: U12/VOUT (TPS22919 软启动 Load Switch)
+  consumers:
+  - J1/VBUS
+  - R35/A
+  - R36/A
+  - C92
+  notes: 预鉴权 5V 软启动轨 (裁定 7); CC1/CC2 经 R35/R36 (56K) Rp 上拉
+- rail: P3V3_AUX
+  source: U10/VOUT (LDO 5V→3V3)
+  consumers:
+  - U1/3V3_AUX_SENSE
+  - U6/VCC
+  - U11/VDD×6
+  - R1/B
+  - R30/A
+  - C90
+  - C91
+- rail: MCU_VDD
+  source: P3V3_AUX via R30 (0Ω bypass)
+  consumers:
+  - U1/VDD
+  - E1/VCC
+  - J9/VCC
+  - J13/VCC
+  - R29/B
+  - R31/B
+  - R32/B
+  - C85
+  - C86
+  notes: K1 无 12V DCDC 直出 MCU 供电; R30 焊接短接 P3V3_AUX=MCU_VDD
+control_plane:
+- function: SBU 预鉴权 I2C (K1 MCU ↔ KEY SE050, 裁定 6)
+  nets:
+  - I2C1_SCL
+  - I2C1_SDA
+  - SBU1
+  - SBU2
+  - SBU_SEL
+  - SBU_EN
+  devices:
+  - U1
+  - U6
+  - R31
+  - R32
+  - R16
+  - R37
+  - J1
+  note: U6 D_P/D_N (I2C 公共端) ↔ D_P_A/D_N_A (SBU1/2); B 通道 NC
+- function: lane 翻转 MUX 控制 (裁定 8)
+  nets:
+  - MUX_SEL
+  - MUX_PD
+  devices:
+  - U1
+  - U11
+- function: 预鉴权供电软启动控制
+  nets:
+  - TPS_EN
+  devices:
+  - U1
+  - U12
+- function: CC 侦测 (Rp 上拉自 PWR_5V_PREAUTH)
+  nets:
+  - CC1
+  - CC2
+  devices:
+  - J1
+  - R35
+  - R36
+- function: 开机光耦隔离 (裁定 6 成功路径)
+  nets:
+  - PWR_BTN_OUT
+  - PWR_BTN_ISO
+  - PWR_CTRL_OUT
+  devices:
+  - U1
+  - R3
+  - U5
+  - J6
+- function: 状态 LED
+  nets:
+  - GPIO_LED
+  - LED_A
+  devices:
+  - U1
+  - R21
+  - D1
+- function: OOB UART 透传
+  nets:
+  - UART_TX
+  - UART_RX
+  devices:
+  - U1
+  - J9
+- function: SWD 调试 / BOOT0
+  nets:
+  - SWDIO
+  - SWCLK_BOOT0
+  - NRST
+  devices:
+  - U1
+  - J13
+  - R28
+  - R29
+  - C73
+- function: PERST# 感知 (K1 本地网络, ECO31 Open Item 3 由 KEY 侧生成)
+  nets:
+  - PERSTA#
+  devices:
+  - U1
+  - R1
+  - C87
+- function: USB2 D± (Mode A/B USB 管理, ESD 保护)
+  nets:
+  - KEY_D_P
+  - KEY_D_N
+  devices:
+  - J1
+  - U9
+net_coverage:
+- net: I2C1_SCL
+  domain: control
+  members:
+  - U1/I2C1_SCL
+  - R31/A
+  - E1/SCL
+  - U6/D_P
+  candidate_routable: true
+- net: I2C1_SDA
+  domain: control
+  members:
+  - U1/I2C1_SDA
+  - R32/A
+  - E1/SDA
+  - U6/D_N
+  candidate_routable: true
+- net: PERSTA#
+  domain: control
+  members:
+  - U1/PERST_SENSE
+  - U1/PERST_OUT
+  - R1/A
+  - C87/A
+  candidate_routable: true
+- net: PWR_BTN_OUT
+  domain: control
+  members:
+  - U1/PWR_BTN_OUT
+  - R3/A
+  candidate_routable: true
+- net: PWR_BTN_ISO
+  domain: control
+  members:
+  - R3/B
+  - U5/ANODE
+  candidate_routable: true
+- net: PWR_CTRL_OUT
+  domain: control
+  members:
+  - U5/COLLECTOR
+  - J6/PWR_BTN#
+  candidate_routable: true
+- net: GPIO_LED
+  domain: control
+  members:
+  - U1/GPIO_LED
+  - R21/A
+  candidate_routable: true
+- net: LED_A
+  domain: control
+  members:
+  - R21/B
+  - D1/A
+  candidate_routable: true
+- net: UART_TX
+  domain: control
+  members:
+  - U1/UART_TX
+  - J9/TX
+  candidate_routable: true
+- net: UART_RX
+  domain: control
+  members:
+  - U1/UART_RX
+  - J9/RX
+  candidate_routable: true
+- net: P3V3_AUX
+  domain: power
+  members:
+  - U1/3V3_AUX_SENSE
+  - R1/B
+  - C90/A
+  - U6/VCC
+  - R30/A
+  - U10/VOUT
+  - C91/A
+  - U11/VDD
+  - U11/VDD_2
+  - U11/VDD_3
+  - U11/VDD_4
+  - U11/VDD_5
+  - U11/VDD_6
+  candidate_routable: true
+- net: MCU_VDD
+  domain: power
+  members:
+  - U1/VDD
+  - J9/VCC
+  - R29/B
+  - J13/VCC
+  - R31/B
+  - R32/B
+  - C85/A
+  - C86/A
+  - E1/VCC
+  - R30/B
+  candidate_routable: true
+- net: 12V_IN
+  domain: power
+  members:
+  - J10/VIN_12V
+  - U8/VIN
+  - U8/EN
+  - C88/A
+  candidate_routable: true
+- net: GND
+  domain: ground
+  members:
+  - U1/VSS
+  - U1/PC14_OSC32_IN
+  - U1/PC15_OSC32_OUT
+  - U1/PB1
+  - U1/PC6
+  - U1/PB4
+  - U1/PB5
+  - U1/EP
+  - U5/CATHODE
+  - U5/EMITTER
+  - J6/GND
+  - D1/K
+  - J9/GND
+  - R28/B
+  - C73/B
+  - J13/GND
+  - C85/B
+  - C86/B
+  - C87/B
+  - C90/B
+  - J1/GND
+  - J10/GND
+  - U6/GND
+  - U8/GND
+  - U10/GND
+  - U9/GND
+  - U9/NC
+  - E1/VSS
+  - E1/A0
+  - E1/A1
+  - E1/A2
+  - E1/WP
+  - R16/B
+  - R37/B
+  - C88/B
+  - C89/B
+  - C91/B
+  - U12/GND
+  - J14/GND
+  - U11/GND
+  candidate_routable: true
+- net: NRST
+  domain: control
+  members:
+  - U1/NRST
+  - R29/A
+  - C73/A
+  candidate_routable: true
+- net: SWCLK_BOOT0
+  domain: control
+  members:
+  - U1/SWCLK_BOOT0
+  - R28/A
+  - J13/RX
+  candidate_routable: true
+- net: SWDIO
+  domain: control
+  members:
+  - U1/SWDIO
+  - J13/TX
+  candidate_routable: true
+- net: KEY_D_P
+  domain: control
+  members:
+  - J1/D_P
+  - U9/IO1
+  candidate_routable: true
+- net: KEY_D_N
+  domain: control
+  members:
+  - J1/D_N
+  - U9/IO2
+  candidate_routable: true
+- net: SBU_SEL
+  domain: control
+  members:
+  - U6/SEL
+  - R16/A
+  candidate_routable: true
+- net: SBU_EN
+  domain: control
+  members:
+  - U6/OE#
+  candidate_routable: true
+- net: PCIE_TX0_P
+  domain: high_speed
+  members:
+  - J1/TX_P
+  - U11/A0+
+  - U9/IO3
+  candidate_routable: true
+- net: PCIE_TX0_N
+  domain: high_speed
+  members:
+  - J1/TX_N
+  - U11/A0-
+  - U9/IO4
+  candidate_routable: true
+- net: PCIE_RX0_P
+  domain: high_speed
+  members:
+  - J1/RX_P
+  - U11/A1+
+  - U9/IO5
+  candidate_routable: true
+- net: PCIE_RX0_N
+  domain: high_speed
+  members:
+  - J1/RX_N
+  - U11/A1-
+  - U9/IO6
+  candidate_routable: true
+- net: PCIE_TX1_P
+  domain: high_speed
+  members:
+  - J1/TX2_P
+  - U11/A2+
+  candidate_routable: true
+- net: PCIE_TX1_N
+  domain: high_speed
+  members:
+  - J1/TX2_N
+  - U11/A2-
+  candidate_routable: true
+- net: PCIE_RX1_P
+  domain: high_speed
+  members:
+  - J1/RX2_P
+  - U11/A3+
+  candidate_routable: true
+- net: PCIE_RX1_N
+  domain: high_speed
+  members:
+  - J1/RX2_N
+  - U11/A3-
+  candidate_routable: true
+- net: OCuLink_TX0_P
+  domain: high_speed
+  members:
+  - U11/C0+
+  - J14/PCIE_TX0+
+  candidate_routable: true
+- net: OCuLink_TX0_N
+  domain: high_speed
+  members:
+  - U11/C0-
+  - J14/PCIE_TX0-
+  candidate_routable: true
+- net: OCuLink_RX0_P
+  domain: high_speed
+  members:
+  - U11/C1+
+  - J14/PCIE_RX0+
+  candidate_routable: true
+- net: OCuLink_RX0_N
+  domain: high_speed
+  members:
+  - U11/C1-
+  - J14/PCIE_RX0-
+  candidate_routable: true
+- net: OCuLink_TX1_P
+  domain: high_speed
+  members:
+  - U11/C2+
+  - J14/PCIE_TX1+
+  candidate_routable: true
+- net: OCuLink_TX1_N
+  domain: high_speed
+  members:
+  - U11/C2-
+  - J14/PCIE_TX1-
+  candidate_routable: true
+- net: OCuLink_RX1_P
+  domain: high_speed
+  members:
+  - U11/C3+
+  - J14/PCIE_RX1+
+  candidate_routable: true
+- net: OCuLink_RX1_N
+  domain: high_speed
+  members:
+  - U11/C3-
+  - J14/PCIE_RX1-
+  candidate_routable: true
+- net: MUX_SEL
+  domain: control
+  members:
+  - U11/SEL1
+  - U11/SEL2
+  - U1/MUX_SEL
+  candidate_routable: true
+- net: MUX_PD
+  domain: control
+  members:
+  - U11/PD1
+  - U11/PD2
+  candidate_routable: true
+- net: PWR_5V_KEY
+  domain: power
+  members:
+  - U8/VOUT
+  - U12/IN
+  - C89/A
+  - U10/VIN
+  - U10/EN
+  candidate_routable: true
+- net: PWR_5V_PREAUTH
+  domain: power
+  members:
+  - U12/VOUT
+  - J1/VBUS
+  - R35/A
+  - R36/A
+  candidate_routable: true
+- net: TPS_EN
+  domain: control
+  members:
+  - U12/ON
+  candidate_routable: true
+- net: CC1
+  domain: control
+  members:
+  - J1/CC1
+  - R35/B
+  candidate_routable: true
+- net: CC2
+  domain: control
+  members:
+  - J1/CC2
+  - R36/B
+  candidate_routable: true
+- net: SBU1
+  domain: control
+  members:
+  - J1/SBU1
+  - U6/D_P_A
+  - R37/A
+  candidate_routable: true
+- net: SBU2
+  domain: control
+  members:
+  - J1/SBU2
+  - U6/D_N_A
+  candidate_routable: true
+reconciliation:
+  device_count:
+    k1_nets_yaml: 36
+    schematic_sch_k1: 37
+    diff:
+    - 'C92 (100nF 0402, PWR_5V_PREAUTH 去耦): 原理图+netlist 存在 (net: PWR_5V_PREAUTH/GND), k1_nets.yaml 缺失'
+  net_count:
+    k1_nets_yaml: 46
+    netlist_real_nets: 46
+    note: k1_nets.yaml 顶层 nets 46 key (全部真实网), nc 为独立顶层 list; kicad-cli netlist codes 1-46 与之一一对应。早期记录 '38 个网 key' 为误
+  nc_pairs:
+    k1_nets_yaml: 36
+    netlist_unconnected: 40
+    note: '差 4: U6/D_P_B, U6/D_N_B, U8/FB, U8/SW 未列入 k1_nets nc list'
+  k1_nets_yaml_missing_nodes:
+  - 'SBU_SEL: U1/PB8 (pad31) — yaml 仅 R16/U6'
+  - 'SBU_EN: U1/PB9 (pad1) — yaml 仅 U6/OE#'
+  - 'MUX_PD: U1/PA7 (pad14) — yaml 仅 U11/PD1,PD2'
+  - 'TPS_EN: U1/PB3 (pad26) — yaml 仅 U12/ON'
+  - 'SBU1: U1/PB2 (pad17) — yaml 缺'
+  - 'PWR_5V_PREAUTH: C92/A — yaml 缺 (C92 全器件)'
+  - 'GND: C92/B — yaml 缺'
+  open_issues:
+  - id: OPEN-1
+    severity: BLOCKING
+    title: J1 Type-C footprint 无 SS 差分焊盘 (PCIe x2 不可实现)
+    evidence: J1 符号 IOCONVERT:USB_C_RECEPT 16 pin 含 8 个 SS pin (TX_P/TX_N/RX_P/RX_N/TX2_P/TX2_N/RX2_P/RX2_N); footprint Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12
+      实测仅 16 信号 pad (A1/A4/A5/A6/A7/A8/A9/A12/B1/B4/B5/B6/B7/B8/B9/B12) + 4 SH + 2 NPTH, 无 A2/A3/A10/A11/B2/B3/B10/B11 (SS
+      TX/RX)。HRO TYPE-C-31-M-12 为 16-pin USB2-only 变体。ECO31 裁定 2 (PCIe 2.1 x2) 依赖 full-featured 24-pin Type-C — 本 footprint
+      不满足
+    impact: PCIe x2 数据面 (J1↔U11 4 对差分) 无焊盘落点; 物理上不可路由
+    action: '已裁决 (PM 2026-08-22): J1 换 Amphenol 12401548E4-2A 24-pin full-featured (SS 8/8 焊盘全在); 本 yaml 已同步 footprint/几何'
+    ruled: true
+    ruling: 'PM 2026-08-22: J1 换 Amphenol 12401548E4-2A 24-pin full-featured Type-C (KiCad 官方库, SS 焊盘 A2/A3/A10/A11/B2/B3/B10/B11 全在) — OPEN-1 关闭'
+  - id: OPEN-2
+    severity: WARN
+    title: U10 LDO 符号 5 pin vs SOT-23 footprint 3 pad
+    evidence: sch_pins=5 (VIN/VOUT/GND/EN/NC_ADJ), footprint Package_TO_SOT_SMD:SOT-23 仅 3 pad
+    impact: footprint 与符号不匹配; 实际器件应为 SOT-23-5 (实测 4.10×3.54mm)
+    action: 布局预算按 SOT-23-5; 原理图 footprint 修正待 ECO
