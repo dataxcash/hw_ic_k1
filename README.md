@@ -1,5 +1,12 @@
 # hw_ic_k1 — K1 Master Gate Card (PCIe 2.1 x2 Injection)
 
+![K1 board — final 4K 3D top render](doc/images/k1-top-3d-render-4k.png)
+*K1 Master Gate Card — final 4K top render (ECN-14/15/16 complete). USB Type-C
+re-mounted facing the board's left edge; all 15 high-speed nets re-routed and
+length-matched (intra-pair skew ≤ 0.10 mm); H5 mounting hole added — 47
+components, 5 mounting holes. J1 body uses the Amphenol stand-in STEP; the JAE
+DX07S024WJ1R350 model is pending.*
+
 Open-source hardware — KiCad design files for the **K1 Master Gate Card**,
 the master-side converter card in the IOCONVERT V2.0 1-Master-to-4-Worker
 chained NTB cluster.
