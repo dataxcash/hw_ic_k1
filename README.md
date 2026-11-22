@@ -1,10 +1,10 @@
 # hw_ic_k1 — K1 Master Gate Card (PCIe 2.1 x2 Injection)
 
-![K1 R2.1 tapeout candidate — 3D top-flat render (4K)](doc/images/k1-r21-top-flat-4k.png)
-*K1 R2.1 tapeout candidate — 3D top-flat render (4K). DRC: 0 new hard errors,
-3 pre-existing J1 (Type-C) baseline waivers, 0 unrouted nets. H5 M2.5 NPTH
-mounting hole added; all four connector-family orientations solved.
-J1 rendered pads-only — no substitute body pending owner-provided
+![K1 R2.2 tapeout candidate — 3D top-flat render (4K)](doc/images/k1-r22-top-flat-4k.png)
+*K1 R2.2 tapeout candidate — 3D top-flat render (4K). Silkscreen designators
+re-placed to their parts (assembler-readable); DRC: 0 new hard errors, 3
+pre-existing J1 (Type-C) baseline waivers, 0 unrouted nets; silk overlaps
+6 -> 0. J1 rendered pads-only — no substitute body pending owner-provided
 JAE DX07S024WJ1R350 STEP (#K2-677; Amphenol stand-in revoked).*
 
 Open-source hardware — KiCad design files for the **K1 Master Gate Card**,
@@ -56,9 +56,11 @@ KEY (secure vault) ──Type-C──► K1 Master Gate Card ──SlimSAS──
 
 ## Status — 2026-11-22
 
-Tapeout chain: **v1 → R2 → R2.1** (current candidate).
+Tapeout chain: **v1 → R2 → R2.1 → R2.2** (current candidate, 2026-11-22).
 
-- R2.1 board sha256 `74920945c1583fa7…`; DRC at candidate gate: 51 violations =
+- R2.2 board sha256 `a8526b57989c6a89…` (electrical zero-drift vs R2.1,
+  geometry sha byte-identical; silkscreen designators re-placed and Value
+  fields fixed from truth source); R2.1 sha `74920945c1583fa7…`; DRC at candidate gate: 51 violations =
   0 new hard errors + 3 pre-existing J1 baseline waivers (all soft) + 48 warnings,
   0 unrouted nets; H5 M2.5 NPTH mounting hole added; four connector-family
   orientations solved.
