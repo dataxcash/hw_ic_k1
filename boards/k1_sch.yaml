@@ -1,738 +1,102 @@
+# k1_sch.yaml —— K1 原理图侧真源（**再生件**）
+#
+# 生成器：`k1/tools/k1_sch_regen_v1.py`（授权 = 监理 #K2-48 §一 N-3）
+# 单一真源：`k1_board.yaml` + `k1_pinmap.yaml` + `k1_nets.yaml`（禁手改漂移；重复运行逐字节同）
+# 覆盖：placements 42（= 板 42）· nets = k1_nets.yaml（51）· symbols = 在用符号集
+# 残留（保持可见，不在此缩口径）：Q1 pad1(CT)/2(NC)/4(VBIAS)/7(PG)、U12 pad4(VBIAS)/6(CT)
+#   未参与任何网 ⇒ **不写成 NC**（K1-D8 = VBIAS 未接，属板级缺陷册具名项）。
 symbols:
-- name: MCIO_4i
-  ref_prefix: J
-  value: MCIO_4i_SFF1016
-  footprint: ForgeOS:MCIO_4i_SFF-1016_RASide
-  body_width: 19.8
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - TX0_P
-      - 4
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - TX0_N
-      - 6
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - TX1_P
-      - 10
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - TX1_N
-      - 12
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - TX2_P
-      - 28
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - TX2_N
-      - 30
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - TX3_P
-      - 34
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - TX3_N
-      - 36
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - RX0_P
-      - 3
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - RX0_N
-      - 5
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - RX1_P
-      - 9
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - RX1_N
-      - 11
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - RX2_P
-      - 27
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - RX2_N
-      - 29
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - RX3_P
-      - 33
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - RX3_N
-      - 35
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - REFCLK_P
-      - 21
-      - BIDIR
-      - CLOCK
-    - - REFCLK_N
-      - 23
-      - BIDIR
-      - CLOCK
-    - - FLEXIO_0A
-      - '15'
-      - BIDIR
-      - SIDEBAND
-    - - CBL_PRES#
-      - '24'
-      - INPUT
-      - SIDEBAND
-    left:
-    - - P3V3_AUX
-      - '17'
-      - PASSIVE
-      - POWER_GND
-    - - PERST#
-      - 22
-      - INPUT
-      - SIDEBAND
-    - - SMB_CLK
-      - 16
-      - BIDIR
-      - SIDEBAND
-    - - SMB_DATA
-      - 18
-      - BIDIR
-      - SIDEBAND
-    - - GND
-      - 1
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 2
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 7
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 8
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 13
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 14
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 19
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 20
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 25
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 26
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 31
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 32
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 37
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 38
-      - PASSIVE
-      - POWER_GND
-  card: '2'
-- name: SlimSAS_x8
-  ref_prefix: J
-  value: SlimSAS_x8_SFF8654
-  footprint: ForgeOS:SlimSAS_x8_SFF-8654_74pin_RASide
-  body_width: 23.3
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - GND
-      - 1
-      - PASSIVE
-      - POWER_GND
-    - - RX0_P
-      - 2
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - RX0_N
-      - 3
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - GND
-      - 4
-      - PASSIVE
-      - POWER_GND
-    - - RX1_P
-      - 5
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - RX1_N
-      - 6
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - GND
-      - 7
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 8
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 9
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 10
-      - PASSIVE
-      - POWER_GND
-    - - REFCLK0_P
-      - 11
-      - BIDIR
-      - CLOCK
-    - - REFCLK0_N
-      - 12
-      - BIDIR
-      - CLOCK
-    - - GND
-      - 13
-      - PASSIVE
-      - POWER_GND
-    - - RX2_P
-      - 14
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - RX2_N
-      - 15
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - GND
-      - 16
-      - PASSIVE
-      - POWER_GND
-    - - RX3_P
-      - 17
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - RX3_N
-      - 18
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - GND
-      - 19
-      - PASSIVE
-      - POWER_GND
-    - - RX4_P
-      - 20
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - RX4_N
-      - 21
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - GND
-      - 22
-      - PASSIVE
-      - POWER_GND
-    - - RX5_P
-      - 23
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - RX5_N
-      - 24
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - GND
-      - 25
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 26
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 27
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 28
-      - PASSIVE
-      - POWER_GND
-    - - REFCLK1_P
-      - 29
-      - BIDIR
-      - CLOCK
-    - - REFCLK1_N
-      - 30
-      - BIDIR
-      - CLOCK
-    - - GND
-      - 31
-      - PASSIVE
-      - POWER_GND
-    - - RX6_P
-      - 32
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - RX6_N
-      - 33
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - GND
-      - 34
-      - PASSIVE
-      - POWER_GND
-    - - RX7_P
-      - 35
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - RX7_N
-      - 36
-      - PASSIVE
-      - DIFF_PAIR_RX
-    - - GND
-      - 37
-      - PASSIVE
-      - POWER_GND
-    left:
-    - - GND
-      - 38
-      - PASSIVE
-      - POWER_GND
-    - - TX0_P
-      - 39
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - TX0_N
-      - 40
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - GND
-      - 41
-      - PASSIVE
-      - POWER_GND
-    - - TX1_P
-      - 42
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - TX1_N
-      - 43
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - GND
-      - 44
-      - PASSIVE
-      - POWER_GND
-    - - SMB_CLK
-      - 45
-      - BIDIR
-      - SIDEBAND
-    - - SMB_DATA
-      - 46
-      - BIDIR
-      - SIDEBAND
-    - - GND
-      - 47
-      - PASSIVE
-      - POWER_GND
-    - - PERST#
-      - 48
-      - INPUT
-      - SIDEBAND
-    - - GND
-      - 49
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 50
-      - PASSIVE
-      - POWER_GND
-    - - TX2_P
-      - 51
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - TX2_N
-      - 52
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - GND
-      - 53
-      - PASSIVE
-      - POWER_GND
-    - - TX3_P
-      - 54
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - TX3_N
-      - 55
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - GND
-      - 56
-      - PASSIVE
-      - POWER_GND
-    - - TX4_P
-      - 57
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - TX4_N
-      - 58
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - GND
-      - 59
-      - PASSIVE
-      - POWER_GND
-    - - TX5_P
-      - 60
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - TX5_N
-      - 61
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - GND
-      - 62
-      - PASSIVE
-      - POWER_GND
-    - - SMB_CLK_B
-      - 63
-      - PASSIVE
-      - POWER_GND
-    - - SMB_DATA_B
-      - 64
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 65
-      - PASSIVE
-      - POWER_GND
-    - - PERSTB#
-      - 66
-      - PASSIVE
-      - SIDEBAND
-    - - GND
-      - 67
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 68
-      - PASSIVE
-      - POWER_GND
-    - - TX6_P
-      - 69
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - TX6_N
-      - 70
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - GND
-      - 71
-      - PASSIVE
-      - POWER_GND
-    - - TX7_P
-      - 72
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - TX7_N
-      - 73
-      - OUTPUT
-      - DIFF_PAIR_TX
-    - - GND
-      - 74
-      - PASSIVE
-      - POWER_GND
-  card: '2'
-- name: REDR_DS160PR810
+- name: 74LVC1G08
   ref_prefix: U
-  value: DS160PR810
-  footprint: ForgeOS:WQFN-64_10x5.5mm_P0.4mm
-  body_width: 26.8
+  value: 74LVC1G08
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - Y
+      - '4'
+      - OUTPUT
+      - SIDEBAND
+    left:
+    - - A
+      - '1'
+      - INPUT
+      - SIDEBAND
+    - - B
+      - '2'
+      - INPUT
+      - SIDEBAND
+    - - GND
+      - '3'
+      - PASSIVE
+      - POWER_GND
+    - - VCC
+      - '5'
+      - PASSIVE
+      - POWER_GND
+  footprint: Package_TO_SOT_SMD:SOT-23-5
+- name: AUTH_LATCH_SN74LVC1G175
+  ref_prefix: U
+  value: SN74LVC1G175
+  footprint: Package_TO_SOT_SMD:SOT-23-6
+  body_width: 12.7
   pin_pitch: 2.54
   pins:
     left:
-    - - RX0P
-      - 1
-      - INPUT
-      - DIFF_PAIR_RX
-    - - RX0N
-      - 2
-      - INPUT
-      - DIFF_PAIR_RX
-    - - VREG1
-      - 3
-      - PASSIVE
-      - SIDEBAND
-    - - RX1P
-      - 4
-      - INPUT
-      - DIFF_PAIR_RX
-    - - RX1N
-      - 5
-      - INPUT
-      - DIFF_PAIR_RX
-    - - VCC
-      - 6
-      - PASSIVE
-      - POWER_GND
-    - - RX2P
-      - 7
-      - INPUT
-      - DIFF_PAIR_RX
-    - - RX2N
-      - 8
-      - INPUT
-      - DIFF_PAIR_RX
-    - - GND
-      - 9
-      - PASSIVE
-      - POWER_GND
-    - - RX3P
-      - 10
-      - INPUT
-      - DIFF_PAIR_RX
-    - - RX3N
-      - 11
-      - INPUT
-      - DIFF_PAIR_RX
-    - - GND
-      - 12
-      - PASSIVE
-      - POWER_GND
-    - - RX4P
-      - 13
-      - INPUT
-      - DIFF_PAIR_RX
-    - - RX4N
-      - 14
-      - INPUT
-      - DIFF_PAIR_RX
-    - - VREG2
-      - 15
-      - PASSIVE
-      - SIDEBAND
-    - - RX5P
-      - 16
-      - INPUT
-      - DIFF_PAIR_RX
-    - - RX5N
-      - 17
-      - INPUT
-      - DIFF_PAIR_RX
-    - - VCC
-      - 18
-      - PASSIVE
-      - POWER_GND
-    - - RX6P
-      - 19
-      - INPUT
-      - DIFF_PAIR_RX
-    - - RX6N
-      - 20
-      - INPUT
-      - DIFF_PAIR_RX
-    - - GND
-      - 21
-      - PASSIVE
-      - POWER_GND
-    - - RX7P
-      - 22
-      - INPUT
-      - DIFF_PAIR_RX
-    - - RX7N
-      - 23
-      - INPUT
-      - DIFF_PAIR_RX
-    - - GND
-      - 24
-      - PASSIVE
-      - POWER_GND
-    - - PD0
-      - 25
+    - - CLK
+      - '1'
       - INPUT
       - SIDEBAND
-    - - PD1
-      - 26
+    - - D
+      - '3'
       - INPUT
-      - SIDEBAND
-    - - EQ0_1
-      - 27
-      - INPUT
-      - SIDEBAND
-    - - GAIN1
-      - 28
-      - INPUT
-      - SIDEBAND
-    - - EQ1_1
-      - 29
-      - INPUT
-      - SIDEBAND
-    - - RSVD1
-      - 30
-      - INPUT
-      - SIDEBAND
-    - - ALL_DONE_N
-      - 31
-      - OUTPUT
       - SIDEBAND
     - - GND
-      - 32
+      - '2'
       - PASSIVE
       - POWER_GND
     right:
-    - - TX7N
-      - 33
+    - - Q
+      - '4'
       - OUTPUT
-      - DIFF_PAIR_RX
-    - - TX7P
-      - 34
-      - OUTPUT
-      - DIFF_PAIR_RX
-    - - VREG2
-      - 35
-      - PASSIVE
       - SIDEBAND
-    - - TX6N
-      - 36
-      - OUTPUT
-      - DIFF_PAIR_RX
-    - - TX6P
-      - 37
-      - OUTPUT
-      - DIFF_PAIR_RX
     - - VCC
-      - 38
+      - '5'
       - PASSIVE
       - POWER_GND
-    - - TX5N
-      - 39
-      - OUTPUT
-      - DIFF_PAIR_RX
-    - - TX5P
-      - 40
-      - OUTPUT
-      - DIFF_PAIR_RX
-    - - GND
-      - 41
-      - PASSIVE
-      - POWER_GND
-    - - TX4N
-      - 42
-      - OUTPUT
-      - DIFF_PAIR_RX
-    - - TX4P
-      - 43
-      - OUTPUT
-      - DIFF_PAIR_RX
-    - - GND
-      - 44
-      - PASSIVE
-      - POWER_GND
-    - - TX3N
-      - 45
-      - OUTPUT
-      - DIFF_PAIR_RX
-    - - TX3P
-      - 46
-      - OUTPUT
-      - DIFF_PAIR_RX
-    - - VREG1
-      - 47
-      - PASSIVE
-      - SIDEBAND
-    - - TX2N
-      - 48
-      - OUTPUT
-      - DIFF_PAIR_RX
-    - - TX2P
-      - 49
-      - OUTPUT
-      - DIFF_PAIR_RX
-    - - VCC
-      - 50
-      - PASSIVE
-      - POWER_GND
-    - - TX1N
-      - 51
-      - OUTPUT
-      - DIFF_PAIR_RX
-    - - TX1P
-      - 52
-      - OUTPUT
-      - DIFF_PAIR_RX
-    - - GND
-      - 53
-      - PASSIVE
-      - POWER_GND
-    - - TX0N
-      - 54
-      - OUTPUT
-      - DIFF_PAIR_RX
-    - - TX0P
-      - 55
-      - OUTPUT
-      - DIFF_PAIR_RX
-    - - GND
-      - 56
-      - PASSIVE
-      - POWER_GND
-    - - READ_EN_N
-      - 57
+    - - CLR#
+      - '6'
       - INPUT
       - SIDEBAND
-    - - RSVD0
-      - 58
+- name: CMP_TLV7011
+  ref_prefix: U
+  value: TLV7011
+  footprint: Package_TO_SOT_SMD:SOT-23-5
+  body_width: 11.43
+  pin_pitch: 2.54
+  pins:
+    left:
+    - - OUT
+      - '1'
+      - OUTPUT
+      - SIDEBAND
+    - - IN+
+      - '3'
       - INPUT
       - SIDEBAND
-    - - EQ0_0_ADDR0
-      - 59
-      - INPUT
-      - SIDEBAND
-    - - EQ1_0_ADDR1
-      - 60
-      - INPUT
-      - SIDEBAND
-    - - MODE
-      - 61
-      - INPUT
-      - SIDEBAND
-    - - RX_DET_SCL
-      - 62
-      - BIDIR
-      - SIDEBAND
-    - - GAIN0_SDA
-      - 63
-      - BIDIR
-      - SIDEBAND
-    - - GND
-      - 64
+    - - V-
+      - '2'
       - PASSIVE
       - POWER_GND
-  card: '2'
+    right:
+    - - IN-
+      - '4'
+      - INPUT
+      - SIDEBAND
+    - - V+
+      - '5'
+      - PASSIVE
+      - POWER_GND
 - name: C_100N
   ref_prefix: C
   value: 100nF
@@ -751,9 +115,27 @@ symbols:
       - PASSIVE
       - SIDEBAND
   card: both
-- name: C_220N
+- name: C_10U
   ref_prefix: C
-  value: 220nF
+  value: 10uF
+  footprint: Capacitor_SMD:C_0805_2012Metric
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - A
+      - 1
+      - PASSIVE
+      - SIDEBAND
+    left:
+    - - B
+      - 2
+      - PASSIVE
+      - SIDEBAND
+  card: both
+- name: C_1U__C_0402_1005Metric
+  ref_prefix: C
+  value: 1uF
   footprint: Capacitor_SMD:C_0402_1005Metric
   body_width: 10.16
   pin_pitch: 2.54
@@ -769,29 +151,11 @@ symbols:
       - PASSIVE
       - SIDEBAND
   card: both
-- name: C_1U
+- name: C_1U__C_0603_1608Metric
   ref_prefix: C
   value: 1uF
   footprint: Capacitor_SMD:C_0603_1608Metric
   body_width: 10.16
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - A
-      - 1
-      - PASSIVE
-      - SIDEBAND
-    left:
-    - - B
-      - 2
-      - PASSIVE
-      - SIDEBAND
-  card: both
-- name: C_10U
-  ref_prefix: C
-  value: 10uF
-  footprint: Capacitor_SMD:C_0805_2012Metric
-  body_width: 12.7
   pin_pitch: 2.54
   pins:
     right:
@@ -823,10 +187,10 @@ symbols:
       - PASSIVE
       - SIDEBAND
   card: both
-- name: R_1K
-  ref_prefix: R
-  value: 1K
-  footprint: Resistor_SMD:R_0402_1005Metric
+- name: C_6N8
+  ref_prefix: C
+  value: 6.8nF
+  footprint: Capacitor_SMD:C_0402_1005Metric
   body_width: 10.16
   pin_pitch: 2.54
   pins:
@@ -840,11 +204,259 @@ symbols:
       - 2
       - PASSIVE
       - SIDEBAND
-  card: '2'
-- name: R_13K
-  ref_prefix: R
-  value: 13K
-  footprint: Resistor_SMD:R_0402_1005Metric
+  card: '1'
+- name: DCDC_12V_5V
+  ref_prefix: U
+  value: TPS54628
+  footprint: Package_SO:SOIC-8_5.3x5.3mm_P1.27mm
+  body_width: 17.78
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - VIN
+      - '8'
+      - POWER_IN
+      - POWER_GND
+    - - SW
+      - '6'
+      - OUTPUT
+      - POWER_GND
+    - - VBST
+      - '7'
+      - PASSIVE
+      - POWER_GND
+    - - VREG5
+      - '3'
+      - POWER_OUT
+      - POWER_GND
+    left:
+    - - EN
+      - '1'
+      - INPUT
+      - SIDEBAND
+    - - VFB
+      - '2'
+      - INPUT
+      - SIDEBAND
+    - - SS
+      - '4'
+      - PASSIVE
+      - SIDEBAND
+    - - GND
+      - '5'
+      - PASSIVE
+      - POWER_GND
+  card: '1'
+- name: FRU_EEPROM
+  ref_prefix: E
+  value: FRU_EEPROM
+  footprint: ForgeOS:SOIC8_FRU
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - A0
+      - 1
+      - INPUT
+      - SIDEBAND
+    - - A1
+      - 2
+      - INPUT
+      - SIDEBAND
+    - - A2
+      - 3
+      - INPUT
+      - SIDEBAND
+    - - WP
+      - 7
+      - INPUT
+      - SIDEBAND
+    left:
+    - - SCL
+      - 6
+      - BIDIR
+      - SIDEBAND
+    - - SDA
+      - 5
+      - BIDIR
+      - SIDEBAND
+    - - VSS
+      - 4
+      - PASSIVE
+      - POWER_GND
+    - - VCC
+      - 8
+      - PASSIVE
+      - POWER_GND
+  card: both
+- name: FUSE
+  ref_prefix: F
+  value: FUSE_3A
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - B
+      - '2'
+      - PASSIVE
+      - POWER_GND
+    left:
+    - - A
+      - '1'
+      - PASSIVE
+      - POWER_GND
+  footprint: Fuse:Fuse_1206_3216Metric
+- name: HEADER_2PIN
+  ref_prefix: J
+  value: J_PWR_CTRL
+  footprint: ForgeOS:PinHeader_1x02
+  body_width: 13.9
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - PWR_BTN#
+      - 1
+      - BIDIR
+      - SIDEBAND
+    - - GND
+      - 2
+      - PASSIVE
+      - POWER_GND
+  card: both
+- name: HEADER_2PIN_12V
+  ref_prefix: J
+  value: J_12V_IN
+  footprint: Connector_JST:JST_VH_B2P-VH_1x02_P3.96mm_Vertical
+  body_width: 12.7
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - VIN_12V
+      - 1
+      - PASSIVE
+      - POWER_GND
+    - - GND
+      - 2
+      - PASSIVE
+      - POWER_GND
+  card: both
+- name: HEADER_2PIN_5VSB
+  ref_prefix: J
+  value: J_5VSB_IN
+  body_width: 12.7
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - VIN_5VSB
+      - '1'
+      - PASSIVE
+      - POWER_GND
+    - - GND
+      - '2'
+      - PASSIVE
+      - POWER_GND
+  footprint: Connector_JST:JST_VH_B2P-VH_1x02_P3.96mm_Vertical
+- name: HEADER_4PIN
+  ref_prefix: J
+  value: J_OOB_HEADER
+  footprint: ForgeOS:PinHeader_1x04
+  body_width: 7.62
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - TX
+      - 1
+      - BIDIR
+      - SIDEBAND
+    - - RX
+      - 2
+      - BIDIR
+      - SIDEBAND
+    - - GND
+      - 3
+      - PASSIVE
+      - POWER_GND
+    - - VCC
+      - 4
+      - PASSIVE
+      - POWER_GND
+  card: both
+- name: HOST_USB2_HEADER
+  ref_prefix: J
+  value: HOST_USB2_4P
+  footprint: Connector_PinHeader_1.25mm:PinHeader_1x04_P1.25mm_Vertical
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - D_P
+      - '1'
+      - PASSIVE
+      - SIDEBAND
+    - - D_N
+      - '2'
+      - PASSIVE
+      - SIDEBAND
+    - - GND
+      - '3'
+      - PASSIVE
+      - POWER_GND
+    - - SHIELD
+      - '4'
+      - PASSIVE
+      - POWER_GND
+- name: LDO_5V_3V3
+  ref_prefix: U
+  value: LDO_5V_3V3
+  footprint: Package_TO_SOT_SMD:SOT-23-5
+  body_width: 12.8
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - VOUT
+      - '5'
+      - POWER_OUT
+      - POWER_GND
+    - - EN
+      - '3'
+      - INPUT
+      - SIDEBAND
+    - - NC_ADJ
+      - '4'
+      - PASSIVE
+      - SIDEBAND
+    left:
+    - - VIN
+      - 1
+      - PASSIVE
+      - POWER_GND
+    - - GND
+      - 2
+      - PASSIVE
+      - POWER_GND
+  card: '1'
+- name: LED
+  ref_prefix: D
+  value: LED
+  footprint: LED_SMD:LED_0603_1608Metric
+  body_width: 7.62
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - K
+      - 2
+      - INPUT
+      - SIDEBAND
+    left:
+    - - A
+      - 1
+      - INPUT
+      - SIDEBAND
+  card: both
+- name: L_3R3
+  ref_prefix: L
+  value: 3.3uH
+  footprint: Inductor_SMD:L_3.3uH_5.0x5.0mm
   body_width: 10.16
   pin_pitch: 2.54
   pins:
@@ -852,34 +464,16 @@ symbols:
     - - A
       - 1
       - PASSIVE
-      - SIDEBAND
+      - POWER_GND
     left:
     - - B
       - 2
       - PASSIVE
-      - SIDEBAND
-  card: '2'
-- name: R_59K
-  ref_prefix: R
-  value: 59K
-  footprint: Resistor_SMD:R_0402_1005Metric
-  body_width: 10.16
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - A
-      - 1
-      - PASSIVE
-      - SIDEBAND
-    left:
-    - - B
-      - 2
-      - PASSIVE
-      - SIDEBAND
-  card: '2'
+      - POWER_GND
+  card: '1'
 - name: MCU_STM32G0
   ref_prefix: U
-  value: STM32G0B1KBU6
+  value: STM32G0B1KBU6N
   footprint: ForgeOS:MCU_STM32G0_QFN32
   body_width: 35.0
   pin_pitch: 2.54
@@ -905,9 +499,9 @@ symbols:
       - '13'
       - INPUT
       - SIDEBAND
-    - - MUX_SEL
+    - - CC1
       - '18'
-      - OUTPUT
+      - BIDIR
       - SIDEBAND
     - - PERST_SENSE
       - '7'
@@ -934,7 +528,7 @@ symbols:
       - BIDIR
       - SIDEBAND
     - - SWCLK_BOOT0
-      - '32'
+      - '25'
       - BIDIR
       - SIDEBAND
     - - PERST_OUT
@@ -942,12 +536,20 @@ symbols:
       - OUTPUT
       - SIDEBAND
     - - I2C1_SCL
-      - '29'
+      - '30'
       - BIDIR
       - SIDEBAND
     - - I2C1_SDA
-      - '30'
+      - '31'
       - BIDIR
+      - SIDEBAND
+    - - WORK_EN
+      - '9'
+      - OUTPUT
+      - SIDEBAND
+    - - KEY_DET_EN
+      - '26'
+      - OUTPUT
       - SIDEBAND
     left:
     - - VDD
@@ -982,28 +584,28 @@ symbols:
       - 16
       - PASSIVE
       - POWER_GND
-    - - PB2
+    - - CC2
       - 17
-      - PASSIVE
-      - POWER_GND
-    - - PC6
+      - BIDIR
+      - SIDEBAND
+    - - VDD_2
       - 20
       - PASSIVE
       - POWER_GND
-    - - PB3
-      - '26'
-      - PASSIVE
-      - POWER_GND
-    - - PB4
+    - - TPS_EN
       - '27'
-      - PASSIVE
-      - POWER_GND
-    - - PB5
+      - OUTPUT
+      - SIDEBAND
+    - - MUX_SEL
       - '28'
+      - OUTPUT
+      - SIDEBAND
+    - - PD3
+      - '29'
       - PASSIVE
       - POWER_GND
     - - PB8
-      - '31'
+      - '32'
       - PASSIVE
       - POWER_GND
     - - EP
@@ -1011,197 +613,6 @@ symbols:
       - PASSIVE
       - POWER_GND
   card: both
-- name: MCU_STM32G0_C2
-  ref_prefix: U
-  value: STM32G0B1CBT6
-  footprint: ForgeOS:MCU_STM32G0_LQFP48
-  body_width: 32.7
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - PWR_BTN_OUT
-      - 13
-      - OUTPUT
-      - SIDEBAND
-    - - GPIO_LED
-      - 14
-      - OUTPUT
-      - SIDEBAND
-    - - 3V3_AUX_SENSE
-      - 15
-      - INPUT
-      - SIDEBAND
-    - - PERST_SENSE
-      - 11
-      - INPUT
-      - SIDEBAND
-    - - UART_TX
-      - 29
-      - OUTPUT
-      - SIDEBAND
-    - - UART_RX
-      - 32
-      - INPUT
-      - SIDEBAND
-    - - SWDIO
-      - 35
-      - BIDIR
-      - SIDEBAND
-    - - SWCLK_BOOT0
-      - 36
-      - BIDIR
-      - SIDEBAND
-    - - PERST_OUT
-      - 12
-      - OUTPUT
-      - SIDEBAND
-    - - I2C1_SCL
-      - 47
-      - BIDIR
-      - SIDEBAND
-    - - I2C1_SDA
-      - 48
-      - BIDIR
-      - SIDEBAND
-    - - I2C2_SCL
-      - 22
-      - BIDIR
-      - SIDEBAND
-    - - I2C2_SDA
-      - 23
-      - BIDIR
-      - SIDEBAND
-    left:
-    - - VDD
-      - 6
-      - PASSIVE
-      - POWER_GND
-    - - VSS
-      - 7
-      - PASSIVE
-      - POWER_GND
-    - - NRST
-      - 10
-      - INPUT
-      - SIDEBAND
-    - - PC14_OSC32_IN
-      - 2
-      - PASSIVE
-      - POWER_GND
-    - - PC15_OSC32_OUT
-      - 3
-      - PASSIVE
-      - POWER_GND
-    - - PA7
-      - 18
-      - PASSIVE
-      - POWER_GND
-    - - PB0
-      - 19
-      - PASSIVE
-      - POWER_GND
-    - - PB1
-      - 20
-      - PASSIVE
-      - POWER_GND
-    - - PB2
-      - 21
-      - PASSIVE
-      - POWER_GND
-    - - PC6
-      - 30
-      - PASSIVE
-      - POWER_GND
-    - - PB3
-      - 42
-      - PASSIVE
-      - POWER_GND
-    - - PB4
-      - 43
-      - PASSIVE
-      - POWER_GND
-    - - PB5
-      - 44
-      - PASSIVE
-      - POWER_GND
-    - - EP
-      - 49
-      - PASSIVE
-      - POWER_GND
-  card: '2'
-- name: USB_C_RECEPT
-  ref_prefix: J
-  value: USB_C_RECEPT
-  footprint: Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12
-  body_width: 17.78
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - VBUS
-      - 1
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 2
-      - PASSIVE
-      - POWER_GND
-    - - D_P
-      - 3
-      - BIDIR
-      - SIDEBAND
-    - - D_N
-      - 4
-      - BIDIR
-      - SIDEBAND
-    - - TX_P
-      - 5
-      - BIDIR
-      - DIFF_PAIR_TX
-    - - TX_N
-      - 6
-      - BIDIR
-      - DIFF_PAIR_TX
-    - - RX_P
-      - 7
-      - BIDIR
-      - DIFF_PAIR_RX
-    - - RX_N
-      - 8
-      - BIDIR
-      - DIFF_PAIR_RX
-    - - TX2_P
-      - 13
-      - BIDIR
-      - DIFF_PAIR_TX
-    - - TX2_N
-      - 14
-      - BIDIR
-      - DIFF_PAIR_TX
-    - - RX2_P
-      - 15
-      - BIDIR
-      - DIFF_PAIR_RX
-    - - RX2_N
-      - 16
-      - BIDIR
-      - DIFF_PAIR_RX
-    - - CC1
-      - 9
-      - PASSIVE
-      - POWER_GND
-    - - CC2
-      - 10
-      - PASSIVE
-      - POWER_GND
-    - - SBU1
-      - 11
-      - BIDIR
-      - SIDEBAND
-    - - SBU2
-      - 12
-      - PASSIVE
-      - POWER_GND
-  card: '1'
 - name: MUX_USB2_TS3USB221A
   ref_prefix: U
   value: TS3USB221A
@@ -1252,184 +663,82 @@ symbols:
       - PASSIVE
       - POWER_GND
   card: '1'
-- name: OCuLink_SFF8612
-  ref_prefix: J
-  value: OCuLink_SFF8612
-  footprint: ForgeOS:OCuLink_SFF8612
-  body_width: 18.2
+- name: NAND_74LVC1G00
+  ref_prefix: U
+  value: 74LVC1G00
+  footprint: Package_TO_SOT_SMD:SOT-23-5
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    left:
+    - - A
+      - '1'
+      - INPUT
+      - SIDEBAND
+    - - B
+      - '2'
+      - INPUT
+      - SIDEBAND
+    - - GND
+      - '3'
+      - PASSIVE
+      - POWER_GND
+    - - VCC
+      - '5'
+      - PASSIVE
+      - POWER_GND
+    right:
+    - - Y
+      - '4'
+      - OUTPUT
+      - SIDEBAND
+- name: NMOS_2N7002
+  ref_prefix: Q
+  value: 2N7002
+  body_width: 10.16
   pin_pitch: 2.54
   pins:
     right:
-    - - PCIE_TX0+
-      - A3
-      - BIDIR
-      - DIFF_PAIR_TX
-    - - PCIE_TX0-
-      - A4
-      - BIDIR
-      - DIFF_PAIR_TX
-    - - PCIE_TX1+
-      - A6
-      - BIDIR
-      - DIFF_PAIR_TX
-    - - PCIE_TX1-
-      - A7
-      - BIDIR
-      - DIFF_PAIR_TX
-    - - SMB_CLK
-      - A9
-      - BIDIR
-      - SIDEBAND
-    - - SMB_DAT
-      - A10
-      - BIDIR
-      - SIDEBAND
-    - - RST
-      - A12
-      - INPUT
-      - SIDEBAND
-    - - PCIE_TX2+
-      - A15
-      - BIDIR
-      - DIFF_PAIR_TX
-    - - PCIE_TX2-
-      - A16
-      - BIDIR
-      - DIFF_PAIR_TX
-    - - PCIE_TX3+
-      - A18
-      - BIDIR
-      - DIFF_PAIR_TX
-    - - PCIE_TX3-
-      - A19
-      - BIDIR
-      - DIFF_PAIR_TX
-    - - NC1
-      - A1
-      - PASSIVE
-      - POWER_GND
-    - - NC4
-      - A21
-      - PASSIVE
-      - POWER_GND
-    - - PCIE_RX0+
-      - B3
-      - BIDIR
-      - DIFF_PAIR_RX
-    - - PCIE_RX0-
-      - B4
-      - BIDIR
-      - DIFF_PAIR_RX
-    - - PCIE_RX1+
-      - B6
-      - BIDIR
-      - DIFF_PAIR_RX
-    - - PCIE_RX1-
-      - B7
-      - BIDIR
-      - DIFF_PAIR_RX
-    - - BP_TYPE
-      - B9
+    - - D
+      - '3'
       - PASSIVE
       - SIDEBAND
-    - - WAKE#
-      - B10
-      - BIDIR
-      - SIDEBAND
-    - - CLOCK+
-      - B12
-      - INPUT
-      - SIDEBAND
-    - - CLOCK-
-      - B13
-      - INPUT
-      - SIDEBAND
-    - - PCIE_RX2+
-      - B15
-      - BIDIR
-      - DIFF_PAIR_RX
-    - - PCIE_RX2-
-      - B16
-      - BIDIR
-      - DIFF_PAIR_RX
-    - - PCIE_RX3+
-      - B18
-      - BIDIR
-      - DIFF_PAIR_RX
-    - - PCIE_RX3-
-      - B19
-      - BIDIR
-      - DIFF_PAIR_RX
-    - - NC2
-      - B1
-      - PASSIVE
-      - POWER_GND
-    - - NC3
-      - B21
+    - - S
+      - '2'
       - PASSIVE
       - POWER_GND
     left:
-    - - GND
-      - A2
+    - - G
+      - '1'
+      - INPUT
+      - SIDEBAND
+  footprint: Package_TO_SOT_SMD:SOT-23
+- name: OPTO_LTV356T
+  ref_prefix: U
+  value: OPTO_LTV356T
+  footprint: ForgeOS:OPTO_LTV356T
+  body_width: 23.3
+  pin_pitch: 2.54
+  pins:
+    left:
+    - - ANODE
+      - 1
+      - INPUT
+      - SIDEBAND
+    - - CATHODE
+      - 2
+      - INPUT
+      - SIDEBAND
+    right:
+    - - EMITTER
+      - 3
       - PASSIVE
-      - POWER_GND
-    - - GND
-      - A5
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - A8
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - A11
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - A13
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - A14
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - A17
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - A20
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - B2
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - B5
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - B8
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - B11
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - B14
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - B17
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - B20
-      - PASSIVE
-      - POWER_GND
-  card: '1'
+      - SIDEBAND
+    - - COLLECTOR
+      - 4
+      - OUTPUT
+      - SIDEBAND
+  card: both
 - name: PI3DBS16412
   ref_prefix: U
   value: PI3DBS16412
@@ -1612,104 +921,549 @@ symbols:
       - BIDIR
       - DIFF_PAIR_RX
   card: '1'
-- name: TPS22919
-  ref_prefix: U
-  value: TPS22919
-  footprint: ForgeOS:TPS22919
-  body_width: 11.2
+- name: R_0R
+  ref_prefix: R
+  value: 0R
+  footprint: Resistor_SMD:R_0402_1005Metric
+  body_width: 10.16
   pin_pitch: 2.54
   pins:
     right:
-    - - VOUT
-      - 6
-      - POWER_OUT
-      - POWER_GND
-    - - QOD
-      - 5
-      - PASSIVE
-      - POWER_GND
-    left:
-    - - IN
+    - - A
       - 1
       - PASSIVE
-      - POWER_GND
-    - - GND
+      - SIDEBAND
+    left:
+    - - B
       - 2
       - PASSIVE
-      - POWER_GND
-    - - 'ON'
-      - 3
-      - INPUT
       - SIDEBAND
-    - - NC
-      - 4
-      - PASSIVE
-      - POWER_GND
   card: '1'
-- name: DCDC_12V_5V
-  ref_prefix: U
-  value: DCDC_12V_5V
-  footprint: Package_SO:SOIC-8_5.3x5.3mm_P1.27mm
-  body_width: 17.78
+- name: R_100K
+  ref_prefix: R
+  value: 100K
+  body_width: 10.16
   pin_pitch: 2.54
   pins:
     right:
-    - - VIN
-      - '6'
-      - PASSIVE
-      - POWER_GND
-    - - VOUT
-      - '5'
-      - POWER_OUT
-      - POWER_GND
-    - - SW
+    - - A
       - '1'
-      - OUTPUT
-      - POWER_GND
-    - - FB
-      - '3'
-      - INPUT
+      - PASSIVE
       - SIDEBAND
     left:
-    - - EN
-      - '4'
+    - - B
+      - '2'
+      - PASSIVE
+      - SIDEBAND
+  footprint: Resistor_SMD:R_0402_1005Metric
+- name: R_100R
+  ref_prefix: R
+  value: 100R
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - A
+      - '1'
+      - PASSIVE
+      - SIDEBAND
+    left:
+    - - B
+      - '2'
+      - PASSIVE
+      - SIDEBAND
+  footprint: Resistor_SMD:R_0402_1005Metric
+- name: R_10K
+  ref_prefix: R
+  value: 10K
+  footprint: Resistor_SMD:R_0402_1005Metric
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - A
+      - 1
+      - PASSIVE
+      - SIDEBAND
+    left:
+    - - B
+      - 2
+      - PASSIVE
+      - SIDEBAND
+  card: both
+- name: R_124K
+  ref_prefix: R
+  value: 124K
+  footprint: Resistor_SMD:R_0402_1005Metric
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - A
+      - 1
+      - PASSIVE
+      - SIDEBAND
+    left:
+    - - B
+      - 2
+      - PASSIVE
+      - SIDEBAND
+  card: '1'
+- name: R_1M
+  ref_prefix: R
+  value: 1M
+  footprint: Resistor_SMD:R_0402_1005Metric
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    left:
+    - - A
+      - '1'
+      - PASSIVE
+      - SIDEBAND
+    right:
+    - - B
+      - '2'
+      - PASSIVE
+      - SIDEBAND
+- name: R_220
+  ref_prefix: R
+  value: 220R
+  footprint: Resistor_SMD:R_0402_1005Metric
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - A
+      - 1
+      - PASSIVE
+      - SIDEBAND
+    left:
+    - - B
+      - 2
+      - PASSIVE
+      - SIDEBAND
+  card: both
+- name: R_22K1
+  ref_prefix: R
+  value: 22.1K
+  footprint: Resistor_SMD:R_0402_1005Metric
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - A
+      - 1
+      - PASSIVE
+      - SIDEBAND
+    left:
+    - - B
+      - 2
+      - PASSIVE
+      - SIDEBAND
+  card: '1'
+- name: R_22R
+  ref_prefix: R
+  value: 22R
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - A
+      - '1'
+      - PASSIVE
+      - SIDEBAND
+    left:
+    - - B
+      - '2'
+      - PASSIVE
+      - SIDEBAND
+  footprint: Resistor_SMD:R_0402_1005Metric
+- name: R_33K
+  ref_prefix: R
+  value: 33K
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - A
+      - '1'
+      - PASSIVE
+      - SIDEBAND
+    left:
+    - - B
+      - '2'
+      - PASSIVE
+      - SIDEBAND
+  footprint: Resistor_SMD:R_0402_1005Metric
+- name: R_4K7
+  ref_prefix: R
+  value: 4.7k
+  footprint: Resistor_SMD:R_0402_1005Metric
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - A
+      - 1
+      - PASSIVE
+      - SIDEBAND
+    left:
+    - - B
+      - 2
+      - PASSIVE
+      - SIDEBAND
+  card: both
+- name: R_56K
+  ref_prefix: R
+  value: 56K
+  footprint: Resistor_SMD:R_0402_1005Metric
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - A
+      - 1
+      - PASSIVE
+      - SIDEBAND
+    left:
+    - - B
+      - 2
+      - PASSIVE
+      - SIDEBAND
+  card: '1'
+- name: R_LED
+  ref_prefix: R
+  value: 1K
+  footprint: Resistor_SMD:R_0603_1608Metric
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - A
+      - 1
+      - PASSIVE
+      - SIDEBAND
+    left:
+    - - B
+      - 2
+      - PASSIVE
+      - SIDEBAND
+  card: both
+- name: SlimSAS_SFF8654_4x
+  ref_prefix: J
+  value: SlimSAS_SFF8654_4x
+  footprint: ForgeOS:SlimSAS_4x_SFF-8654_38pin_RASide
+  body_width: 30.0
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - PCIE_TX0+
+      - B2
+      - BIDIR
+      - DIFF_PAIR_TX
+    - - PCIE_TX0-
+      - B3
+      - BIDIR
+      - DIFF_PAIR_TX
+    - - PCIE_TX1+
+      - B5
+      - BIDIR
+      - DIFF_PAIR_TX
+    - - PCIE_TX1-
+      - B6
+      - BIDIR
+      - DIFF_PAIR_TX
+    - - SMB_CLK
+      - B8
+      - BIDIR
+      - SIDEBAND
+    - - SMB_DAT
+      - B9
+      - BIDIR
+      - SIDEBAND
+    - - RST
+      - B11
       - INPUT
       - SIDEBAND
+    - - CPRSNT#
+      - B12
+      - INPUT
+      - SIDEBAND
+    - - PCIE_TX2+
+      - B14
+      - BIDIR
+      - DIFF_PAIR_TX
+    - - PCIE_TX2-
+      - B15
+      - BIDIR
+      - DIFF_PAIR_TX
+    - - PCIE_TX3+
+      - B17
+      - BIDIR
+      - DIFF_PAIR_TX
+    - - PCIE_TX3-
+      - B18
+      - BIDIR
+      - DIFF_PAIR_TX
     - - GND
+      - B1
+      - PASSIVE
+      - POWER_GND
+    - - GND
+      - B4
+      - PASSIVE
+      - POWER_GND
+    - - GND
+      - B7
+      - PASSIVE
+      - POWER_GND
+    - - GND
+      - B10
+      - PASSIVE
+      - POWER_GND
+    - - GND
+      - B13
+      - PASSIVE
+      - POWER_GND
+    - - GND
+      - B16
+      - PASSIVE
+      - POWER_GND
+    - - GND
+      - B19
+      - PASSIVE
+      - POWER_GND
+    left:
+    - - PCIE_RX0+
+      - A2
+      - BIDIR
+      - DIFF_PAIR_RX
+    - - PCIE_RX0-
+      - A3
+      - BIDIR
+      - DIFF_PAIR_RX
+    - - PCIE_RX1+
+      - A5
+      - BIDIR
+      - DIFF_PAIR_RX
+    - - PCIE_RX1-
+      - A6
+      - BIDIR
+      - DIFF_PAIR_RX
+    - - BP_TYPE
+      - A8
+      - BIDIR
+      - SIDEBAND
+    - - WAKE#
+      - A9
+      - INPUT
+      - SIDEBAND
+    - - CLOCK+
+      - A11
+      - INPUT
+      - SIDEBAND
+    - - CLOCK-
+      - A12
+      - INPUT
+      - SIDEBAND
+    - - PCIE_RX2+
+      - A14
+      - BIDIR
+      - DIFF_PAIR_RX
+    - - PCIE_RX2-
+      - A15
+      - BIDIR
+      - DIFF_PAIR_RX
+    - - PCIE_RX3+
+      - A17
+      - BIDIR
+      - DIFF_PAIR_RX
+    - - PCIE_RX3-
+      - A18
+      - BIDIR
+      - DIFF_PAIR_RX
+    - - GND
+      - A1
+      - PASSIVE
+      - POWER_GND
+    - - GND
+      - A4
+      - PASSIVE
+      - POWER_GND
+    - - GND
+      - A7
+      - PASSIVE
+      - POWER_GND
+    - - GND
+      - A10
+      - PASSIVE
+      - POWER_GND
+    - - GND
+      - A13
+      - PASSIVE
+      - POWER_GND
+    - - GND
+      - A16
+      - PASSIVE
+      - POWER_GND
+    - - GND
+      - A19
+      - PASSIVE
+      - POWER_GND
+- name: TPD2E001
+  ref_prefix: U
+  value: TPD2E001
+  body_width: 12.7
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - IO1
+      - '3'
+      - BIDIR
+      - SIDEBAND
+    - - IO2
+      - '6'
+      - BIDIR
+      - SIDEBAND
+    left:
+    - - VCC
+      - '1'
+      - PASSIVE
+      - POWER_GND
+    - - GND
+      - '4'
+      - PASSIVE
+      - POWER_GND
+  footprint: Package_DFN_QFN:DFN-6_1.6x1.3mm_P0.4mm
+- name: TPS2121
+  ref_prefix: U
+  value: TPS2121
+  body_width: 13.97
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - OUT
+      - '1'
+      - PASSIVE
+      - POWER_GND
+    - - OUT_2
+      - '8'
+      - PASSIVE
+      - POWER_GND
+    - - ST
+      - '9'
+      - OUTPUT
+      - SIDEBAND
+    - - ILIM
+      - '10'
+      - PASSIVE
+      - SIDEBAND
+    - - SS
+      - '11'
+      - PASSIVE
+      - SIDEBAND
+    left:
+    - - IN1
+      - '7'
+      - PASSIVE
+      - POWER_GND
+    - - IN2
       - '2'
       - PASSIVE
       - POWER_GND
-  card: '1'
-- name: LDO_5V_3V3
+    - - GND
+      - '12'
+      - PASSIVE
+      - POWER_GND
+    - - PR1
+      - '6'
+      - INPUT
+      - SIDEBAND
+    - - OV1
+      - '5'
+      - INPUT
+      - SIDEBAND
+    - - OV2
+      - '4'
+      - INPUT
+      - SIDEBAND
+    - - CP2
+      - '3'
+      - INPUT
+      - SIDEBAND
+  footprint: Package_DFN_QFN:VQFN-12-1EP_2x2mm_P0.5mm_EP0.9x0.9mm
+- name: TPS22965
   ref_prefix: U
-  value: LDO_5V_3V3
-  footprint: Package_TO_SOT_SMD:SOT-23
-  body_width: 12.8
+  value: TPS22965
+  body_width: 12.7
   pin_pitch: 2.54
   pins:
     right:
     - - VOUT
-      - '5'
-      - POWER_OUT
+      - '7'
+      - PASSIVE
       - POWER_GND
-    - - EN
+    - - IN
+      - '1'
+      - PASSIVE
+      - POWER_GND
+    left:
+    - - 'ON'
       - '3'
       - INPUT
       - SIDEBAND
-    - - NC_ADJ
-      - '4'
+    - - GND
+      - '5'
       - PASSIVE
+      - POWER_GND
+  footprint: Package_SON:Texas_DSG0008A_WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm
+- name: TPS22990
+  ref_prefix: U
+  value: TPS22990
+  body_width: 12.7
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - VOUT
+      - '8'
+      - PASSIVE
+      - POWER_GND
+    - - IN
+      - '3'
+      - PASSIVE
+      - POWER_GND
+    - - PG
+      - '7'
+      - OUTPUT
       - SIDEBAND
     left:
-    - - VIN
-      - 1
-      - PASSIVE
-      - POWER_GND
+    - - 'ON'
+      - '5'
+      - INPUT
+      - SIDEBAND
     - - GND
-      - 2
+      - '6'
       - PASSIVE
       - POWER_GND
-  card: '1'
+  footprint: Package_SON:WSON-10-1EP_2.5x2.5mm_P0.5mm_EP1.2x2mm
+- name: TVS_SMBJ5
+  ref_prefix: D
+  value: SMBJ5.0A
+  body_width: 10.16
+  pin_pitch: 2.54
+  pins:
+    right:
+    - - A
+      - '2'
+      - PASSIVE
+      - POWER_GND
+    left:
+    - - K
+      - '1'
+      - PASSIVE
+      - POWER_GND
+  footprint: Diode_SMD:D_SMB
 - name: TVS_USB3_6CH
   ref_prefix: U
   value: TPD6E05U06
@@ -1776,409 +1530,107 @@ symbols:
       - PASSIVE
       - POWER_GND
   card: '1'
-- name: HEADER_4PIN
+- name: USB_C_RECEPT
   ref_prefix: J
-  value: J_OOB_HEADER
-  footprint: ForgeOS:PinHeader_1x04
-  body_width: 7.62
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - TX
-      - 1
-      - BIDIR
-      - SIDEBAND
-    - - RX
-      - 2
-      - BIDIR
-      - SIDEBAND
-    - - GND
-      - 3
-      - PASSIVE
-      - POWER_GND
-    - - VCC
-      - 4
-      - PASSIVE
-      - POWER_GND
-  card: both
-- name: HEADER_2PIN_AUX
-  ref_prefix: J
-  value: J_AUX_3V3_SB
-  footprint: ForgeOS:PinHeader_1x02
-  body_width: 13.9
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - P3V3_AUX
-      - 1
-      - PASSIVE
-      - POWER_GND
-    - - GND
-      - 2
-      - PASSIVE
-      - POWER_GND
-  card: '1'
-- name: R_LED
-  ref_prefix: R
-  value: 1K
-  footprint: Resistor_SMD:R_0603_1608Metric
-  body_width: 10.16
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - A
-      - 1
-      - PASSIVE
-      - SIDEBAND
-    left:
-    - - B
-      - 2
-      - PASSIVE
-      - SIDEBAND
-  card: both
-- name: R_10K
-  ref_prefix: R
-  value: 10K
-  footprint: Resistor_SMD:R_0402_1005Metric
-  body_width: 10.16
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - A
-      - 1
-      - PASSIVE
-      - SIDEBAND
-    left:
-    - - B
-      - 2
-      - PASSIVE
-      - SIDEBAND
-  card: both
-- name: R_220
-  ref_prefix: R
-  value: 220R
-  footprint: Resistor_SMD:R_0402_1005Metric
-  body_width: 10.16
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - A
-      - 1
-      - PASSIVE
-      - SIDEBAND
-    left:
-    - - B
-      - 2
-      - PASSIVE
-      - SIDEBAND
-  card: both
-- name: R_56K
-  ref_prefix: R
-  value: 56K
-  footprint: Resistor_SMD:R_0402_1005Metric
-  body_width: 10.16
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - A
-      - 1
-      - PASSIVE
-      - SIDEBAND
-    left:
-    - - B
-      - 2
-      - PASSIVE
-      - SIDEBAND
-  card: '1'
-- name: R_4K7
-  ref_prefix: R
-  value: 4.7k
-  footprint: Resistor_SMD:R_0402_1005Metric
-  body_width: 10.16
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - A
-      - 1
-      - PASSIVE
-      - SIDEBAND
-    left:
-    - - B
-      - 2
-      - PASSIVE
-      - SIDEBAND
-  card: both
-- name: R_0R
-  ref_prefix: R
-  value: 0R
-  footprint: Resistor_SMD:R_0402_1005Metric
-  body_width: 10.16
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - A
-      - 1
-      - PASSIVE
-      - SIDEBAND
-    left:
-    - - B
-      - 2
-      - PASSIVE
-      - SIDEBAND
-  card: '1'
-- name: LED
-  ref_prefix: D
-  value: LED
-  footprint: LED_SMD:LED_0603_1608Metric
-  body_width: 7.62
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - K
-      - 2
-      - INPUT
-      - SIDEBAND
-    left:
-    - - A
-      - 1
-      - INPUT
-      - SIDEBAND
-  card: both
-- name: FRU_EEPROM
-  ref_prefix: E
-  value: FRU_EEPROM
-  footprint: ForgeOS:SOIC8_FRU
-  body_width: 10.16
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - A0
-      - 1
-      - INPUT
-      - SIDEBAND
-    - - A1
-      - 2
-      - INPUT
-      - SIDEBAND
-    - - A2
-      - 3
-      - INPUT
-      - SIDEBAND
-    - - WP
-      - 7
-      - INPUT
-      - SIDEBAND
-    left:
-    - - SCL
-      - 6
-      - BIDIR
-      - SIDEBAND
-    - - SDA
-      - 5
-      - BIDIR
-      - SIDEBAND
-    - - VSS
-      - 4
-      - PASSIVE
-      - POWER_GND
-    - - VCC
-      - 8
-      - PASSIVE
-      - POWER_GND
-  card: both
-- name: HEADER_4PIN_EC
-  ref_prefix: J
-  value: J_EC_HEADER
-  footprint: ForgeOS:PinHeader_1x04
-  body_width: 15.1
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - GND
-      - 1
-      - PASSIVE
-      - POWER_GND
-    - - EC_SCL
-      - 2
-      - BIDIR
-      - SIDEBAND
-    - - EC_SDA
-      - 3
-      - BIDIR
-      - SIDEBAND
-    left:
-    - - EC_3V3
-      - 4
-      - PASSIVE
-      - POWER_GND
-  card: '2'
-- name: DCDC_12V_3V3
-  ref_prefix: U
-  value: DCDC_12V_3V3
-  footprint: Package_SO:SOIC-8_5.3x5.3mm_P1.27mm
+  value: USB_C_RECEPT
+  footprint: Connector_USB:USB_C_Receptacle_JAE_DX07S024WJ1R350
   body_width: 17.78
   pin_pitch: 2.54
   pins:
     right:
-    - - VIN
-      - '6'
+    - - VBUS
+      - A4
       - PASSIVE
       - POWER_GND
-    - - VOUT
-      - '5'
-      - POWER_OUT
-      - POWER_GND
-    - - SW
-      - '1'
-      - OUTPUT
-      - POWER_GND
-    - - FB
-      - '3'
-      - INPUT
-      - SIDEBAND
-    left:
-    - - EN
-      - '4'
-      - INPUT
-      - SIDEBAND
-    - - GND
-      - '2'
+    - - VBUS_2
+      - B4
       - PASSIVE
       - POWER_GND
-  card: both
-- name: HEADER_2PIN_12V
-  ref_prefix: J
-  value: J_12V_IN
-  footprint: ForgeOS:PinHeader_1x02
-  body_width: 12.7
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - VIN_12V
-      - 1
+    - - VBUS_3
+      - A9
+      - PASSIVE
+      - POWER_GND
+    - - VBUS_4
+      - B9
       - PASSIVE
       - POWER_GND
     - - GND
-      - 2
+      - A1
       - PASSIVE
       - POWER_GND
-  card: both
-- name: BAT54C_ORING
-  ref_prefix: U
-  value: BAT54C
-  footprint: ForgeOS:SOT23_BAT54C
-  body_width: 10.16
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - A1
-      - 1
+    - - GND_2
+      - B1
       - PASSIVE
       - POWER_GND
-    left:
-    - - K
-      - 2
+    - - GND_3
+      - A12
       - PASSIVE
       - POWER_GND
-    - - A2
-      - 3
+    - - GND_4
+      - B12
       - PASSIVE
       - POWER_GND
-  card: '2'
-- name: OPTO_LTV356T
-  ref_prefix: U
-  value: OPTO_LTV356T
-  footprint: ForgeOS:OPTO_LTV356T
-  body_width: 23.3
-  pin_pitch: 2.54
-  pins:
-    left:
-    - - ANODE
-      - 1
-      - INPUT
-      - SIDEBAND
-    - - CATHODE
-      - 2
-      - INPUT
-      - SIDEBAND
-    right:
-    - - EMITTER
-      - 3
+    - - GND_5
+      - SH
       - PASSIVE
-      - SIDEBAND
-    - - COLLECTOR
-      - 4
-      - OUTPUT
-      - SIDEBAND
-  card: both
-- name: HEADER_2PIN
-  ref_prefix: J
-  value: J_PWR_CTRL
-  footprint: ForgeOS:PinHeader_1x02
-  body_width: 13.9
-  pin_pitch: 2.54
-  pins:
-    right:
-    - - PWR_BTN#
-      - 1
+      - POWER_GND
+    - - D_P
+      - A6
       - BIDIR
       - SIDEBAND
-    - - GND
-      - 2
+    - - D_N
+      - A7
+      - BIDIR
+      - SIDEBAND
+    - - TX_P
+      - A3
+      - BIDIR
+      - DIFF_PAIR_TX
+    - - TX_N
+      - A2
+      - BIDIR
+      - DIFF_PAIR_TX
+    - - RX_P
+      - A11
+      - BIDIR
+      - DIFF_PAIR_RX
+    - - RX_N
+      - A10
+      - BIDIR
+      - DIFF_PAIR_RX
+    - - TX2_P
+      - B3
+      - BIDIR
+      - DIFF_PAIR_TX
+    - - TX2_N
+      - B2
+      - BIDIR
+      - DIFF_PAIR_TX
+    - - RX2_P
+      - B11
+      - BIDIR
+      - DIFF_PAIR_RX
+    - - RX2_N
+      - B10
+      - BIDIR
+      - DIFF_PAIR_RX
+    - - CC1
+      - A5
       - PASSIVE
       - POWER_GND
-  card: both
-- name: L_10U
-  ref_prefix: L
-  value: 10µH
-  footprint: Inductor_SMD:L_0805_2012Metric
-  body_width: 10.16
-  pin_pitch: 2.54
-  card: '2'
-  pins:
-    right:
-    - - A
-      - '1'
+    - - CC2
+      - B5
       - PASSIVE
       - POWER_GND
-    - - B
-      - '2'
+    - - SBU1
+      - A8
+      - BIDIR
+      - SIDEBAND
+    - - SBU2
+      - B8
       - PASSIVE
       - POWER_GND
-- name: D_SCHOTTKY
-  ref_prefix: D
-  value: SS34
-  footprint: Diode_SMD:D_SMA
-  body_width: 10.16
-  pin_pitch: 2.54
-  card: '2'
-  pins:
-    right:
-    - - K
-      - '1'
-      - PASSIVE
-      - POWER_GND
-    - - A
-      - '2'
-      - PASSIVE
-      - POWER_GND
-- name: R_5K6
-  ref_prefix: R
-  value: 5.6k
-  footprint: Resistor_SMD:R_0402_1005Metric
-  body_width: 10.16
-  pin_pitch: 2.54
-  card: '2'
-  pins:
-    right:
-    - - A
-      - '1'
-      - PASSIVE
-      - POWER_GND
-    - - B
-      - '2'
-      - PASSIVE
-      - POWER_GND
+  card: '1'
 nets:
   I2C1_SCL:
   - U1/I2C1_SCL
@@ -2218,6 +1670,7 @@ nets:
   - J9/RX
   P3V3_AUX:
   - U1/3V3_AUX_SENSE
+  - U13/VCC
   - R1/B
   - C90/A
   - U6/VCC
@@ -2230,6 +1683,23 @@ nets:
   - U11/VDD_4
   - U11/VDD_5
   - U11/VDD_6
+  - R44/B
+  - U14/VCC
+  - C94/A
+  - U19/VCC
+  - U20/VCC
+  - U21/V+
+  - U22/V+
+  - U25/VCC
+  - U26/VCC
+  - U20/D
+  - R51/A
+  - R54/A
+  - D5/VCC
+  - C100/A
+  - C101/A
+  - C102/A
+  - U28/VCC
   MCU_VDD:
   - U1/VDD
   - J9/VCC
@@ -2241,19 +1711,15 @@ nets:
   - C86/A
   - E1/VCC
   - R30/B
+  - U1/VDD_2
   12V_IN:
   - J10/VIN_12V
   - U8/VIN
   - U8/EN
   - C88/A
+  - R41/A
   GND:
   - U1/VSS
-  - U1/PC14_OSC32_IN
-  - U1/PC15_OSC32_OUT
-  - U1/PB1
-  - U1/PC6
-  - U1/PB4
-  - U1/PB5
   - U1/EP
   - U5/CATHODE
   - U5/EMITTER
@@ -2268,30 +1734,82 @@ nets:
   - C87/B
   - C90/B
   - J1/GND
+  - J1/GND_2
+  - J1/GND_3
+  - J1/GND_4
+  - J1/GND_5
   - J10/GND
   - U6/GND
   - U8/GND
   - U10/GND
   - U9/GND
   - U9/NC
+  - U18/GND
+  - U18/NC
+  - R48/B
+  - C95/B
+  - C96/B
   - E1/VSS
   - E1/A0
   - E1/A1
   - E1/A2
   - E1/WP
   - R16/B
-  - R37/B
   - C88/B
   - C89/B
   - C91/B
   - C92/B
   - U12/GND
+  - Q1/GND
+  - Q2/S
+  - U13/GND
   - J14/GND
   - U11/GND
+  - R42/B
+  - C93/B
+  - R43/B
+  - D3/K
+  - D4/K
+  - U14/GND
+  - C94/B
+  - U19/GND
+  - U19/OE#
+  - U20/GND
+  - U21/V-
+  - U22/V-
+  - U24/GND
+  - U25/GND
+  - U26/GND
+  - J15/GND
+  - J15/SHIELD
+  - D5/GND
+  - R49/B
+  - R50/B
+  - R52/B
+  - R55/B
+  - C98/B
+  - C99/B
+  - C100/B
+  - C101/B
+  - C102/B
+  - D6/A
+  - J16/GND
+  - U27/GND
+  - U28/GND
+  - R57/B
+  - R59/B
+  - R61/B
+  - R63/B
+  - R64/B
+  - C103/B
+  - C104/B
+  - C105/B
+  - C106/B
   NRST:
   - U1/NRST
   - R29/A
   - C73/A
+  - U25/B
   SWCLK_BOOT0:
   - U1/SWCLK_BOOT0
   - R28/A
@@ -2302,16 +1820,18 @@ nets:
   KEY_D_P:
   - J1/D_P
   - U9/IO1
+  - U19/D_P
   KEY_D_N:
   - J1/D_N
   - U9/IO2
+  - U19/D_N
   SBU_SEL:
   - U6/SEL
-  - U1/PB8
   - R16/A
+  - U1/PB8
   SBU_EN:
-  - U6/OE#
   - U1/PB9
+  - U26/A
   PCIE_TX0_P:
   - J1/TX_P
   - U11/A0+
@@ -2331,76 +1851,253 @@ nets:
   PCIE_TX1_P:
   - J1/TX2_P
   - U11/A2+
+  - U18/IO1
   PCIE_TX1_N:
   - J1/TX2_N
   - U11/A2-
+  - U18/IO2
   PCIE_RX1_P:
   - J1/RX2_P
   - U11/A3+
+  - U18/IO3
   PCIE_RX1_N:
   - J1/RX2_N
   - U11/A3-
-  OCuLink_TX0_P:
+  - U18/IO4
+  J14_TX0_P:
   - U11/C0+
-  - J14/PCIE_TX0+
-  OCuLink_TX0_N:
-  - U11/C0-
   - J14/PCIE_TX0-
-  OCuLink_RX0_P:
+  J14_TX0_N:
+  - U11/C0-
+  - J14/PCIE_TX0+
+  J14_RX0_P:
   - U11/C1+
-  - J14/PCIE_RX0+
-  OCuLink_RX0_N:
-  - U11/C1-
   - J14/PCIE_RX0-
-  OCuLink_TX1_P:
+  J14_RX0_N:
+  - U11/C1-
+  - J14/PCIE_RX0+
+  J14_TX1_P:
   - U11/C2+
-  - J14/PCIE_TX1+
-  OCuLink_TX1_N:
-  - U11/C2-
   - J14/PCIE_TX1-
-  OCuLink_RX1_P:
+  J14_TX1_N:
+  - U11/C2-
+  - J14/PCIE_TX1+
+  J14_RX1_P:
   - U11/C3+
-  - J14/PCIE_RX1+
-  OCuLink_RX1_N:
-  - U11/C3-
   - J14/PCIE_RX1-
+  J14_RX1_N:
+  - U11/C3-
+  - J14/PCIE_RX1+
   MUX_SEL:
   - U11/SEL1
   - U11/SEL2
   - U1/MUX_SEL
+  - U14/A
   MUX_PD:
   - U11/PD1
   - U11/PD2
   - U1/PA7
-  PWR_5V_KEY:
-  - U8/VOUT
-  - U12/IN
+  PWR_5V_MAIN:
+  - U27/IN1
+  - R56/A
+  - R60/A
   - C89/A
-  - U10/VIN
-  - U10/EN
-  PWR_5V_PREAUTH:
-  - U12/VOUT
+  - L1/B
+  - R47/A
+  PWR_5V_SW:
+  - U8/SW
+  - L1/A
+  - C97/B
+  PWR_5V_FB:
+  - U8/VFB
+  - R47/B
+  - R48/A
+  PWR_5V_VREG5:
+  - U8/VREG5
+  - C95/A
+  PWR_5V_SS:
+  - U8/SS
+  - C96/A
+  PWR_5V_VBST:
+  - U8/VBST
+  - C97/A
+  VBUS:
   - J1/VBUS
+  - J1/VBUS_2
+  - J1/VBUS_3
+  - J1/VBUS_4
+  - U12/VOUT
+  - Q1/VOUT
   - R35/A
   - R36/A
   - C92/A
   TPS_EN:
   - U12/ON
-  - U1/PB3
+  - U1/TPS_EN
+  WORK_EN:
+  - U1/WORK_EN
+  - Q1/ON
+  KEY_DET_EN:
+  - U1/KEY_DET_EN
+  - Q2/G
+  KEY_DET_RET:
+  - R37/B
+  - Q2/D
   CC1:
   - J1/CC1
   - R35/B
+  - U1/CC1
   CC2:
   - J1/CC2
   - R36/B
+  - U1/CC2
   SBU1:
   - J1/SBU1
-  - U6/D_P_A
   - R37/A
-  - U1/PB2
+  - R38/A
+  - U13/IO1
+  - R46/A
+  SBU1_INT:
+  - R38/B
+  - U6/D_P_A
   SBU2:
   - J1/SBU2
+  - R39/A
+  - U13/IO2
+  SBU2_INT:
+  - R39/B
   - U6/D_N_A
+  D_P_HOLD:
+  - U1/USB_D_P
+  - R40/A
+  HOST_PWR_DET:
+  - U1/WAKE_IN
+  - R41/B
+  - R42/A
+  - C93/A
+  - U14/B
+  - U22/IN+
+  AUTH_LED:
+  - U1/RST_IN
+  - D2/A
+  AUTH_LED_K:
+  - D2/K
+  - R43/A
+  WORK_PG:
+  - Q1/PG
+  - R44/A
+  - D3/A
+  PCIE_GATE:
+  - U14/Y
+  - R45/A
+  PCIE_LED_K:
+  - R45/B
+  - D4/A
+  KEY_DET_SENSE:
+  - R46/B
+  - U1/PB1
+  - U21/IN+
+  - R53/B
+  MCU_USB_D_P:
+  - R40/B
+  - U19/D_P_A
+  MCU_USB_D_N:
+  - U1/USB_D_N
+  - U19/D_N_A
+  HOST_USB2_D_P:
+  - U19/D_P_B
+  - D5/IO1
+  - J15/D_P
+  HOST_USB2_D_N:
+  - U19/D_N_B
+  - D5/IO2
+  - J15/D_N
+  AUTHORIZED:
+  - U20/Q
+  - U19/SEL
+  - U28/A
+  - R49/A
+  AUTH_CLR_N:
+  - U20/CLR#
+  - U25/Y
+  KEY_PRESENT:
+  - U21/OUT
+  - U25/A
+  - U26/B
+  - U1/PD3
+  - R50/A
+  - R53/A
+  KEY_DET_REF:
+  - R51/B
+  - R52/A
+  - U21/IN-
+  U6_OE_N:
+  - U26/Y
+  - U6/OE#
+  PWR_5V_WORK:
+  - U24/VOUT
+  - Q1/IN
+  - C98/A
+  POWER_LOST_N:
+  - U22/OUT
+  - U1/PC14_OSC32_IN
+  - U28/B
+  PWR_FAIL_REF:
+  - R54/B
+  - R55/A
+  - U22/IN-
+  - C99/A
+  AUTH_OK_PULSE:
+  - U20/CLK
+  - U1/PC15_OSC32_OUT
+  PWR_5V_SYS:
+  - U27/OUT
+  - U27/OUT_2
+  - C104/A
+  - C106/A
+  - U12/IN
+  - U24/IN
+  - U10/VIN
+  - U10/EN
+  5VSB_IN:
+  - J16/VIN_5VSB
+  - F2/A
+  5VSB_PROT:
+  - F2/B
+  - D6/K
+  - C103/A
+  - U27/IN2
+  - R58/A
+  - R62/A
+  PWR_MUX_PR1:
+  - U27/PR1
+  - R56/B
+  - R57/A
+  PWR_MUX_CP2:
+  - U27/CP2
+  - R58/B
+  - R59/A
+  PWR_MUX_OV1:
+  - U27/OV1
+  - R60/B
+  - R61/A
+  PWR_MUX_OV2:
+  - U27/OV2
+  - R62/B
+  - R63/A
+  PWR_MUX_ILIM:
+  - U27/ILIM
+  - R64/A
+  PWR_MUX_SS:
+  - U27/SS
+  - C105/A
+  WORK_RAIL_EN:
+  - U28/Y
+  - U24/ON
+  REFCLK_P:
+  - J14/CLOCK+
+  REFCLK_N:
+  - J14/CLOCK-
 sheets:
 - title: Connectors
   paper: A2
@@ -2411,27 +2108,22 @@ sheets:
     symbol: USB_C_RECEPT
     card: '1'
   - ref: J14
-    symbol: OCuLink_SFF8612
+    symbol: SlimSAS_SFF8654_4x
     nc:
-    - SMB_CLK
-    - SMB_DAT
-    - RST
     - BP_TYPE
-    - WAKE#
-    - CLOCK+
-    - CLOCK-
-    - PCIE_TX2+
-    - PCIE_TX2-
-    - PCIE_TX3+
-    - PCIE_TX3-
+    - CPRSNT#
     - PCIE_RX2+
     - PCIE_RX2-
     - PCIE_RX3+
     - PCIE_RX3-
-    - NC1
-    - NC2
-    - NC3
-    - NC4
+    - PCIE_TX2+
+    - PCIE_TX2-
+    - PCIE_TX3+
+    - PCIE_TX3-
+    - RST
+    - SMB_CLK
+    - SMB_DAT
+    - WAKE#
     card: '1'
   - ref: U11
     symbol: PI3DBS16412
@@ -2447,6 +2139,83 @@ sheets:
     - NC
     - NC_2
     card: '1'
+  - ref: C94
+    symbol: C_100N
+    card: '1'
+  - ref: U14
+    symbol: 74LVC1G08
+    card: '1'
+  - ref: D4
+    symbol: LED
+    card: '1'
+  - ref: R45
+    symbol: R_LED
+    card: '1'
+  - ref: U19
+    symbol: MUX_USB2_TS3USB221A
+    card: both
+  - ref: U20
+    symbol: AUTH_LATCH_SN74LVC1G175
+    card: both
+  - ref: U21
+    symbol: CMP_TLV7011
+    card: both
+  - ref: U22
+    symbol: CMP_TLV7011
+    card: both
+  - ref: U24
+    symbol: TPS22990
+    nc:
+    - PG
+    card: both
+  - ref: U25
+    symbol: 74LVC1G08
+    card: both
+  - ref: U26
+    symbol: NAND_74LVC1G00
+    card: both
+  - ref: D5
+    symbol: TPD2E001
+    card: both
+  - ref: J15
+    symbol: HOST_USB2_HEADER
+    card: both
+  - ref: R49
+    symbol: R_100K
+    card: both
+  - ref: R50
+    symbol: R_100K
+    card: both
+  - ref: R51
+    symbol: R_100K
+    card: both
+  - ref: R52
+    symbol: R_56K
+    card: both
+  - ref: R53
+    symbol: R_1M
+    card: both
+  - ref: R54
+    symbol: R_100K
+    card: both
+  - ref: R55
+    symbol: R_56K
+    card: both
+  - ref: C98
+    symbol: C_100N
+    card: both
+  - ref: C99
+    symbol: C_100N
+    card: both
+  - ref: C100
+    symbol: C_100N
+    card: both
+  - ref: C101
+    symbol: C_100N
+    card: both
+  - ref: C102
+    symbol: C_100N
+    card: both
 - title: MCU & Sideband
   paper: A3
   layout: auto_grid
@@ -2454,11 +2223,6 @@ sheets:
   placements:
   - ref: U1
     symbol: MCU_STM32G0
-    nc:
-    - WAKE_IN
-    - RST_IN
-    - USB_D_P
-    - USB_D_N
     card: both
   - ref: J9
     symbol: HEADER_4PIN
@@ -2511,17 +2275,50 @@ sheets:
   - ref: U6
     symbol: MUX_USB2_TS3USB221A
     nc:
-    - D_P_B
     - D_N_B
+    - D_P_B
     card: '1'
   - ref: U9
     symbol: TVS_USB3_6CH
+    card: '1'
+  - ref: U18
+    symbol: TVS_USB3_6CH
+    nc:
+    - IO5
+    - IO6
     card: '1'
   - ref: E1
     symbol: FRU_EEPROM
     card: '1'
   - ref: R16
     symbol: R_10K
+    card: '1'
+  - ref: R38
+    symbol: R_22R
+    card: '1'
+  - ref: R39
+    symbol: R_22R
+    card: '1'
+  - ref: U13
+    symbol: TPD2E001
+    card: '1'
+  - ref: D2
+    symbol: LED
+    card: '1'
+  - ref: D3
+    symbol: LED
+    card: '1'
+  - ref: R40
+    symbol: R_100R
+    card: '1'
+  - ref: R43
+    symbol: R_LED
+    card: '1'
+  - ref: R44
+    symbol: R_LED
+    card: '1'
+  - ref: R46
+    symbol: R_100K
     card: '1'
 - title: Power Decoupling (ReDriver VCC)
   paper: A4
@@ -2538,9 +2335,6 @@ sheets:
   placements:
   - ref: U8
     symbol: DCDC_12V_5V
-    nc:
-    - SW
-    - FB
     card: '1'
   - ref: U10
     symbol: LDO_5V_3V3
@@ -2548,28 +2342,43 @@ sheets:
     - NC_ADJ
     card: '1'
   - ref: U12
-    symbol: TPS22919
-    nc:
-    - QOD
-    - NC
+    symbol: TPS22965
     card: '1'
   - ref: R35
-    symbol: R_56K
+    symbol: R_10K
     card: '1'
   - ref: R36
-    symbol: R_56K
+    symbol: R_10K
+    card: '1'
+  - ref: L1
+    symbol: L_3R3
+    card: '1'
+  - ref: R47
+    symbol: R_124K
+    card: '1'
+  - ref: R48
+    symbol: R_22K1
+    card: '1'
+  - ref: C95
+    symbol: C_1U__C_0402_1005Metric
+    card: '1'
+  - ref: C96
+    symbol: C_6N8
+    card: '1'
+  - ref: C97
+    symbol: C_100N
     card: '1'
   - ref: R37
     symbol: R_10K
     card: '1'
   - ref: C88
-    symbol: C_1U
+    symbol: C_1U__C_0603_1608Metric
     card: '1'
   - ref: C89
     symbol: C_4R7
     card: '1'
   - ref: C91
-    symbol: C_1U
+    symbol: C_1U__C_0603_1608Metric
     card: '1'
   - ref: C92
     symbol: C_100N
@@ -2580,395 +2389,81 @@ sheets:
   - ref: R30
     symbol: R_0R
     card: '1'
-strap_intents:
-- ref: U3
-  pin: MODE
-  level: L0
-- ref: U3
-  pin: EQ0_0_ADDR0
-  level: L1
-- ref: U3
-  pin: EQ1_0_ADDR1
-  level: L2
-- ref: U3
-  pin: EQ0_1
-  level: L1
-- ref: U3
-  pin: EQ1_1
-  level: L2
-- ref: U3
-  pin: GAIN0_SDA
-  level: L3
-- ref: U3
-  pin: GAIN1
-  level: L3
-- ref: U3
-  pin: RX_DET_SCL
-  level: L3
-- ref: U7
-  pin: MODE
-  level: L0
-- ref: U7
-  pin: EQ0_0_ADDR0
-  level: L1
-- ref: U7
-  pin: EQ1_0_ADDR1
-  level: L2
-- ref: U7
-  pin: EQ0_1
-  level: L1
-- ref: U7
-  pin: EQ1_1
-  level: L2
-- ref: U7
-  pin: GAIN0_SDA
-  level: L3
-- ref: U7
-  pin: GAIN1
-  level: L3
-- ref: U7
-  pin: RX_DET_SCL
-  level: L3
-links:
-- id: PCIE_DN0
-  kind: diff
-  source:
-  - J2
-  - TX0_P
-  target:
-  - U3
-  - RX0P
-- id: PCIE_DN1
-  kind: diff
-  source:
-  - J2
-  - TX1_P
-  target:
-  - U3
-  - RX1P
-- id: PCIE_DN2
-  kind: diff
-  source:
-  - J2
-  - TX2_P
-  target:
-  - U3
-  - RX2P
-- id: PCIE_DN3
-  kind: diff
-  source:
-  - J2
-  - TX3_P
-  target:
-  - U3
-  - RX3P
-- id: PCIE_DN4
-  kind: diff
-  source:
-  - J2
-  - TX4_P
-  target:
-  - U3
-  - RX4P
-- id: PCIE_DN5
-  kind: diff
-  source:
-  - J2
-  - TX5_P
-  target:
-  - U3
-  - RX5P
-- id: PCIE_DN6
-  kind: diff
-  source:
-  - J2
-  - TX6_P
-  target:
-  - U3
-  - RX6P
-- id: PCIE_DN7
-  kind: diff
-  source:
-  - J2
-  - TX7_P
-  target:
-  - U3
-  - RX7P
-- id: PCIE_DN_OUT0
-  kind: diff
-  source:
-  - U3
-  - TX0P
-  target:
-  - J3
-  - RX0_P
-  via:
-  - C17
-- id: PCIE_DN_OUT1
-  kind: diff
-  source:
-  - U3
-  - TX1P
-  target:
-  - J3
-  - RX1_P
-  via:
-  - C19
-- id: PCIE_DN_OUT2
-  kind: diff
-  source:
-  - U3
-  - TX2P
-  target:
-  - J3
-  - RX2_P
-  via:
-  - C21
-- id: PCIE_DN_OUT3
-  kind: diff
-  source:
-  - U3
-  - TX3P
-  target:
-  - J3
-  - RX3_P
-  via:
-  - C23
-- id: PCIE_DN_OUT4
-  kind: diff
-  source:
-  - U3
-  - TX4P
-  target:
-  - J4
-  - RX0_P
-  via:
-  - C25
-- id: PCIE_DN_OUT5
-  kind: diff
-  source:
-  - U3
-  - TX5P
-  target:
-  - J4
-  - RX1_P
-  via:
-  - C27
-- id: PCIE_DN_OUT6
-  kind: diff
-  source:
-  - U3
-  - TX6P
-  target:
-  - J4
-  - RX2_P
-  via:
-  - C29
-- id: PCIE_DN_OUT7
-  kind: diff
-  source:
-  - U3
-  - TX7P
-  target:
-  - J4
-  - RX3_P
-  via:
-  - C31
-- id: PCIE_UP0
-  kind: diff
-  source:
-  - J3
-  - TX0_P
-  target:
-  - U7
-  - RX0P
-- id: PCIE_UP1
-  kind: diff
-  source:
-  - J3
-  - TX1_P
-  target:
-  - U7
-  - RX1P
-- id: PCIE_UP2
-  kind: diff
-  source:
-  - J3
-  - TX2_P
-  target:
-  - U7
-  - RX2P
-- id: PCIE_UP3
-  kind: diff
-  source:
-  - J3
-  - TX3_P
-  target:
-  - U7
-  - RX3P
-- id: PCIE_UP4
-  kind: diff
-  source:
-  - J4
-  - TX0_P
-  target:
-  - U7
-  - RX4P
-- id: PCIE_UP5
-  kind: diff
-  source:
-  - J4
-  - TX1_P
-  target:
-  - U7
-  - RX5P
-- id: PCIE_UP6
-  kind: diff
-  source:
-  - J4
-  - TX2_P
-  target:
-  - U7
-  - RX6P
-- id: PCIE_UP7
-  kind: diff
-  source:
-  - J4
-  - TX3_P
-  target:
-  - U7
-  - RX7P
-- id: PCIE_UP_OUT0
-  kind: diff
-  source:
-  - U7
-  - TX0P
-  target:
-  - J2
-  - RX0_P
-  via:
-  - C49
-- id: PCIE_UP_OUT1
-  kind: diff
-  source:
-  - U7
-  - TX1P
-  target:
-  - J2
-  - RX1_P
-  via:
-  - C51
-- id: PCIE_UP_OUT2
-  kind: diff
-  source:
-  - U7
-  - TX2P
-  target:
-  - J2
-  - RX2_P
-  via:
-  - C53
-- id: PCIE_UP_OUT3
-  kind: diff
-  source:
-  - U7
-  - TX3P
-  target:
-  - J2
-  - RX3_P
-  via:
-  - C55
-- id: PCIE_UP_OUT4
-  kind: diff
-  source:
-  - U7
-  - TX4P
-  target:
-  - J2
-  - RX4_P
-  via:
-  - C57
-- id: PCIE_UP_OUT5
-  kind: diff
-  source:
-  - U7
-  - TX5P
-  target:
-  - J2
-  - RX5_P
-  via:
-  - C59
-- id: PCIE_UP_OUT6
-  kind: diff
-  source:
-  - U7
-  - TX6P
-  target:
-  - J2
-  - RX6_P
-  via:
-  - C61
-- id: PCIE_UP_OUT7
-  kind: diff
-  source:
-  - U7
-  - TX7P
-  target:
-  - J2
-  - RX7_P
-  via:
-  - C63
-- id: REFCLK0
-  kind: single
-  source:
-  - J3
-  - REFCLK_P
-  target:
-  - J2
-  - REFCLK0_P
-- id: REFCLK1
-  kind: single
-  source:
-  - J4
-  - REFCLK_P
-  target:
-  - J2
-  - REFCLK1_P
-- id: PERSTA
-  kind: single
-  source:
-  - J2
-  - PERST#
-  target:
-  - J3
-  - PERST#
-  via:
-  - U1
-- id: PERSTB
-  kind: single
-  source:
-  - J2
-  - PERSTB#
-  target:
-  - J4
-  - PERST#
-- id: I2C1_SCL
-  kind: single
-  source:
-  - J2
-  - SMB_CLK
-  target:
-  - U1
-  - I2C1_SCL
-  via:
-  - E2
-- id: I2C1_SDA
-  kind: single
-  source:
-  - J2
-  - SMB_DATA
-  target:
-  - U1
-  - I2C1_SDA
-  via:
-  - E2
+  - ref: Q1
+    symbol: TPS22990
+    card: '1'
+  - ref: Q2
+    symbol: NMOS_2N7002
+    card: '1'
+  - ref: C93
+    symbol: C_100N
+    card: '1'
+  - ref: R41
+    symbol: R_100K
+    card: '1'
+  - ref: R42
+    symbol: R_33K
+    card: '1'
+- title: Power Input Mux (R-17 5VSB standby)
+  paper: A4
+  layout: auto_grid
+  columns: 3
+  placements:
+  - ref: J16
+    symbol: HEADER_2PIN_5VSB
+    card: '1'
+  - ref: F2
+    symbol: FUSE
+    card: '1'
+  - ref: D6
+    symbol: TVS_SMBJ5
+    card: '1'
+  - ref: U27
+    symbol: TPS2121
+    nc:
+    - ST
+    card: '1'
+  - ref: U28
+    symbol: 74LVC1G08
+    card: '1'
+  - ref: R56
+    symbol: R_10K
+    card: '1'
+  - ref: R57
+    symbol: R_100K
+    card: '1'
+  - ref: R58
+    symbol: R_10K
+    card: '1'
+  - ref: R59
+    symbol: R_33K
+    card: '1'
+  - ref: R60
+    symbol: R_100K
+    card: '1'
+  - ref: R61
+    symbol: R_22K1
+    card: '1'
+  - ref: R62
+    symbol: R_100K
+    card: '1'
+  - ref: R63
+    symbol: R_22K1
+    card: '1'
+  - ref: R64
+    symbol: R_33K
+    card: '1'
+  - ref: C103
+    symbol: C_10U
+    card: '1'
+  - ref: C104
+    symbol: C_10U
+    card: '1'
+  - ref: C105
+    symbol: C_1U__C_0603_1608Metric
+    card: '1'
+  - ref: C106
+    symbol: C_100N
+    card: '1'
+strap_intents: []
+links: []

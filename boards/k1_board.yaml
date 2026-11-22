@@ -1,35 +1,19 @@
-# ==============================================================================
-# K1 卡 (Master 门禁卡) — 板级真源 (board truth source)
-#
-# 文件:     revA/boards/k1_board.yaml
-# 任务:     k1-l1-bid-infra T1 — k1_board.yaml 真源构建 + 器件 refdes 对账
-# 日期:     2026-08-21
-# 权威:     revA/boards/k1_nets.yaml (refdes/net 权威, J14/U11/U6)
-#           revA/sch_k1/*.kicad_sch (器件实例/符号/引脚数)
-#           revA/pcb/export/ForgeOS.pretty/*.kicad_mod (footprint 实测 bbox)
-#           AppDir KiCad 标准库 footprint (实测 bbox)
-# 运行环境: 普通 python3 (无 pcbnew 依赖)
-# 覆盖检查: revA/boards/k1_coverage_check.py
-#
-# refdes 命名: 以 k1_nets.yaml 为准 (J14=OCuLink, U11=PI3DBS16412, U6=TS3USB221A)。
-#   README 概念名仅存注释: J_OCULINK=J14, U_PI3=U11, U_TPS=U12。
-# 几何事实来源: geometry.source ∈ {footprint, datasheet, estimated}; 估算必带
-#   estimated:true + 理由 (防逃逸预算虚高)。bbox 单位 mm, 全部来自 kicad_mod 实测。
-# ==============================================================================
 board:
   name: K1 (Master gate card, IOCONVERT V2.0 转换卡 1)
   card: K1
   dimension_mm:
-  - 80
-  - 38
+  - 70
+  - 48
   layers: 4
   card_type: Master 门禁卡 (PCIe 2.1 x2 注入 + 预鉴权)
   fixed_constraints:
-  - 板框 80×38mm 4 层
+  - 板框 70×48mm 4 层 (owner
   - 'J1 Type-C 卧式左缘 (horizontal, edge: left)'
-  - 'J14 OCuLink 立式右缘 (vertical, edge: right)'
+  - 'J14 SlimSAS SFF-8654 38pin 卧式右缘 (horizontal R/A, edge: right, mating face: +X)'
   - '无 ReDriver、无 AC 电容墙 (ECO31 补充说明: PCIe 2.0/2.1 5GT/s 短距直连, 不做均衡放大)'
   - K1/KEY 双公头线缆 (Mode B); Mode A 下 KEY 直插 PC, K1 不参与 (J7 已移除)
+  - 独立 DC 12V 主电源输入 + 15W (5V/3A) 封顶 + 不走 PD — 需求冻结 v1 §2/§3
+  - 工作态 3A 通路 + OI#9 双轨 (S5 预鉴权轨 / 工作态轨) — 需求冻结 v1 §3
   l1_bid:
     strategy_type: mux_segmentation
     axes:
@@ -52,10 +36,11 @@ board:
     stackup: 4 层 (F.Cu / In1 / In2 / B.Cu) — 叠层分配待 L2, 板厂确认档待定
 devices:
   U1:
-    value: STM32G0B1KBU6
-    function: K1 MCU — 门禁鉴权 (SBU I2C Master 预鉴权) + MUX 切换 + 光耦开机 + OOB UART
+    value: STM32G0B1KBU6N
+    function: K1 MCU — 门禁鉴权 (SBU I2C Master 预鉴权) + MUX 切换 + 光耦开机 + OOB UART; KBU6N
+      pad17=PB15/UCPD1_CC2, pad18=PA8/UCPD1_CC1, pad20=VDD, pad26..29=PD0..PD3
     footprint: ForgeOS:MCU_STM32G0_QFN32
-    sch_pins: 31
+    sch_pins: 33
     fp_pads: 33
     geometry:
       bbox:
@@ -84,8 +69,19 @@ devices:
     - SBU_EN
     - MUX_SEL
     - MUX_PD
+    - CC1
+    - CC2
     - TPS_EN
-    - SBU1
+    - WORK_EN
+    - KEY_DET_EN
+    - D_P_HOLD
+    - HOST_PWR_DET
+    - AUTH_LED
+    - KEY_DET_SENSE
+    - MCU_USB_D_N
+    - KEY_PRESENT
+    - POWER_LOST_N
+    - AUTH_OK_PULSE
   U11:
     value: PI3DBS16412
     function: 4 对差分 lane 翻转 MUX (K1 侧 Type-C 后端, ECO31 裁定 8) — README 概念名 U_PI3
@@ -113,14 +109,14 @@ devices:
     - PCIE_TX1_N
     - PCIE_RX1_P
     - PCIE_RX1_N
-    - OCuLink_TX0_P
-    - OCuLink_TX0_N
-    - OCuLink_RX0_P
-    - OCuLink_RX0_N
-    - OCuLink_TX1_P
-    - OCuLink_TX1_N
-    - OCuLink_RX1_P
-    - OCuLink_RX1_N
+    - J14_TX0_P
+    - J14_TX0_N
+    - J14_RX0_P
+    - J14_RX0_N
+    - J14_TX1_P
+    - J14_TX1_N
+    - J14_RX1_P
+    - J14_RX1_N
     - MUX_SEL
     - MUX_PD
   U6:
@@ -144,14 +140,15 @@ devices:
     - P3V3_AUX
     - GND
     - SBU_SEL
-    - SBU_EN
-    - SBU1
-    - SBU2
+    - U6_OE_N
+    - SBU1_INT
+    - SBU2_INT
   U8:
-    value: DCDC_12V_5V
-    function: 12V→5V DCDC (主电源)
+    value: TPS54628
+    function: 12V→5V 主 buck (TPS54628, 6A 同步, 650kHz, SO PowerPAD-8) — 工作态 3A 通路 (需求冻结
+      v1 §3)
     footprint: Package_SO:SOIC-8_5.3x5.3mm_P1.27mm
-    sch_pins: 6
+    sch_pins: 8
     fp_pads: 8
     geometry:
       bbox:
@@ -165,11 +162,70 @@ devices:
     nets:
     - 12V_IN
     - GND
-    - PWR_5V_KEY
+    - PWR_5V_MAIN
+    - PWR_5V_SW
+    - PWR_5V_FB
+    - PWR_5V_VREG5
+    - PWR_5V_SS
+    - PWR_5V_VBST
+  L1:
+    value: 3.3uH
+    function: ECN-K1-DRAFT-1 TPS54628 buck 电感 (SW→VOUT, 3.3uH typ per datasheet Table 1)
+    footprint: Inductor_SMD:L_3.3uH_5.0x5.0mm
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - PWR_5V_SW
+    - PWR_5V_MAIN
+  R47:
+    value: 124K
+    function: ECN-K1-DRAFT-1 TPS54628 FB 分压上臂 (124K, datasheet Table 1 for 5V)
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - PWR_5V_MAIN
+    - PWR_5V_FB
+  R48:
+    value: 22.1K
+    function: ECN-K1-DRAFT-1 TPS54628 FB 分压下臂 (22.1K, datasheet Table 1 for 5V)
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - PWR_5V_FB
+    - GND
+  C95:
+    value: 1uF
+    function: ECN-K1-DRAFT-1 TPS54628 VREG5 1uF to GND (datasheet §8.2.2.5)
+    footprint: Capacitor_SMD:C_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - PWR_5V_VREG5
+    - GND
+  C96:
+    value: 6.8nF
+    function: ECN-K1-DRAFT-1 TPS54628 SS soft-start cap to GND (tSS≈0.95ms; datasheet Eq.2)
+    footprint: Capacitor_SMD:C_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - PWR_5V_SS
+    - GND
+  C97:
+    value: 100nF
+    function: ECN-K1-DRAFT-1 TPS54628 VBST 0.1uF between VBST and SW (datasheet §8.2.2.4)
+    footprint: Capacitor_SMD:C_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - PWR_5V_VBST
+    - PWR_5V_SW
   U10:
     value: LDO_5V_3V3
     function: 5V→3V3 LDO (P3V3_AUX 轨)
-    footprint: Package_TO_SOT_SMD:SOT-23
+    footprint: Package_TO_SOT_SMD:SOT-23-5
     sch_pins: 5
     fp_pads: 3
     geometry:
@@ -179,31 +235,30 @@ devices:
       source: footprint
       provenance: AppDir/usr/share/kicad/footprints/Package_TO_SOT_SMD.pretty/SOT-23.kicad_mod
       estimated: true
-      note: 符号 5 pin vs SOT-23 3 pad 不匹配 (reconciliation OPEN-2); 实际器件应为 SOT-23-5 (实测 bbox 4.10×3.54), 布局预算按 SOT-23-5 取
+      note: 符号 5 pin vs SOT-23 3 pad 不匹配 (reconciliation OPEN-2); 实际器件应为 SOT-23-5
+        (实测 bbox 4.10×3.54), 布局预算按 SOT-23-5 取
     nets:
     - P3V3_AUX
-    - MCU_VDD
     - GND
-    - PWR_5V_KEY
+    - PWR_5V_MAIN
   U12:
-    value: TPS22919
-    function: 预鉴权供电软启动 Load Switch (裁定 7) — README 概念名 U_TPS
-    footprint: ForgeOS:TPS22919
-    sch_pins: 6
-    fp_pads: 6
+    value: TPS22965
+    function: 预鉴权轨 6A 负载开关 (TPS22965 ≥3A, 可调上升/软启动) — OI#9 轨A (需求冻结 v1 §3)
+    footprint: Package_SON:Texas_DSG0008A_WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm
+    sch_pins: 4
+    fp_pads: 9
     geometry:
       bbox:
-      - 2.9
-      - 2.39
-      pad_bbox:
-      - 1.68
-      - 1.3
+      - 2.0
+      - 2.0
       source: footprint
-      provenance: revA/pcb/export/ForgeOS.pretty/TPS22919.kicad_mod
+      estimated: true
+      note: TPS22965 WSON-8 (DSG) 2×2mm — bbox 取封装标称 (TI SLVSBJ0F §11); 实测待 ③④
+      provenance: AppDir/usr/share/kicad/footprints/Package_SON.pretty/Texas_DSG0008A_WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm.kicad_mod
     nets:
     - GND
-    - PWR_5V_KEY
-    - PWR_5V_PREAUTH
+    - PWR_5V_MAIN
+    - VBUS
     - TPS_EN
   U9:
     value: TPD6E05U06
@@ -228,6 +283,27 @@ devices:
     - PCIE_TX0_N
     - PCIE_RX0_P
     - PCIE_RX0_N
+  U18:
+    value: TPD6E05U06
+    function: ECN-K1-DRAFT-3 Lane1 四线 TVS (4/6 线, 与 U9 同型号)
+    footprint: ForgeOS:TPD6E05U06_RVZ
+    sch_pins: 14
+    fp_pads: 14
+    geometry:
+      bbox:
+      - 2.6
+      - 4.05
+      pad_bbox:
+      - 1.35
+      - 3.0
+      source: footprint
+      provenance: revA/pcb/export/ForgeOS.pretty/TPD6E05U06_RVZ.kicad_mod
+    nets:
+    - GND
+    - PCIE_TX1_P
+    - PCIE_TX1_N
+    - PCIE_RX1_P
+    - PCIE_RX1_N
   U5:
     value: OPTO_LTV356T
     function: PWR_BTN# 硬开机隔离光耦
@@ -269,20 +345,23 @@ devices:
     - GND
   J1:
     value: USB_C_RECEPT
-    footprint: Connector_USB:USB_C_Receptacle_Amphenol_12401548E4-2A
-    function: KEY 接口 (PCIe x2 差分 + SBU 预鉴权 + CC/VCONN) — ECO31 裁定 4; 24-pin full-featured 换件 PM 2026-08-22 裁决
-    sch_pins: 16
-    fp_pads: 30
+    footprint: Connector_USB:USB_C_Receptacle_JAE_DX07S024WJ1R350
+    function: KEY 接口 (PCIe x2 差分 + SBU 预鉴权 + CC/VCONN) — ECO31 裁定 4; ECN-010 换 JAE
+      DX07S024WJ1R350 24-pin full-featured
+    sch_pins: 23
+    fp_pads: 32
     geometry:
       bbox:
-      - 9.0
-      - 7.86
+      - 11.0
+      - 7.0
       pad_bbox:
-      - 9.0
-      - 7.86
+      - 9.4
+      - 7.84
       source: footprint
-      provenance: AppDir/share/kicad/footprints/Connector_USB.pretty/USB_C_Receptacle_Amphenol_12401548E4-2A.kicad_mod
-      note: Amphenol 12401548E4-2A 24-pin full-featured 实测 (pad bbox x∈[-4.49,4.49] y∈[-5.02,2.84] → 8.98×7.86, 取一位圆整 9.0×7.86); 28 命名 pad (A1-A12/B1-B12 + 4×SH) + 2 NPTH; SS 8 焊盘 A2/A3/A10/A11/B2/B3/B10/B11 全在 — OPEN-1 已裁决关闭
+      provenance: AppDir/share/kicad/footprints/Connector_USB.pretty/USB_C_Receptacle_JAE_DX07S024WJ1R350.kicad_mod
+      note: JAE DX07S024WJ1R350 24-pin full-featured 实测 (pad bbox 9.40×7.84; F.Fab
+        body 11.00×7.00); 30 个命名 pad (A1-A12/B1-B12 + 6×SH) + 2 NPTH; SS 8 焊盘 A2/A3/A10/A11/B2/B3/B10/B11
+        全在; F.Fab 本体左缘 x=-0.70mm（F.SilkS -0.90mm）, 3D/外壳/装配待机械复核 — ECN-010
     nets:
     - GND
     - KEY_D_P
@@ -301,31 +380,67 @@ devices:
     - SBU1
     - SBU2
   J14:
-    value: OCuLink_SFF8612
-    footprint: ForgeOS:OCuLink_SFF8612
-    function: HOST 出口 (PCIe 2.1 x2 + 功率脚/边带), ECO31 裁定 1 — 立式右缘 — README 概念名 J_OCULINK
-    sch_pins: 42
-    fp_pads: 42
+    value: SlimSAS_4x_SFF-8654_38pin_RASide
+    footprint: ForgeOS:SlimSAS_4x_SFF-8654_38pin_RASide
+    function: HOST 出口 (SlimSAS 4X / SFF-8654 38-pin, PCIe x2, 带固定结构) — W4 owner 换型
+      (OCuLink→SlimSAS 4x)
+    sch_pins: 38
+    fp_pads: 38
     geometry:
       bbox:
-      - 11.0
-      - 4.31
+      - 12.4
+      - 15.0
       pad_bbox:
-      - 10.0
-      - 1.91
+      - 10.8
+      - 2.35
       source: footprint
-      provenance: revA/pcb/export/ForgeOS.pretty/OCuLink_SFF8612.kicad_mod
-      note: 计划参考 '10.0×8.0mm' 为壳体型 datasheet 图, 板上占位以实测 11.00×4.31 为准
+      provenance: k1/lib/ForgeOS.pretty/SlimSAS_4x_SFF-8654_38pin_RASide.kicad_mod
+        (pad+hole geom = SFF-8654 Rev1.2 A.2 Fig A-3 / TABLE A-3)
+      note: pad N03=2.35/N05=0.60/N06=0.35/N07=1.30; 机械孔 N01=5.55/N02=2.70/N08=1.30/N09=5.15/N10=3.00/N11=0.68/N12=0.66
     nets:
     - GND
-    - OCuLink_TX0_P
-    - OCuLink_TX0_N
-    - OCuLink_RX0_P
-    - OCuLink_RX0_N
-    - OCuLink_TX1_P
-    - OCuLink_TX1_N
-    - OCuLink_RX1_P
-    - OCuLink_RX1_N
+    - J14_TX0_P
+    - J14_TX0_N
+    - J14_RX0_P
+    - J14_RX0_N
+    - J14_TX1_P
+    - J14_TX1_N
+    - J14_RX1_P
+    - J14_RX1_N
+    - REFCLK_P
+    - REFCLK_N
+  H1:
+    value: MountingHole_M2.5
+    footprint: ForgeOS:MountingHole_M2.5
+    function: ECN-K1-DRAFT-2 安装孔 M2.5 (plated, pad to GND)
+    sch_pins: 0
+    fp_pads: 1
+    nets:
+    - GND
+  H2:
+    value: MountingHole_M2.5
+    footprint: ForgeOS:MountingHole_M2.5
+    function: ECN-K1-DRAFT-2 安装孔 M2.5 (plated, pad to GND)
+    sch_pins: 0
+    fp_pads: 1
+    nets:
+    - GND
+  H3:
+    value: MountingHole_M2.5
+    footprint: ForgeOS:MountingHole_M2.5
+    function: ECN-K1-DRAFT-2 安装孔 M2.5 (plated, pad to GND)
+    sch_pins: 0
+    fp_pads: 1
+    nets:
+    - GND
+  H4:
+    value: MountingHole_M2.5
+    footprint: ForgeOS:MountingHole_M2.5
+    function: ECN-K1-DRAFT-2 安装孔 M2.5 (plated, pad to GND)
+    sch_pins: 0
+    fp_pads: 1
+    nets:
+    - GND
   J9:
     value: J_OOB_HEADER
     footprint: ForgeOS:PinHeader_1x04
@@ -344,7 +459,7 @@ devices:
     - MCU_VDD
     - GND
   J13:
-    value: J_OOB_HEADER
+    value: J_SWD_HEADER
     footprint: ForgeOS:PinHeader_1x04
     sch_pins: 4
     fp_pads: 4
@@ -376,17 +491,18 @@ devices:
     - PWR_CTRL_OUT
     - GND
   J10:
-    value: J_12V_IN
-    footprint: ForgeOS:PinHeader_1x02
+    value: JST_VH_B2P-VH
+    footprint: Connector_JST:JST_VH_B2P-VH_1x02_P3.96mm_Vertical
     sch_pins: 2
     fp_pads: 2
-    function: 12V 待机电源输入 2-pin 排针
+    function: 独立 DC 12V 主电源输入连接器 (JST VH 3.96mm 2P B2P-VH, 10A/250V) — 需求冻结 v1 §2.6
     geometry:
       bbox:
-      - 1.5
-      - 4.04
-      source: footprint
-      provenance: revA/pcb/export/ForgeOS.pretty/PinHeader_1x02.kicad_mod
+      - 7.86
+      - 9.4
+      source: datasheet
+      provenance: JST VH series datasheet (B2P-VH 3.96mm 顶部入口 W7.86×D9.4mm, 10A/250V
+        AWG#16) + KiCad Connector_JST:JST_VH_B2P-VH_1x02_P3.96mm_Vertical.kicad_mod
     nets:
     - 12V_IN
     - GND
@@ -485,7 +601,7 @@ devices:
     footprint: Capacitor_SMD:C_0603_1608Metric
     sch_pins: 2
     fp_pads: 2
-    function: PWR_5V_KEY 储能
+    function: PWR_5V_MAIN 储能
     geometry:
       bbox:
       - 2.96
@@ -494,7 +610,7 @@ devices:
       provenance: AppDir/usr/share/kicad/footprints/Capacitor_SMD.pretty/C_0603_1608Metric.kicad_mod
     nets:
     - GND
-    - PWR_5V_KEY
+    - PWR_5V_MAIN
   C90:
     value: 100nF
     footprint: Capacitor_SMD:C_0402_1005Metric
@@ -530,7 +646,7 @@ devices:
     footprint: Capacitor_SMD:C_0402_1005Metric
     sch_pins: 2
     fp_pads: 2
-    function: PWR_5V_PREAUTH 输出去耦
+    function: VBUS 输出去耦 (合轨后单节点)
     geometry:
       bbox:
       - 1.82
@@ -538,7 +654,7 @@ devices:
       source: footprint
       provenance: AppDir/usr/share/kicad/footprints/Capacitor_SMD.pretty/C_0402_1005Metric.kicad_mod
     nets:
-    - PWR_5V_PREAUTH
+    - VBUS
     - GND
   R1:
     value: 10K
@@ -676,11 +792,11 @@ devices:
     - I2C1_SDA
     - MCU_VDD
   R35:
-    value: 56K
+    value: 10K
     footprint: Resistor_SMD:R_0402_1005Metric
     sch_pins: 2
     fp_pads: 2
-    function: CC1 Rp 上拉 (自 PWR_5V_PREAUTH)
+    function: CC1 Rp 上拉 10kΩ ±5% → Type-C 3A 宣告 (自 VBUS) — 需求冻结 v1 §3
     geometry:
       bbox:
       - 1.86
@@ -688,14 +804,14 @@ devices:
       source: footprint
       provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod
     nets:
-    - PWR_5V_PREAUTH
+    - VBUS
     - CC1
   R36:
-    value: 56K
+    value: 10K
     footprint: Resistor_SMD:R_0402_1005Metric
     sch_pins: 2
     fp_pads: 2
-    function: CC2 Rp 上拉 (自 PWR_5V_PREAUTH)
+    function: CC2 Rp 上拉 10kΩ ±5% → Type-C 3A 宣告 (自 VBUS) — 需求冻结 v1 §3
     geometry:
       bbox:
       - 1.86
@@ -703,14 +819,14 @@ devices:
       source: footprint
       provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod
     nets:
-    - PWR_5V_PREAUTH
+    - VBUS
     - CC2
   R37:
     value: 10K
     footprint: Resistor_SMD:R_0402_1005Metric
     sch_pins: 2
     fp_pads: 2
-    function: SBU1 KEY_DET 下拉
+    function: SBU1 KEY_DET 下拉 (经 Q2 门控, 仅非预鉴权态接通) — G6 隔离定案
     geometry:
       bbox:
       - 1.86
@@ -718,30 +834,666 @@ devices:
       source: footprint
       provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod
     nets:
-    - GND
+    - KEY_DET_RET
     - SBU1
+  Q1:
+    value: TPS22990
+    function: 工作态轨 10A 负载开关 (TPS22990 ≥3A, 可调上升 + PG) — OI#9 轨B (需求冻结 v1 §3)
+    footprint: Package_SON:WSON-10-1EP_2.5x2.5mm_P0.5mm_EP1.2x2mm
+    sch_pins: 5
+    fp_pads: 11
+    geometry:
+      bbox:
+      - 2.5
+      - 2.5
+      source: footprint
+      estimated: true
+      note: TPS22990 WSON-10 (DQC) 2.5×2.5mm — bbox 取封装标称 (TI SLVSDK1C §11); 实测待 ③④
+      provenance: AppDir/usr/share/kicad/footprints/Package_SON.pretty/WSON-10-1EP_2.5x2.5mm_P0.5mm_EP1.2x2mm.kicad_mod
+    nets:
+    - PWR_5V_WORK
+    - VBUS
+    - WORK_EN
+    - GND
+    - WORK_PG
+  Q2:
+    value: 2N7002
+    function: SBU1 KEY_DET 下拉门控 (预鉴权窗口断开下拉, 消除 I2C 上拉分压) — G6 隔离定案
+    footprint: Package_TO_SOT_SMD:SOT-23
+    sch_pins: 3
+    fp_pads: 3
+    geometry:
+      bbox:
+      - 2.9
+      - 2.4
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Package_TO_SOT_SMD.pretty/SOT-23.kicad_mod
+    nets:
+    - KEY_DET_EN
+    - KEY_DET_RET
+    - GND
+  U13:
+    value: TPD2E001
+    function: SBU1/SBU2 两通道 ESD 保护 (连接器侧) — G6 关闭手段「SBU 串 R + ESD」
+    footprint: Package_DFN_QFN:DFN-6_1.6x1.3mm_P0.4mm
+    sch_pins: 4
+    fp_pads: 6
+    geometry:
+      bbox:
+      - 1.6
+      - 1.3
+      source: footprint
+      note: 'owner 裁决 L1-4: 换 6-pin 封装体 (TPD2E001 DRY0006A USON, 本体 1.5×1.4mm, 0.4mm
+        pitch); KiCad land pattern 取最近标准档 DFN-6_1.6x1.3mm_P0.4mm, 最终 land 待板厂 review'
+      provenance: AppDir/usr/share/kicad/footprints/Package_DFN_QFN.pretty/DFN-6_1.6x1.3mm_P0.4mm.kicad_mod
+      datasheet: pm_gate/artifacts/k1/L1/inputs/datasheets/TPD2E001.yaml
+    nets:
+    - SBU1
+    - SBU2
+    - P3V3_AUX
+    - GND
+  R38:
+    value: 22R
+    function: SBU1 串联限流 (连接器侧 → U6; G6 关闭手段「SBU 串 R + ESD」)
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    geometry:
+      bbox:
+      - 1.86
+      - 0.94
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod
+    nets:
+    - SBU1
+    - SBU1_INT
+  R39:
+    value: 22R
+    function: SBU2 串联限流 (连接器侧 → U6; G6 关闭手段「SBU 串 R + ESD」)
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    geometry:
+      bbox:
+      - 1.86
+      - 0.94
+      source: footprint
+      provenance: AppDir/usr/share/kicad/footprints/Resistor_SMD.pretty/R_0402_1005Metric.kicad_mod
+    nets:
+    - SBU2
+    - SBU2_INT
+  R40:
+    value: 100R
+    function: H1 D+ 侧带串联限流 (U1 USB_D_P → KEY_D_P)
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - D_P_HOLD
+    - MCU_USB_D_P
+  R41:
+    value: 100K
+    function: H2 12V HOST 主电检测分压上臂
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - 12V_IN
+    - HOST_PWR_DET
+  R42:
+    value: 33K
+    function: H2 12V HOST 主电检测分压下臂
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - HOST_PWR_DET
+    - GND
+  C93:
+    value: 100nF
+    function: H2 主电检测滤波
+    footprint: Capacitor_SMD:C_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - HOST_PWR_DET
+    - GND
+  D2:
+    value: LED_YELLOW
+    function: AUTH 黄灯 (U1 GPIO 直驱)
+    footprint: LED_SMD:LED_0603_1608Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - AUTH_LED
+    - AUTH_LED_K
+  R43:
+    value: 1K
+    function: AUTH 黄灯限流
+    footprint: Resistor_SMD:R_0603_1608Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - AUTH_LED_K
+    - GND
+  D3:
+    value: LED_GREEN
+    function: WORK 绿灯 (TPS22990 PG 开漏上拉)
+    footprint: LED_SMD:LED_0603_1608Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - WORK_PG
+    - GND
+  R44:
+    value: 1K
+    function: WORK 绿灯 PG 上拉/限流
+    footprint: Resistor_SMD:R_0603_1608Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - P3V3_AUX
+    - WORK_PG
+  U14:
+    value: 74LVC1G08
+    function: PCIE 放行 AND 门 (MUX_SEL AND HOST_PWR_DET)
+    footprint: Package_TO_SOT_SMD:SOT-23-5
+    sch_pins: 5
+    fp_pads: 5
+    nets:
+    - P3V3_AUX
+    - GND
+    - MUX_SEL
+    - HOST_PWR_DET
+    - PCIE_GATE
+  R45:
+    value: 1K
+    function: PCIE 绿灯限流
+    footprint: Resistor_SMD:R_0603_1608Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - PCIE_GATE
+    - PCIE_LED_K
+  D4:
+    value: LED_GREEN
+    function: PCIE/HOST 放行绿灯 (J14 旁)
+    footprint: LED_SMD:LED_0603_1608Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - PCIE_LED_K
+    - GND
+  C94:
+    value: 100nF
+    function: U14 去耦
+    footprint: Capacitor_SMD:C_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - P3V3_AUX
+    - GND
+  R46:
+    value: 100K
+    function: H4 KEY_DET 高阻检测 (SBU1 → U1 USB_D_N)
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    nets:
+    - SBU1
+    - KEY_DET_SENSE
+  U19:
+    value: TS3USB221A
+    function: ECN-K1-DRAFT-9 USB2 2:1 HS MUX (KEY D+/- <-> K1 MCU / HOST)
+    footprint: ForgeOS:TS3USB221A_UQFN10
+    sch_pins: 10
+    fp_pads: 10
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - AUTHORIZED
+    - GND
+    - HOST_USB2_D_N
+    - HOST_USB2_D_P
+    - KEY_D_N
+    - KEY_D_P
+    - MCU_USB_D_N
+    - MCU_USB_D_P
+    - P3V3_AUX
+  U20:
+    value: SN74LVC1G175
+    function: ECN-K1-DRAFT-8 授权闩锁 (异步 CLR#，Q=AUTHORIZED)
+    footprint: Package_TO_SOT_SMD:SOT-23-6
+    sch_pins: 6
+    fp_pads: 6
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - AUTHORIZED
+    - AUTH_CLR_N
+    - AUTH_OK_PULSE
+    - GND
+    - P3V3_AUX
+  U21:
+    value: TLV7011
+    function: ECN-K1-DRAFT-8 KEY_PRESENT 比较器
+    footprint: Package_TO_SOT_SMD:SOT-23-5
+    sch_pins: 5
+    fp_pads: 5
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - GND
+    - KEY_DET_REF
+    - KEY_DET_SENSE
+    - KEY_PRESENT
+    - P3V3_AUX
+  U22:
+    value: TLV7011
+    function: ECN-K1-DRAFT-8 12V 掉电比较器
+    footprint: Package_TO_SOT_SMD:SOT-23-5
+    sch_pins: 5
+    fp_pads: 5
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - GND
+    - HOST_PWR_DET
+    - P3V3_AUX
+    - POWER_LOST_N
+    - PWR_FAIL_REF
+  U24:
+    value: TPS22990
+    function: R-17/ECN-12 工作轨硬件门 (10A, ON=WORK_RAIL_EN)；修正 TPS22919 1.5A 欠额真缺陷
+    footprint: Package_SON:WSON-10-1EP_2.5x2.5mm_P0.5mm_EP1.2x2mm
+    sch_pins: 5
+    fp_pads: 11
+    provenance: TI SLVSDK1C Rev C §6 TPS22990 datasheet + ECN-K1-DRAFT-12 (true_defect U24 rating)
+    nets:
+    - GND
+    - PWR_5V_SYS
+    - PWR_5V_WORK
+    - WORK_RAIL_EN
+  U25:
+    value: 74LVC1G08
+    function: ECN-K1-DRAFT-8 AUTH_CLR_N = KEY_PRESENT AND NRST
+    footprint: Package_TO_SOT_SMD:SOT-23-5
+    sch_pins: 5
+    fp_pads: 5
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - AUTH_CLR_N
+    - GND
+    - KEY_PRESENT
+    - NRST
+    - P3V3_AUX
+  U26:
+    value: 74LVC1G00
+    function: ECN-K1-DRAFT-8 U6_OE_N = NAND(SBU_EN, KEY_PRESENT)
+    footprint: Package_TO_SOT_SMD:SOT-23-5
+    sch_pins: 5
+    fp_pads: 5
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - GND
+    - KEY_PRESENT
+    - P3V3_AUX
+    - SBU_EN
+    - U6_OE_N
+  D5:
+    value: TPD2E001
+    function: ECN-K1-DRAFT-9 HOST USB2 D+/D- ESD
+    footprint: Package_DFN_QFN:DFN-6_1.6x1.3mm_P0.4mm
+    sch_pins: 4
+    fp_pads: 6
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - GND
+    - HOST_USB2_D_N
+    - HOST_USB2_D_P
+    - P3V3_AUX
+  J15:
+    value: HOST_USB2_4P
+    function: ECN-K1-DRAFT-9 HOST USB2 4-pin 接口
+    footprint: Connector_PinHeader_1.25mm:PinHeader_1x04_P1.25mm_Vertical
+    sch_pins: 4
+    fp_pads: 4
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - GND
+    - HOST_USB2_D_N
+    - HOST_USB2_D_P
+  R49:
+    value: 100K
+    function: AUTHORIZED 下拉
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - AUTHORIZED
+    - GND
+  R50:
+    value: 100K
+    function: KEY_PRESENT 下拉
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - GND
+    - KEY_PRESENT
+  R51:
+    value: 100K
+    function: KEY_DET 阈值分压上臂
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - KEY_DET_REF
+    - P3V3_AUX
+  R52:
+    value: 56K
+    function: KEY_DET 阈值分压下臂 (≈1.18V)
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - GND
+    - KEY_DET_REF
+  R53:
+    value: 1M
+    function: KEY_PRESENT 迟滞
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - KEY_DET_SENSE
+    - KEY_PRESENT
+  R54:
+    value: 100K
+    function: 掉电阈值分压上臂
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - P3V3_AUX
+    - PWR_FAIL_REF
+  R55:
+    value: 56K
+    function: 掉电阈值分压下臂 (≈1.18V)
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - GND
+    - PWR_FAIL_REF
+  C98:
+    value: 100nF
+    function: PWR_5V_WORK 去耦
+    footprint: Capacitor_SMD:C_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - GND
+    - PWR_5V_WORK
+  C99:
+    value: 100nF
+    function: PWR_FAIL_REF 滤波
+    footprint: Capacitor_SMD:C_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - GND
+    - PWR_FAIL_REF
+  C100:
+    value: 100nF
+    function: U20 去耦
+    footprint: Capacitor_SMD:C_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - GND
+    - P3V3_AUX
+  C101:
+    value: 100nF
+    function: U21 去耦
+    footprint: Capacitor_SMD:C_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - GND
+    - P3V3_AUX
+  C102:
+    value: 100nF
+    function: U19 去耦
+    footprint: Capacitor_SMD:C_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    nets:
+    - GND
+    - P3V3_AUX
+  J16:
+    value: JST_VH_B2P-VH
+    function: R-17 +5VSB 待机电输入连接器 (JST VH 3.96mm 2P, 10A/250V)
+    footprint: Connector_JST:JST_VH_B2P-VH_1x02_P3.96mm_Vertical
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-12; JST VH series datasheet (B2P-VH, 3.96mm, 10A/250V)
+    nets:
+    - 5VSB_IN
+    - GND
+  F2:
+    value: FUSE_3A
+    function: R-17 5VSB 输入 3A 缓断保险
+    footprint: Fuse:Fuse_1206_3216Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-12; 3A slow-blow 1206 input protection
+    nets:
+    - 5VSB_IN
+    - 5VSB_PROT
+  D6:
+    value: SMBJ5.0A
+    function: R-17 5VSB 输入 TVS (SMBJ5.0A 单向)
+    footprint: Diode_SMD:D_SMB
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-12; SMBJ5.0A TVS datasheet
+    nets:
+    - 5VSB_PROT
+    - GND
+  U27:
+    value: TPS2121
+    function: R-17 双输入优先电源 mux — 12V 主路优先，12V 断自动切 5VSB，XCOMP 5us 快速切换
+    footprint: Package_DFN_QFN:VQFN-12-1EP_2x2mm_P0.5mm_EP0.9x0.9mm
+    sch_pins: 12
+    fp_pads: 13
+    provenance: TI TPS2120/TPS2121 SLVSEA3F §6 Pin Functions, §9.3.7, §9.3.8, §10.3; ECN-K1-DRAFT-12
+    nets:
+    - PWR_5V_MAIN
+    - 5VSB_PROT
+    - PWR_5V_SYS
+    - PWR_MUX_PR1
+    - PWR_MUX_CP2
+    - PWR_MUX_OV1
+    - PWR_MUX_OV2
+    - PWR_MUX_ILIM
+    - PWR_MUX_SS
+    - GND
+  U28:
+    value: 74LVC1G08
+    function: R-17 WORK_RAIL_EN = AUTHORIZED AND POWER_LOST_N；12V 不在时硬关 15W 工作轨
+    footprint: Package_TO_SOT_SMD:SOT-23-5
+    sch_pins: 5
+    fp_pads: 5
+    provenance: ECN-K1-DRAFT-12; TI SN74LVC1G08 datasheet + R-15 POWER_LOST_N
+    nets:
+    - AUTHORIZED
+    - POWER_LOST_N
+    - WORK_RAIL_EN
+    - P3V3_AUX
+    - GND
+  R56:
+    value: 10K
+    function: R-17 TPS2121 PR1 上臂
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-12; TPS2121 XCOMP divider
+    nets:
+    - PWR_5V_MAIN
+    - PWR_MUX_PR1
+  R57:
+    value: 100K
+    function: R-17 TPS2121 PR1 下臂
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-12; TPS2121 XCOMP divider
+    nets:
+    - PWR_MUX_PR1
+    - GND
+  R58:
+    value: 10K
+    function: R-17 TPS2121 CP2 上臂
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-12; TPS2121 XCOMP divider
+    nets:
+    - 5VSB_PROT
+    - PWR_MUX_CP2
+  R59:
+    value: 33K
+    function: R-17 TPS2121 CP2 下臂
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-12; TPS2121 XCOMP divider
+    nets:
+    - PWR_MUX_CP2
+    - GND
+  R60:
+    value: 100K
+    function: R-17 TPS2121 OV1 上臂
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-12; TPS2121 OVP divider
+    nets:
+    - PWR_5V_MAIN
+    - PWR_MUX_OV1
+  R61:
+    value: 22K1
+    function: R-17 TPS2121 OV1 下臂
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-12; TPS2121 OVP divider
+    nets:
+    - PWR_MUX_OV1
+    - GND
+  R62:
+    value: 100K
+    function: R-17 TPS2121 OV2 上臂
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-12; TPS2121 OVP divider
+    nets:
+    - 5VSB_PROT
+    - PWR_MUX_OV2
+  R63:
+    value: 22K1
+    function: R-17 TPS2121 OV2 下臂
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-12; TPS2121 OVP divider
+    nets:
+    - PWR_MUX_OV2
+    - GND
+  R64:
+    value: 33K
+    function: R-17 TPS2121 ILIM 限流电阻 (~3.3A)
+    footprint: Resistor_SMD:R_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: TI SLVSEA3F Table 6 (RILM 29.8k -> 3.5A typ; 33k -> ~3.3A); ECN-K1-DRAFT-12
+    nets:
+    - PWR_MUX_ILIM
+    - GND
+  C103:
+    value: 10uF
+    function: R-17 5VSB 输入储能/去耦
+    footprint: Capacitor_SMD:C_0805_2012Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-12; TPS2121 input capacitor practice
+    nets:
+    - 5VSB_PROT
+    - GND
+  C104:
+    value: 10uF
+    function: R-17 TPS2121 输出去耦/切换保持
+    footprint: Capacitor_SMD:C_0805_2012Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-12; TPS2121 COUT hold-up
+    nets:
+    - PWR_5V_SYS
+    - GND
+  C105:
+    value: 1uF
+    function: R-17 TPS2121 软启动 SS 电容
+    footprint: Capacitor_SMD:C_0603_1608Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: TI SLVSEA3F §9.3.1 Table 9-1; ECN-K1-DRAFT-12
+    nets:
+    - PWR_MUX_SS
+    - GND
+  C106:
+    value: 100nF
+    function: R-17 PWR_5V_SYS 高频去耦
+    footprint: Capacitor_SMD:C_0402_1005Metric
+    sch_pins: 2
+    fp_pads: 2
+    provenance: ECN-K1-DRAFT-12; TPS2121 output decoupling
+    nets:
+    - PWR_5V_SYS
+    - GND
+
 interfaces:
   J1:
-    connector: USB_C_RECEPT (Amphenol 12401548E4-2A 24-pin full-featured)
+    connector: USB_C_RECEPT (JAE DX07S024WJ1R350 24-pin full-featured)
     edge: left
     orientation: horizontal
     opening: 朝板外左方 (KEY 线缆接入)
     pins: 16
-    fp_pads: 30
-    bbox_mm:
-    - 9.0
-    - 7.86
-    capability_note: "✅ 24-pin full-featured (SS 8/8: A2/A3/A10/A11/B2/B3/B10/B11) — PCIe x2 物理承载落实 (PM 2026-08-22 换件裁决)"
-  J14:
-    connector: OCuLink SFF-8612 (立式)
-    edge: right
-    orientation: vertical
-    opening: 朝板外右方 (HOST 线缆接入)
-    pins: 42
-    fp_pads: 42
+    fp_pads: 32
     bbox_mm:
     - 11.0
-    - 4.31
+    - 7.0
+    capability_note: '✅ 24-pin full-featured (SS 8/8: A2/A3/A10/A11/B2/B3/B10/B11)
+      — PCIe x2 物理承载落实 (ECN-010 换件)'
+  J14:
+    connector: SlimSAS SFF-8654 38-pin (R/A 卧式, Amphenol U10)
+    edge: right
+    orientation: horizontal
+    opening: 朝板外右方 (+X, HOST 卡/线缆接入, 卡槽中线高 2.57mm)
+    pins: 38
+    fp_pads: 38
+    bbox_mm:
+    - 15.8
+    - 12.7
   J6:
     connector: J_PWR_CTRL 2-pin
     note: 低速边带, 位置归候选变量
@@ -752,8 +1504,16 @@ interfaces:
     connector: J_12V_IN 2-pin
     note: 12V 待机输入, 位置归候选变量
   J13:
-    connector: J_OOB_HEADER 4-pin
+    connector: J_SWD_HEADER 4-pin
     note: SWD 调试, 位置归候选变量
+  J15:
+    connector: 'HOST_USB2_4P (1.25mm 4-pin: D+/D-/GND/SHIELD)'
+    edge: right
+    note: ECN-K1-DRAFT-9 HOST USB2 管理通道；经 U19 2:1 MUX 门控，AUTHORIZED=1 才接通
+  J16:
+    connector: J_5VSB_IN 2-pin
+    note: R-17 +5VSB 待机电输入 (JST VH 3.96mm, 3A)
+
 high_speed_links:
 - link: PCIe Lane0 TX
   pairs:
@@ -775,41 +1535,81 @@ high_speed_links:
   - PCIE_RX1_P
   - PCIE_RX1_N
   path: J1/RX2_P → U11/A3+,- → J14/PCIE_RX1+,-
+- link: HOST REFCLK direct (G4 / ECN-15)
+  pairs:
+  - REFCLK_P
+  - REFCLK_N
+  path: HOST REFCLK+/- → J14/CLOCK+/- (SlimSAS SFF-8654 A11/A12); K1 pass-through, no local clock source/ReDriver
+  source: HOST
+  ecn: ECN-K1-DRAFT-15-R01-standby-5v-refclk-pass.md
 - notes:
   - 'MUX 分段策略 (SPEC l1_bid.strategy_type): U11 位置 = 轴一 mux_position 候选差异'
-  - REFCLK/PERST#/SRIS 为 ECO31 Open Items 2/3 — 不在本卡生成 (KEY 侧), 高速链不含时钟对
+  - 'REFCLK 由 HOST 提供，经 SlimSAS J14 CLOCK± 直通 (G4 / ECN-15)；PERST#/SRIS 仍为 ECO31 Open Items 2/3 (KEY 侧)，本卡不自产时钟'
 power_tree:
 - rail: 12V_IN
-  source: J10 (2-pin 待机输入)
+  source: J10 (独立 DC 12V 主电源输入连接器, JST VH 10A/250V)
   consumers:
   - U8/VIN
   - U8/EN
   - C88
-- rail: PWR_5V_KEY
-  source: U8/VOUT (DCDC 12V→5V)
+  notes: 独立 DC 12V 主电源输入 (需求冻结 v1 §2.6); F1 2.5A 缓断 + TVS1 SMBJ16A (③④ 落盘)
+- rail: PWR_5V_MAIN
+  source: L1/B (TPS54628 12V→5V 6A 同步 buck; U8/SW→L1)
+  consumers:
+  - U27/IN1
+  - R56/A
+  - R60/A
+  - C89
+  notes: R-17 后主 5V 只进 TPS2121 IN1 与 PR1/OV1 分压；不再直挂 U12/U24/U10
+- rail: PWR_5V_SYS
+  source: U27/OUT (TPS2121 双输入优先 mux, XCOMP 5us 快速切换)
   consumers:
   - U12/IN
+  - U24/IN
   - U10/VIN
   - U10/EN
-  - C89
-- rail: PWR_5V_PREAUTH
-  source: U12/VOUT (TPS22919 软启动 Load Switch)
+  - C104
+  - C106
+  notes: R-01/ECN-15 待命默认 5V：12V 在时主路 PWR_5V_MAIN 优先并自动切换；12V 断时由 5VSB_PROT 供电，管理/预鉴权域常活
+- rail: PWR_5V_WORK
+  source: U24/VOUT (TPS22990 10A 负载开关, ON=WORK_RAIL_EN)
   consumers:
-  - J1/VBUS
+  - Q1/IN
+  - C98
+  notes: 轨B — 工作态 3A 通路；WORK_RAIL_EN=AUTHORIZED AND POWER_LOST_N，5VSB 下硬关断；Q1/ON=WORK_EN 仍由固件控制，形成三重条件
+- rail: PWR_5V_PREAUTH
+  source: U12/VOUT (TPS22965 6A 负载开关, 软启动)
+  consumers:
+  - VBUS
   - R35/A
   - R36/A
   - C92
-  notes: 预鉴权 5V 软启动轨 (裁定 7); CC1/CC2 经 R35/R36 (56K) Rp 上拉
+  notes: 轨A — S5 预鉴权轨 (OI#9); 5VSB 下仍由 PWR_5V_SYS 供电，KEY 只保有预鉴权档电
 - rail: P3V3_AUX
   source: U10/VOUT (LDO 5V→3V3)
   consumers:
   - U1/3V3_AUX_SENSE
   - U6/VCC
+  - U13/VCC
   - U11/VDD×6
   - R1/B
   - R30/A
   - C90
   - C91
+  - U19/VCC
+  - U20/VCC
+  - U21/V+
+  - U22/V+
+  - U25/VCC
+  - U26/VCC
+  - U28/VCC
+  - R51/A
+  - R54/A
+  - D5/VCC
+  - C100
+  - C101
+  - C102
+  notes: R-17 后 LDO 输入由 PWR_5V_SYS 供，5VSB 下管理/鉴权/控制域存活
 - rail: MCU_VDD
   source: P3V3_AUX via R30 (0Ω bypass)
   consumers:
@@ -823,6 +1623,21 @@ power_tree:
   - C85
   - C86
   notes: K1 无 12V DCDC 直出 MCU 供电; R30 焊接短接 P3V3_AUX=MCU_VDD
+- rail: PWR_5VSB_IN
+  source: J16 (+5VSB 待机电输入, JST VH 3.96mm 3A)
+  consumers:
+  - F2/A
+  - D6/K
+  - C103
+  notes: R-17 新增待机输入；F2 3A 缓断 + SMBJ5.0A TVS 输入保护；12V 不在时由本条供电
+- rail: PWR_5VSB_MGMT
+  source: U27/OUT (standby path from 5VSB_PROT)
+  consumers:
+  - U27/IN2
+  - R58/A
+  - R62/A
+  - C103
+  notes: 5VSB 支路预算 = 管理域 0.20W + 预鉴权 2.50W + mux 损耗 0.02W + 20% 余量 ≈ 3.3W；15W 工作档硬关断
 control_plane:
 - function: SBU 预鉴权 I2C (K1 MCU ↔ KEY SE050, 裁定 6)
   nets:
@@ -839,6 +1654,9 @@ control_plane:
   - R32
   - R16
   - R37
+  - R38
+  - R39
+  - U13
   - J1
   note: U6 D_P/D_N (I2C 公共端) ↔ D_P_A/D_N_A (SBU1/2); B 通道 NC
 - function: lane 翻转 MUX 控制 (裁定 8)
@@ -848,13 +1666,21 @@ control_plane:
   devices:
   - U1
   - U11
-- function: 预鉴权供电软启动控制
+- function: 预鉴权供电软启动控制 (轨A)
   nets:
   - TPS_EN
   devices:
   - U1
   - U12
-- function: CC 侦测 (Rp 上拉自 PWR_5V_PREAUTH)
+- function: 工作态轨使能 + KEY_DET 门控 (OI#9 轨B / G6 隔离定案)
+  nets:
+  - WORK_EN
+  - KEY_DET_EN
+  devices:
+  - U1
+  - Q1
+  - Q2
+- function: CC 侦测 + 3A 宣告 (Rp=10k, 需求冻结 v1 §3)
   nets:
   - CC1
   - CC2
@@ -905,13 +1731,58 @@ control_plane:
   - U1
   - R1
   - C87
-- function: USB2 D± (Mode A/B USB 管理, ESD 保护)
+- function: USB2 D± (Mode A/B USB 管理, ESD 保护 + 授权门控)
   nets:
   - KEY_D_P
   - KEY_D_N
+  - MCU_USB_D_P
+  - MCU_USB_D_N
+  - HOST_USB2_D_P
+  - HOST_USB2_D_N
+  - AUTHORIZED
   devices:
   - J1
   - U9
+  - U19
+  - R40
+  - D5
+  - J15
+  note: ECN-K1-DRAFT-9；SEL=AUTHORIZED，默认 HOST 路断开
+- function: 拔 KEY 自回位硬件闩锁链 (ECN-K1-DRAFT-8)
+  nets:
+  - KEY_DET_SENSE
+  - KEY_DET_REF
+  - KEY_PRESENT
+  - AUTH_CLR_N
+  - AUTH_OK_PULSE
+  - AUTHORIZED
+  - U6_OE_N
+  devices:
+  - U20
+  - U21
+  - U25
+  - U26
+  - R49
+  - R50
+  - R51
+  - R52
+  - R53
+  note: KEY_PRESENT→U20 CLR# 异步清零；Q 同时门控 U24 工作轨与 U19 USB2 MUX
+- function: 电源失效检测 / POR 重鉴权链 (ECN-K1-DRAFT-7)
+  nets:
+  - POWER_LOST_N
+  - PWR_FAIL_REF
+  - NRST
+  devices:
+  - U22
+  - R54
+  - R55
+  - C99
+  - U1
+  - R29
+  - C73
+  - U25
+  note: U22 比较 HOST_PWR_DET/PWR_FAIL_REF；NRST 清 U20；固件 POR 后按 KEY_PRESENT 自动 AUTH_START
 net_coverage:
 - net: I2C1_SCL
   domain: control
@@ -983,6 +1854,7 @@ net_coverage:
   domain: power
   members:
   - U1/3V3_AUX_SENSE
+  - U13/VCC
   - R1/B
   - C90/A
   - U6/VCC
@@ -995,6 +1867,23 @@ net_coverage:
   - U11/VDD_4
   - U11/VDD_5
   - U11/VDD_6
+  - R44/B
+  - U14/VCC
+  - C94/A
+  - U19/VCC
+  - U20/VCC
+  - U21/V+
+  - U22/V+
+  - U25/VCC
+  - U26/VCC
+  - U20/D
+  - R51/A
+  - R54/A
+  - D5/VCC
+  - C100/A
+  - C101/A
+  - C102/A
+  - U28/VCC
   candidate_routable: true
 - net: MCU_VDD
   domain: power
@@ -1009,6 +1898,7 @@ net_coverage:
   - C86/A
   - E1/VCC
   - R30/B
+  - U1/VDD_2
   candidate_routable: true
 - net: 12V_IN
   domain: power
@@ -1017,17 +1907,12 @@ net_coverage:
   - U8/VIN
   - U8/EN
   - C88/A
+  - R41/A
   candidate_routable: true
 - net: GND
   domain: ground
   members:
   - U1/VSS
-  - U1/PC14_OSC32_IN
-  - U1/PC15_OSC32_OUT
-  - U1/PB1
-  - U1/PC6
-  - U1/PB4
-  - U1/PB5
   - U1/EP
   - U5/CATHODE
   - U5/EMITTER
@@ -1042,25 +1927,77 @@ net_coverage:
   - C87/B
   - C90/B
   - J1/GND
+  - J1/GND_2
+  - J1/GND_3
+  - J1/GND_4
+  - J1/GND_5
   - J10/GND
   - U6/GND
   - U8/GND
   - U10/GND
   - U9/GND
   - U9/NC
+  - U18/GND
+  - U18/NC
+  - R48/B
+  - C95/B
+  - C96/B
   - E1/VSS
   - E1/A0
   - E1/A1
   - E1/A2
   - E1/WP
   - R16/B
-  - R37/B
   - C88/B
   - C89/B
   - C91/B
+  - C92/B
   - U12/GND
+  - Q1/GND
+  - Q2/S
+  - U13/GND
   - J14/GND
   - U11/GND
+  - R42/B
+  - C93/B
+  - R43/B
+  - D3/K
+  - D4/K
+  - U14/GND
+  - C94/B
+  - U19/GND
+  - U19/OE#
+  - U20/GND
+  - U21/V-
+  - U22/V-
+  - U24/GND
+  - U25/GND
+  - U26/GND
+  - J15/GND
+  - J15/SHIELD
+  - D5/GND
+  - R49/B
+  - R50/B
+  - R52/B
+  - R55/B
+  - C98/B
+  - C99/B
+  - C100/B
+  - C101/B
+  - C102/B
+  - D6/A
+  - J16/GND
+  - U27/GND
+  - U28/GND
+  - R57/B
+  - R59/B
+  - R61/B
+  - R63/B
+  - R64/B
+  - C103/B
+  - C104/B
+  - C105/B
+  - C106/B
   candidate_routable: true
 - net: NRST
   domain: control
@@ -1068,6 +2005,7 @@ net_coverage:
   - U1/NRST
   - R29/A
   - C73/A
+  - U25/B
   candidate_routable: true
 - net: SWCLK_BOOT0
   domain: control
@@ -1087,23 +2025,27 @@ net_coverage:
   members:
   - J1/D_P
   - U9/IO1
+  - U19/D_P
   candidate_routable: true
 - net: KEY_D_N
   domain: control
   members:
   - J1/D_N
   - U9/IO2
+  - U19/D_N
   candidate_routable: true
 - net: SBU_SEL
   domain: control
   members:
   - U6/SEL
   - R16/A
+  - U1/PB8
   candidate_routable: true
 - net: SBU_EN
   domain: control
   members:
-  - U6/OE#
+  - U1/PB9
+  - U26/A
   candidate_routable: true
 - net: PCIE_TX0_P
   domain: high_speed
@@ -1138,72 +2080,76 @@ net_coverage:
   members:
   - J1/TX2_P
   - U11/A2+
+  - U18/IO1
   candidate_routable: true
 - net: PCIE_TX1_N
   domain: high_speed
   members:
   - J1/TX2_N
   - U11/A2-
+  - U18/IO2
   candidate_routable: true
 - net: PCIE_RX1_P
   domain: high_speed
   members:
   - J1/RX2_P
   - U11/A3+
+  - U18/IO3
   candidate_routable: true
 - net: PCIE_RX1_N
   domain: high_speed
   members:
   - J1/RX2_N
   - U11/A3-
+  - U18/IO4
   candidate_routable: true
-- net: OCuLink_TX0_P
+- net: J14_TX0_P
   domain: high_speed
   members:
   - U11/C0+
-  - J14/PCIE_TX0+
+  - J14/PCIE_TX0-
   candidate_routable: true
-- net: OCuLink_TX0_N
+- net: J14_TX0_N
   domain: high_speed
   members:
   - U11/C0-
-  - J14/PCIE_TX0-
+  - J14/PCIE_TX0+
   candidate_routable: true
-- net: OCuLink_RX0_P
+- net: J14_RX0_P
   domain: high_speed
   members:
   - U11/C1+
-  - J14/PCIE_RX0+
+  - J14/PCIE_RX0-
   candidate_routable: true
-- net: OCuLink_RX0_N
+- net: J14_RX0_N
   domain: high_speed
   members:
   - U11/C1-
-  - J14/PCIE_RX0-
+  - J14/PCIE_RX0+
   candidate_routable: true
-- net: OCuLink_TX1_P
+- net: J14_TX1_P
   domain: high_speed
   members:
   - U11/C2+
-  - J14/PCIE_TX1+
+  - J14/PCIE_TX1-
   candidate_routable: true
-- net: OCuLink_TX1_N
+- net: J14_TX1_N
   domain: high_speed
   members:
   - U11/C2-
-  - J14/PCIE_TX1-
+  - J14/PCIE_TX1+
   candidate_routable: true
-- net: OCuLink_RX1_P
+- net: J14_RX1_P
   domain: high_speed
   members:
   - U11/C3+
-  - J14/PCIE_RX1+
+  - J14/PCIE_RX1-
   candidate_routable: true
-- net: OCuLink_RX1_N
+- net: J14_RX1_N
   domain: high_speed
   members:
   - U11/C3-
-  - J14/PCIE_RX1-
+  - J14/PCIE_RX1+
   candidate_routable: true
 - net: MUX_SEL
   domain: control
@@ -1211,97 +2157,441 @@ net_coverage:
   - U11/SEL1
   - U11/SEL2
   - U1/MUX_SEL
+  - U14/A
   candidate_routable: true
 - net: MUX_PD
   domain: control
   members:
   - U11/PD1
   - U11/PD2
+  - U1/PA7
   candidate_routable: true
-- net: PWR_5V_KEY
+- net: PWR_5V_MAIN
   domain: power
   members:
-  - U8/VOUT
-  - U12/IN
+  - U27/IN1
+  - R56/A
+  - R60/A
   - C89/A
-  - U10/VIN
-  - U10/EN
+  - L1/B
+  - R47/A
   candidate_routable: true
-- net: PWR_5V_PREAUTH
+- net: PWR_5V_SW
   domain: power
   members:
-  - U12/VOUT
+  - U8/SW
+  - L1/A
+  - C97/B
+  candidate_routable: true
+- net: PWR_5V_FB
+  domain: control
+  members:
+  - U8/VFB
+  - R47/B
+  - R48/A
+  candidate_routable: true
+- net: PWR_5V_VREG5
+  domain: power
+  members:
+  - U8/VREG5
+  - C95/A
+  candidate_routable: true
+- net: PWR_5V_SS
+  domain: control
+  members:
+  - U8/SS
+  - C96/A
+  candidate_routable: true
+- net: PWR_5V_VBST
+  domain: power
+  members:
+  - U8/VBST
+  - C97/A
+  candidate_routable: true
+- net: VBUS
+  domain: power
+  members:
   - J1/VBUS
+  - J1/VBUS_2
+  - J1/VBUS_3
+  - J1/VBUS_4
+  - U12/VOUT
+  - Q1/VOUT
   - R35/A
   - R36/A
+  - C92/A
   candidate_routable: true
 - net: TPS_EN
   domain: control
   members:
   - U12/ON
+  - U1/TPS_EN
+  candidate_routable: true
+- net: WORK_EN
+  domain: control
+  members:
+  - U1/WORK_EN
+  - Q1/ON
+  candidate_routable: true
+- net: KEY_DET_EN
+  domain: control
+  members:
+  - U1/KEY_DET_EN
+  - Q2/G
+  candidate_routable: true
+- net: KEY_DET_RET
+  domain: control
+  members:
+  - R37/B
+  - Q2/D
   candidate_routable: true
 - net: CC1
   domain: control
   members:
   - J1/CC1
   - R35/B
+  - U1/CC1
   candidate_routable: true
 - net: CC2
   domain: control
   members:
   - J1/CC2
   - R36/B
+  - U1/CC2
   candidate_routable: true
 - net: SBU1
   domain: control
   members:
   - J1/SBU1
-  - U6/D_P_A
   - R37/A
+  - R38/A
+  - U13/IO1
+  - R46/A
+  candidate_routable: true
+- net: SBU1_INT
+  domain: control
+  members:
+  - R38/B
+  - U6/D_P_A
   candidate_routable: true
 - net: SBU2
   domain: control
   members:
   - J1/SBU2
+  - R39/A
+  - U13/IO2
+  candidate_routable: true
+- net: SBU2_INT
+  domain: control
+  members:
+  - R39/B
   - U6/D_N_A
   candidate_routable: true
+- net: D_P_HOLD
+  domain: control
+  members:
+  - U1/USB_D_P
+  - R40/A
+  candidate_routable: true
+- net: HOST_PWR_DET
+  domain: control
+  members:
+  - U1/WAKE_IN
+  - R41/B
+  - R42/A
+  - C93/A
+  - U14/B
+  - U22/IN+
+  candidate_routable: true
+- net: AUTH_LED
+  domain: control
+  members:
+  - U1/RST_IN
+  - D2/A
+  candidate_routable: true
+- net: AUTH_LED_K
+  domain: control
+  members:
+  - D2/K
+  - R43/A
+  candidate_routable: true
+- net: WORK_PG
+  domain: control
+  members:
+  - Q1/PG
+  - R44/A
+  - D3/A
+  candidate_routable: true
+- net: PCIE_GATE
+  domain: control
+  members:
+  - U14/Y
+  - R45/A
+  candidate_routable: true
+- net: PCIE_LED_K
+  domain: control
+  members:
+  - R45/B
+  - D4/A
+  candidate_routable: true
+- net: KEY_DET_SENSE
+  domain: control
+  members:
+  - R46/B
+  - U1/PB1
+  - U21/IN+
+  - R53/B
+  candidate_routable: true
+- net: PWR_5V_WORK
+  domain: power
+  members:
+  - U24/VOUT
+  - Q1/IN
+  - C98/A
+  candidate_routable: true
+- net: POWER_LOST_N
+  domain: control
+  members:
+  - U22/OUT
+  - U1/PC14_OSC32_IN
+  - U28/B
+  candidate_routable: true
+- net: PWR_FAIL_REF
+  domain: control
+  members:
+  - R54/B
+  - R55/A
+  - U22/IN-
+  - C99/A
+  candidate_routable: true
+- net: AUTHORIZED
+  domain: control
+  members:
+  - U20/Q
+  - U19/SEL
+  - U28/A
+  - R49/A
+  candidate_routable: true
+- net: AUTH_CLR_N
+  domain: control
+  members:
+  - U20/CLR#
+  - U25/Y
+  candidate_routable: true
+- net: AUTH_OK_PULSE
+  domain: control
+  members:
+  - U20/CLK
+  - U1/PC15_OSC32_OUT
+  candidate_routable: true
+- net: KEY_PRESENT
+  domain: control
+  members:
+  - U21/OUT
+  - U25/A
+  - U26/B
+  - U1/PD3
+  - R50/A
+  - R53/A
+  candidate_routable: true
+- net: KEY_DET_REF
+  domain: control
+  members:
+  - R51/B
+  - R52/A
+  - U21/IN-
+  candidate_routable: true
+- net: U6_OE_N
+  domain: control
+  members:
+  - U26/Y
+  - U6/OE#
+  candidate_routable: true
+- net: MCU_USB_D_P
+  domain: data
+  members:
+  - R40/B
+  - U19/D_P_A
+  candidate_routable: true
+- net: MCU_USB_D_N
+  domain: data
+  members:
+  - U1/USB_D_N
+  - U19/D_N_A
+  candidate_routable: true
+- net: HOST_USB2_D_P
+  domain: data
+  members:
+  - U19/D_P_B
+  - D5/IO1
+  - J15/D_P
+  candidate_routable: true
+- net: HOST_USB2_D_N
+  domain: data
+  members:
+  - U19/D_N_B
+  - D5/IO2
+  - J15/D_N
+  candidate_routable: true
+- net: PWR_5V_SYS
+  domain: power
+  members:
+  - U27/OUT
+  - U27/OUT_2
+  - C104/A
+  - C106/A
+  - U12/IN
+  - U24/IN
+  - U10/VIN
+  - U10/EN
+  candidate_routable: true
+- net: 5VSB_IN
+  domain: power
+  members:
+  - J16/VIN_5VSB
+  - F2/A
+  candidate_routable: true
+- net: 5VSB_PROT
+  domain: power
+  members:
+  - F2/B
+  - D6/K
+  - C103/A
+  - U27/IN2
+  - R58/A
+  - R62/A
+  candidate_routable: true
+- net: PWR_MUX_PR1
+  domain: power
+  members:
+  - U27/PR1
+  - R56/B
+  - R57/A
+  candidate_routable: true
+- net: PWR_MUX_CP2
+  domain: power
+  members:
+  - U27/CP2
+  - R58/B
+  - R59/A
+  candidate_routable: true
+- net: PWR_MUX_OV1
+  domain: power
+  members:
+  - U27/OV1
+  - R60/B
+  - R61/A
+  candidate_routable: true
+- net: PWR_MUX_OV2
+  domain: power
+  members:
+  - U27/OV2
+  - R62/B
+  - R63/A
+  candidate_routable: true
+- net: PWR_MUX_ILIM
+  domain: power
+  members:
+  - U27/ILIM
+  - R64/A
+  candidate_routable: true
+- net: PWR_MUX_SS
+  domain: power
+  members:
+  - U27/SS
+  - C105/A
+  candidate_routable: true
+- net: WORK_RAIL_EN
+  domain: control
+  members:
+  - U28/Y
+  - U24/ON
+  candidate_routable: true
+- net: REFCLK_P
+  domain: high_speed
+  members:
+  - J14/CLOCK+
+  candidate_routable: true
+- net: REFCLK_N
+  domain: high_speed
+  members:
+  - J14/CLOCK-
+  candidate_routable: true
 reconciliation:
+  sch_sync_v1:
+    stage: ②原理图
+    generator: k1/pm_gate/tools/k1_sch_sync_v1.py
+    note: 本件由「①只读现状真源」同步为「①方案冻结态」（真源 = L1/inputs/k1_board_reqfreeze_v1.yaml） + ②补充件（Q1
+      轨B 开关 / WORK_EN / SBU 串 R+ESD / SBU 网拆分）；k1_nets.yaml 由其 net_coverage 机械派生
+    declared: k1/pm_gate/artifacts/k1/L2/SCH_SYNC_v1.md
+    resolved_defects:
+    - 'G-6 (board yaml#devices.U1.nets 含 SBU1 但 nets#SBU1 无 U1): ②以 nets 为准同步 ⇒ U1.nets
+      去除 SBU1'
+    - 'C92 网表缺失 (PWR_5V_PREAUTH/GND): 已补入 net_coverage 与 k1_nets.yaml'
   device_count:
-    k1_nets_yaml: 36
-    schematic_sch_k1: 37
+    k1_nets_yaml: 105
+    schematic_sch_k1: 83
     diff:
-    - 'C92 (100nF 0402, PWR_5V_PREAUTH 去耦): 原理图+netlist 存在 (net: PWR_5V_PREAUTH/GND), k1_nets.yaml 缺失'
+    - H1
+    - H2
+    - H3
+    - H4
+    note: 'ECN-K1-DRAFT-9 四缺口后 87 器件（含 H1-H4 机械孔）；原理图 placements 83 = 87 - 4。卡面 66→83 为电气 placements 口径；含机械孔真值为 66→87。'
   net_count:
-    k1_nets_yaml: 46
-    netlist_real_nets: 46
-    note: k1_nets.yaml 顶层 nets 46 key (全部真实网), nc 为独立顶层 list; kicad-cli netlist codes 1-46 与之一一对应。早期记录 '38 个网 key' 为误
+    k1_nets_yaml: 87
+    netlist_real_nets: 77
+    note: 'ECN-K1-DRAFT-9 新增 13 网（USB2 桥/授权闩锁/掉电 POR）；k1_nets.yaml 顶层 77 key。卡面 64→69 为估算，真值 64→77，逐网见 ECN-K1-DRAFT-9。'
   nc_pairs:
-    k1_nets_yaml: 36
-    netlist_unconnected: 40
-    note: '差 4: U6/D_P_B, U6/D_N_B, U8/FB, U8/SW 未列入 k1_nets nc list'
-  k1_nets_yaml_missing_nodes:
-  - 'SBU_SEL: U1/PB8 (pad31) — yaml 仅 R16/U6'
-  - 'SBU_EN: U1/PB9 (pad1) — yaml 仅 U6/OE#'
-  - 'MUX_PD: U1/PA7 (pad14) — yaml 仅 U11/PD1,PD2'
-  - 'TPS_EN: U1/PB3 (pad26) — yaml 仅 U12/ON'
-  - 'SBU1: U1/PB2 (pad17) — yaml 缺'
-  - 'PWR_5V_PREAUTH: C92/A — yaml 缺 (C92 全器件)'
-  - 'GND: C92/B — yaml 缺'
+    k1_nets_yaml: 37
+    netlist_unconnected: 32
+    note: 'ECN-K1-DRAFT-9 新增 U24/NC 显式 NC；netlist_unconnected 以 kicad-cli 导出复核为准（布局/坐标不影响逻辑 NC）'
+  k1_nets_yaml_missing_nodes: []
+  k1_nets_yaml_missing_nodes_note: 'ECN-K1-DRAFT-9 后 k1_sch.yaml / k1_nets.yaml / net_coverage 三者同源；旧 SBU_SEL/SBU_EN/MUX_PD/TPS_EN/GND 缺节点项已消解'
   open_issues:
   - id: OPEN-1
     severity: BLOCKING
     title: J1 Type-C footprint 无 SS 差分焊盘 (PCIe x2 不可实现)
-    evidence: J1 符号 IOCONVERT:USB_C_RECEPT 16 pin 含 8 个 SS pin (TX_P/TX_N/RX_P/RX_N/TX2_P/TX2_N/RX2_P/RX2_N); footprint Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12
-      实测仅 16 信号 pad (A1/A4/A5/A6/A7/A8/A9/A12/B1/B4/B5/B6/B7/B8/B9/B12) + 4 SH + 2 NPTH, 无 A2/A3/A10/A11/B2/B3/B10/B11 (SS
-      TX/RX)。HRO TYPE-C-31-M-12 为 16-pin USB2-only 变体。ECO31 裁定 2 (PCIe 2.1 x2) 依赖 full-featured 24-pin Type-C — 本 footprint
-      不满足
+    evidence: J1 符号 IOCONVERT:USB_C_RECEPT 16 pin 含 8 个 SS pin (TX_P/TX_N/RX_P/RX_N/TX2_P/TX2_N/RX2_P/RX2_N);
+      footprint Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12 实测仅 16 信号 pad (A1/A4/A5/A6/A7/A8/A9/A12/B1/B4/B5/B6/B7/B8/B9/B12)
+      + 4 SH + 2 NPTH, 无 A2/A3/A10/A11/B2/B3/B10/B11 (SS TX/RX)。HRO TYPE-C-31-M-12
+      为 16-pin USB2-only 变体。ECO31 裁定 2 (PCIe 2.1 x2) 依赖 full-featured 24-pin Type-C
+      — 本 footprint 不满足
     impact: PCIe x2 数据面 (J1↔U11 4 对差分) 无焊盘落点; 物理上不可路由
-    action: '已裁决 (PM 2026-08-22): J1 换 Amphenol 12401548E4-2A 24-pin full-featured (SS 8/8 焊盘全在); 本 yaml 已同步 footprint/几何'
+    action: '已裁决 (PM 2026-08-22): J1 换 Amphenol 12401548E4-2A 24-pin full-featured
+      (SS 8/8 焊盘全在); 本 yaml 已同步 footprint/几何'
     ruled: true
-    ruling: 'PM 2026-08-22: J1 换 Amphenol 12401548E4-2A 24-pin full-featured Type-C (KiCad 官方库, SS 焊盘 A2/A3/A10/A11/B2/B3/B10/B11 全在) — OPEN-1 关闭'
+    ruling: 'PM 2026-08-22: J1 换 Amphenol 12401548E4-2A 24-pin full-featured Type-C
+      (KiCad 官方库, SS 焊盘 A2/A3/A10/A11/B2/B3/B10/B11 全在) — OPEN-1 关闭'
   - id: OPEN-2
     severity: WARN
     title: U10 LDO 符号 5 pin vs SOT-23 footprint 3 pad
-    evidence: sch_pins=5 (VIN/VOUT/GND/EN/NC_ADJ), footprint Package_TO_SOT_SMD:SOT-23 仅 3 pad
+    evidence: sch_pins=5 (VIN/VOUT/GND/EN/NC_ADJ), footprint Package_TO_SOT_SMD:SOT-23
+      仅 3 pad
     impact: footprint 与符号不匹配; 实际器件应为 SOT-23-5 (实测 4.10×3.54mm)
     action: 布局预算按 SOT-23-5; 原理图 footprint 修正待 ECO
+
+ecn_k1_20261114:
+  records:
+  - k1/doc/ECN-K1-DRAFT-1-U8-buck.md
+  - k1/doc/ECN-K1-DRAFT-2-H1-H4-plated.md
+  - k1/doc/ECN-K1-DRAFT-3-Lane1-ESD.md
+  - k1/doc/ECN-K1-DRAFT-4-board-width.md
+  - k1/doc/ECN-K1-DRAFT-5-R35-R36-Rp.md
+  - k1/doc/ECN-K1-DRAFT-6-R03-timeout.md
+  - k1/doc/ECN-K1-DRAFT-7-R15-powerfail.md
+  - k1/doc/ECN-K1-DRAFT-8-pattern-lib.md
+  - k1/doc/ECN-K1-DRAFT-9-pinmap-four-gap.md
+  - k1/doc/ECN-K1-DRAFT-10-audit-spec-anchors.md
+  - k1/doc/ECN-K1-DRAFT-11-evidence-anchors.md
+  - k1/doc/ECN-K1-DRAFT-12-R17-dual-input.md
+  - k1/doc/ECN-K1-DRAFT-13-R16-hotplug.md
+  - k1/doc/ECN-K1-DRAFT-15-R01-standby-5v-refclk-pass.md
+  device_count: 105
+  net_count: 89
+  dimension_mm:
+  - 70
+  - 48
+  lane1_tvs: U18 (TPD6E05U06, 4/6 lines, IO5/IO6 NC)
+  tps54628_actuals: L1=3.3uH, R47=124K, R48=22.1K, C95=1uF (VREG5), C96=6.8nF (SS), C97=100nF (VBST-SW)
+  mounting_holes: H1-H4 plated, pad to GND
+  r35_r36: 10K (Rp 3A declaration)

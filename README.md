@@ -40,18 +40,18 @@ KEY (secure vault) ──Type-C──► K1 Master Gate Card ──SlimSAS──
 | Path | Description |
 |---|---|
 | `k1_v1.kicad_pro` / `.kicad_pcb` | KiCad 10 project + PCB (self-contained) |
-| `sch/` | Schematics: connectors, MCU & sideband, power (12V/5V/3V3), decoupling |
-| `lib/IOCONVERT.kicad_sym` | Symbol library (80 symbols) — required for schematics |
+| `sch/` | Schematics: top `k1_sch`, connectors, MCU & sideband, power (12V/5V/3V3), input mux & standby, decoupling/redriver VCC + `K1_SCH.kicad_sym` symbol library |
 | `lib/ForgeOS.pretty/` | Footprint library (19 footprints) |
 | `boards/` | Board/nets configuration (YAML) |
+| `fab/` | R2.3 tapeout candidate — KiCad project, PCB, design rules |
 
 ## Getting Started
 
 1. Install [KiCad](https://www.kicad.org/) 10.x
 2. Clone this repository
-3. Open `k1_v1.kicad_pro` (latest tracked generation; the current R2.3
-   tapeout candidate ships in `fab/` of the working tree, pending archive)
-4. If symbols/footprints show as missing, add `lib/IOCONVERT.kicad_sym`
+3. Open `fab/k1_tapeout_candidate_r2_3_20261122.kicad_pro` (current R2.3
+   tapeout candidate) or `k1_v1.kicad_pro` (historical v1 baseline)
+4. If symbols/footprints show as missing, add `sch/K1_SCH.kicad_sym`
    to the symbol library table and `lib/ForgeOS.pretty/` to the footprint
    library table (global or project-level)
 
@@ -74,8 +74,8 @@ Tapeout chain: **v1 → R2 → R2.1 → R2.2 → R2.3** (current candidate,
   0 new hard errors + 3 pre-existing J1 baseline waivers (all soft) + 48 warnings,
   0 unrouted nets; H5 M2.5 NPTH mounting hole added; four connector-family
   orientations solved.
-- Fabrication-candidate deliverables live in the working tree (`fab/` renders,
-  gerber exports) and are intentionally not tracked here yet.
+- The R2.3 tapeout candidate (PCB/project/rules) is tracked under `fab/`;
+  gerber exports still ship from the working tree at fab hand-off.
 - Toolchain migration to the Rust `rcore` engine is underway: milestones
   **M1** (routing: raster/astar/planner/plan_io + model orientation, exact-parity
   vs Python incl. pixel-level Pillow Draw.c reimplementation) and **M2**
