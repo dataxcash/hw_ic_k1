@@ -1,11 +1,11 @@
 # hw_ic_k1 — K1 Master Gate Card (PCIe 2.1 x2 Injection)
 
-![K1 board — final 4K 3D top render](doc/images/k1-top-3d-render-4k.png)
-*K1 Master Gate Card — final 4K top render (ECN-14/15/16 complete). USB Type-C
-re-mounted facing the board's left edge; all 15 high-speed nets re-routed and
-length-matched (intra-pair skew ≤ 0.10 mm); H5 mounting hole added — 47
-components, 5 mounting holes. J1 body uses the Amphenol stand-in STEP; the JAE
-DX07S024WJ1R350 model is pending.*
+![K1 R2.1 tapeout candidate — 3D top-flat render (4K)](doc/images/k1-r21-top-flat-4k.png)
+*K1 R2.1 tapeout candidate — 3D top-flat render (4K). DRC: 0 new hard errors,
+3 pre-existing J1 (Type-C) baseline waivers, 0 unrouted nets. H5 M2.5 NPTH
+mounting hole added; all four connector-family orientations solved.
+J1 rendered pads-only — no substitute body pending owner-provided
+JAE DX07S024WJ1R350 STEP (#K2-677; Amphenol stand-in revoked).*
 
 Open-source hardware — KiCad design files for the **K1 Master Gate Card**,
 the master-side converter card in the IOCONVERT V2.0 1-Master-to-4-Worker
@@ -18,7 +18,7 @@ management access, pre-authentication gating (SE050 via I2C), and a PCIe
 2.1 x2 data path injected into the master host through an OCuLink connector.
 
 ```
-KEY (secure vault) ──Type-C──► K1 Master Gate Card ──OCuLink──► Master Host
+KEY (secure vault) ──Type-C──► K1 Master Gate Card ──SlimSAS──► Master Host
                                   │
                                   ├─ USB management (SBU I2C ↔ SE050 pre-auth)
                                   ├─ PCIe 2.1 x2 lane injection
@@ -27,8 +27,8 @@ KEY (secure vault) ──Type-C──► K1 Master Gate Card ──OCuLink──
 
 ## Key Features
 
-- **Form factor**: 80 × 38 mm, 4-layer PCB
-- **Interface**: USB Type-C (KEY), OCuLink SFF-8612 (host), 12V DC-in
+- **Form factor**: 70 × 48 mm, 4-layer PCB (#K1-REV-17 缩板)
+- **Interface**: USB Type-C (KEY), SlimSAS SFF-8654 4i (host, #W4 换件), 12V DC-in
 - **Security**: STM32G0B1 MCU gatekeeper + SE050 pre-authentication via SBU I2C
 - **Data path**: PCIe 2.1 x2 with PI3DBS16412 lane-swap MUX
 - **Power**: 3.3V_AUX → 5V boost (TLV61046), LDO 5V→3V3, 12V→3V3 DC-DC
@@ -48,10 +48,27 @@ KEY (secure vault) ──Type-C──► K1 Master Gate Card ──OCuLink──
 
 1. Install [KiCad](https://www.kicad.org/) 10.x
 2. Clone this repository
-3. Open `k1_v1.kicad_pro`
+3. Open `k1_v1.kicad_pro` (latest tracked generation; the current R2.1
+   tapeout candidate ships in `fab/` of the working tree, pending archive)
 4. If symbols/footprints show as missing, add `lib/IOCONVERT.kicad_sym`
    to the symbol library table and `lib/ForgeOS.pretty/` to the footprint
    library table (global or project-level)
+
+## Status — 2026-11-22
+
+Tapeout chain: **v1 → R2 → R2.1** (current candidate).
+
+- R2.1 board sha256 `74920945c1583fa7…`; DRC at candidate gate: 51 violations =
+  0 new hard errors + 3 pre-existing J1 baseline waivers (all soft) + 48 warnings,
+  0 unrouted nets; H5 M2.5 NPTH mounting hole added; four connector-family
+  orientations solved.
+- Fabrication-candidate deliverables live in the working tree (`fab/` renders,
+  gerber exports) and are intentionally not tracked here yet.
+- Toolchain migration to the Rust `rcore` engine is underway: milestones
+  **M1** (routing: raster/astar/planner/plan_io + model orientation, exact-parity
+  vs Python incl. pixel-level Pillow Draw.c reimplementation) and **M2**
+  (exam/QA engine, 14-subject exam suite, 479 tests green) are landed;
+  **M3** (schematic generation + board tooling) in progress.
 
 ## License
 
