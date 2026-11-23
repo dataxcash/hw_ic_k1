@@ -1,0 +1,107 @@
+{
+ "schema": "k1-r24-fab-package-manifest/v1",
+ "package_id": "K1-R2.4-FAB-20261123",
+ "date": "2026-11-23",
+ "owner_order": "owner approved sampling; fab promotion from candidate e744096b",
+ "source_candidate": {
+  "path": "trial_card007/rcore_r24_batch4_20261123/delivery/board_r24_batch4_candidate.kicad_pcb",
+  "sha256": "e744096bc058cd62872b6f7ee70bc85441543eaeb676d4409df44b35f993bc20"
+ },
+ "production_board": {
+  "path": "trial_card007/rcore_r24_fab_20261123/delivery/board/k1_tapeout_candidate_r2_4_20261123.kicad_pcb",
+  "sha256": "e744096bc058cd62872b6f7ee70bc85441543eaeb676d4409df44b35f993bc20",
+  "bytes_equal_to_source": true
+ },
+ "electrical_fingerprint": "9efd27734c8adced249b5356155ab58bfc6c9e8902e025bcb9cb90a1016d12ad",
+ "kicad_cli": "10.0.5",
+ "generation_commands": {
+  "gerbers": "kicad-cli pcb export gerbers --output delivery/gerbers --layers F.Cu,In1.Cu,In2.Cu,B.Cu,F.Paste,B.Paste,F.Silkscreen,B.Silkscreen,F.Mask,B.Mask,Edge.Cuts,F.Fab,B.Fab --check-zones delivery/board/k1_tapeout_candidate_r2_4_20261123.kicad_pcb",
+  "drill": "kicad-cli pcb export drill --format excellon --excellon-units mm --excellon-separate-th --generate-report --report-path delivery/drill/drill_report.txt -o delivery/drill delivery/board/k1_tapeout_candidate_r2_4_20261123.kicad_pcb",
+  "pos": "kicad-cli pcb export pos --format csv --units mm --side both -o delivery/pos/k1_tapeout_r2_4_pos_both.csv delivery/board/k1_tapeout_candidate_r2_4_20261123.kicad_pcb",
+  "bom": "work/make_bom.py (pcbnew inventory from production board)",
+  "render": "work/render_r24.py (mounted copy; --define-var KICAD10_3DMODEL_DIR=/home/fila/jqdDev_2025/ic_hw/AppDir/share/kicad/3dmodels)",
+  "ipc356": "kicad-cli pcb export ipcd356 -o delivery/test/k1_r2_4.ipc356 delivery/board/k1_tapeout_candidate_r2_4_20261123.kicad_pcb"
+ },
+ "contents": {
+  "board_three_piece": [
+   "delivery/board/k1_tapeout_candidate_r2_4_20261123.kicad_pcb",
+   "delivery/board/k1_tapeout_candidate_r2_4_20261123.kicad_pro",
+   "delivery/board/k1_tapeout_candidate_r2_4_20261123.kicad_prl"
+  ],
+  "gerbers": [
+   "delivery/gerbers/k1_tapeout_candidate_r2_4_20261123-B_Cu.gbl",
+   "delivery/gerbers/k1_tapeout_candidate_r2_4_20261123-B_Fab.gbr",
+   "delivery/gerbers/k1_tapeout_candidate_r2_4_20261123-B_Mask.gbs",
+   "delivery/gerbers/k1_tapeout_candidate_r2_4_20261123-B_Paste.gbp",
+   "delivery/gerbers/k1_tapeout_candidate_r2_4_20261123-B_Silkscreen.gbo",
+   "delivery/gerbers/k1_tapeout_candidate_r2_4_20261123-Edge_Cuts.gm1",
+   "delivery/gerbers/k1_tapeout_candidate_r2_4_20261123-F_Cu.gtl",
+   "delivery/gerbers/k1_tapeout_candidate_r2_4_20261123-F_Fab.gbr",
+   "delivery/gerbers/k1_tapeout_candidate_r2_4_20261123-F_Mask.gts",
+   "delivery/gerbers/k1_tapeout_candidate_r2_4_20261123-F_Paste.gtp",
+   "delivery/gerbers/k1_tapeout_candidate_r2_4_20261123-F_Silkscreen.gto",
+   "delivery/gerbers/k1_tapeout_candidate_r2_4_20261123-In1_Cu.g1",
+   "delivery/gerbers/k1_tapeout_candidate_r2_4_20261123-In2_Cu.g2",
+   "delivery/gerbers/k1_tapeout_candidate_r2_4_20261123-job.gbrjob"
+  ],
+  "drill": [
+   "delivery/drill/drill_report.txt",
+   "delivery/drill/k1_tapeout_candidate_r2_4_20261123-NPTH.drl",
+   "delivery/drill/k1_tapeout_candidate_r2_4_20261123-PTH.drl",
+   "delivery/drill/k1_tapeout_candidate_r2_4_20261123-back-in1.drl",
+   "delivery/drill/k1_tapeout_candidate_r2_4_20261123-back-in2.drl",
+   "delivery/drill/k1_tapeout_candidate_r2_4_20261123-front-in1.drl",
+   "delivery/drill/k1_tapeout_candidate_r2_4_20261123-front-in2.drl",
+   "delivery/drill/k1_tapeout_candidate_r2_4_20261123-in1-in2.drl"
+  ],
+  "pos": [
+   "delivery/pos/k1_tapeout_r2_4_pos_both.csv",
+   "delivery/pos/k1_tapeout_r2_4_pos_front.csv",
+   "delivery/pos/k1_tapeout_r2_4_pos_back.csv",
+   "delivery/pos/k1_tapeout_r2_4_pos_smd_both.csv"
+  ],
+  "bom": [
+   "delivery/bom/k1_tapeout_r2_4_BOM_per_ref.csv",
+   "delivery/bom/k1_tapeout_r2_4_BOM_assembly_101.csv",
+   "delivery/bom/k1_tapeout_r2_4_BOM_refset.csv",
+   "delivery/bom/k1_tapeout_r2_4_BOM_grouped.csv",
+   "delivery/bom/k1_tapeout_r2_4_BOM_summary.json"
+  ],
+  "notes": [
+   "delivery/AS_BUILT_NOTES_R2.4.md",
+   "delivery/AS_BUILT_NOTES_R2.4.json",
+   "delivery/WARNING_LEDGER_62_R2.4.csv",
+   "delivery/MODEL_SUBSTITUTIONS_19_R2.4.csv",
+   "delivery/LEGACY_DIFF_PAIRS_R2.4.csv",
+   "delivery/SI_WAIVERS_3_R2.4.csv"
+  ],
+  "evidence": [
+   "delivery/fingerprint.json",
+   "delivery/redline_manifest.yaml",
+   "delivery/redline_report.json",
+   "delivery/silk_check.json",
+   "delivery/CONSISTENCY_REPORT.json",
+   "delivery/board_stats.json",
+   "delivery/board_stats.txt"
+  ],
+  "renders": [
+   "delivery/renders/K1-CARD-R24FAB-01-full-board-4k.png",
+   "delivery/renders/K1-CARD-R24FAB-02-h5-closeup-4k.png",
+   "delivery/renders/K1-CARD-R24FAB-03-top-iso-4k.png",
+   "delivery/renders/K1-CARD-R24FAB-04-bottom-iso-4k.png",
+   "delivery/renders/K1-CARD-R24FAB-05-top-flat-4k.png"
+  ],
+  "test": [
+   "delivery/test/k1_r2_4.ipc356"
+  ]
+ },
+ "counts": {
+  "gerber_files": 14,
+  "drill_files": 7,
+  "pos_both_rows": 101,
+  "bom_total_refs": 106,
+  "bom_assembly_refs": 101,
+  "renders": 5
+ },
+ "sha_table": "delivery/SHA256SUMS.txt"
+}

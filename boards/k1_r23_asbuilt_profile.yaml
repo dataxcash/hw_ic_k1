@@ -1,0 +1,102 @@
+# K1 R2.3 as-built exception ledger (truth-source companion, NOT a replacement
+# for k1_sch.yaml electrical intent).
+#
+# Purpose: `rcore board pinmap-audit` compares board pads against the schematic
+# truth (boards/k1_sch.yaml).  This profile names every *known and adjudicated*
+# divergence for the frozen R2.3 board, so any NEW mismatch fails the gate.
+#
+# Board: fab/k1_tapeout_candidate_r2_3_20261122.kicad_pcb (553c63bf...)
+# Truth: boards/k1_sch.yaml (design intent; ECN-9/ECN-12 executed on paper)
+schema: k1-asbuilt-profile/v1
+board: fab/k1_tapeout_candidate_r2_3_20261122.kicad_pcb
+board_sha256: 553c63bf8573dcd126c4c5ce61fbf9fa1d927d26bab7e157d6666a801b6f1b56
+truth: boards/k1_sch.yaml
+date: '2026-11-22'
+
+adjudications:
+  C1:
+    title: USB D+/D- bridge asymmetry (U19 TS3USB221A absent)
+    ruling: DOCUMENTED_GAP_ACCEPTED
+    detail: >-
+      Truth expects U19 USB2 bridge (MCU_USB_D_P/N -> U19 -> R40/U9 -> J1).
+      R2.3 has U19 unpopulated; R40.2 sits on legacy KEY_D_P and U1.23 is a
+      single-pad net (MCU_USB_D_N). USB2 host-bridge function is ABSENT on
+      R2.3; this is a known four-gap item (ECN-9), not a new miswire.
+    sampling_impact: >-
+      non-blocking if USB2 host bridge is out of scope; must close in the
+      next board revision.
+  C2:
+    title: U6.OE# driven directly by U1.1 (U26 inverter absent)
+    ruling: ACCEPT_AS_BUILT + FIRMWARE_ACTIVE_LOW
+    detail: >-
+      ECN-9 intended U26 (74LVC1G00) to invert PB9 into U6/OE#.  R2.3 has
+      U1.1 -> U6.6 direct. OE# is active-low, so firmware MUST drive U1.1 low
+      to enable U6. Net semantic renamed SBU_EN -> U6_OE_N.
+    sampling_impact: >-
+      non-blocking; firmware #FW-02 carries the active-low polarity and
+      pin-table rename.
+  C3:
+    title: Power tree - R2.3 single rail PWR_5V_MAIN vs R-17 dual-input truth
+    ruling: AS_BUILT_SINGLE_RAIL
+    detail: >-
+      ECN-12 R-17 (J16 5VSB + U27 TPS2121 + U28 WORK_RAIL_EN) is executed in
+      truth only; R2.3 is single-rail: U8/U10/U12/Q1 all hang on
+      PWR_5V_MAIN, no PWR_5V_SYS/WORK/5VSB_PROT.  k1_sch.yaml keeps R-17 as
+      design target; this profile records the as-built deviation.
+    sampling_impact: >-
+      non-blocking only with explicit owner acceptance of a single-rail build;
+      R-17 closure belongs to the next revision.
+  C4:
+    title: U8 TPS54628 buck pinout is pre-ECN-1 and periphery L1/R47/R48/C95-C97 absent
+    ruling: OPEN_BLOCKER
+    detail: >-
+      ECN-1 (approved) renumbered the truth symbol to the TI datasheet pinout
+      (1 EN / 2 VFB / 3 VREG5 / 4 SS / 5 GND / 6 SW / 7 VBST / 8 VIN).  The
+      R2.3 board still carries the OLD 6-pin mapping: pad2=GND (truth VFB),
+      pad4=12V_IN (truth SS), pad5=PWR_5V_MAIN (truth GND), pad6=12V_IN
+      (truth SW), pads 1/3/7/8 open.  The buck periphery (L1, R47/R48,
+      C95/C96/C97) is also in the documented-gap list.  A populated TPS54628
+      on this footprint would tie its GND pin to the 5V rail and its SW pin to
+      12V - potentially destructive, and the buck cannot regulate.
+    sampling_impact: >-
+      BLOCK functional sampling until U8 is re-laid (R2.4 ECO) or U8/buck is
+      explicitly depopulated and 5V is bench-fed under a named lab-only
+      profile.
+    evidence:
+      truth_symbol_pins: {EN: '1', VFB: '2', VREG5: '3', SS: '4', GND: '5', SW: '6', VBST: '7', VIN: '8'}
+      board_pad_nets: {'1': '', '2': 'GND', '3': '', '4': '12V_IN', '5': 'PWR_5V_MAIN', '6': '12V_IN', '7': '', '8': ''}
+      old_symbol_mapping: {VIN: '6', VOUT: '5', SW: '1', FB: '3', EN: '4', GND: '2'}
+
+documented_gap_refs:
+  [U18, U19, U20, U21, U22, U24, U25, U26, U27, U28,
+   C95, C96, C97, C98, C99, C100, C101, C102, C103, C104, C105, C106,
+   D5, D6, F2, J15, J16, L1,
+   R47, R48, R49, R50, R51, R52, R53, R54, R55, R56, R57, R58, R59, R60, R61, R62, R63, R64]
+
+board_only_whitelist: [H1, H2, H3, H4, H5]
+
+known_truth_defect_refs:
+  U9: 'ECN-9 legacy one-to-many GND/NC symbol mapping (U9/GND, U9/NC)'
+  U11: 'ECN-9 legacy one-to-many GND symbol mapping (U11/GND x6)'
+
+accepted_net_renames:
+  J14_RX0_N: OCuLink_RX0_N
+  J14_RX0_P: OCuLink_RX0_P
+  J14_RX1_N: OCuLink_RX1_N
+  J14_RX1_P: OCuLink_RX1_P
+  J14_TX0_N: OCuLink_TX0_N
+  J14_TX0_P: OCuLink_TX0_P
+  J14_TX1_N: OCuLink_TX1_N
+  J14_TX1_P: OCuLink_TX1_P
+
+accepted_pad_overrides:
+  - {ref: U6, pad: '6', truth: U6_OE_N, board: SBU_EN, ruling: C2}
+  - {ref: R40, pad: '2', truth: MCU_USB_D_P, board: KEY_D_P, ruling: C1}
+
+truth_single_member_nets: [REFCLK_P, REFCLK_N]
+
+power_tree_accepted_refs: [Q1, U10, U12]
+power_tree_r17_nets: [PWR_5V_SYS, PWR_5V_WORK, PWR_5V_MAIN, 5VSB_PROT, WORK_RAIL_EN]
+
+unresolved_refs:
+  U8: {ruling: C4, severity: BLOCK}

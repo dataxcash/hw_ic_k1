@@ -1,0 +1,20 @@
+No,Ref,UsedModel,RotZdeg,Offset,Scale,Note
+1,D5,${KICAD10_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/DFN-6-1EP_1.2x1.2mm_P0.4mm_EP0.3x0.94mm.step,0.0,"[0.0, 0.0, 0.0]","[1.33, 1.08, 1.0]",DFN-6 近似封装
+2,E1,${KICAD10_3DMODEL_DIR}/Package_SO.3dshapes/SOIC-8_3.9x4.9mm_P1.27mm.step,0.0,"[0.0, 0.0, 0.0]","[1.0, 1.0, 1.0]",同封装 SOIC-8
+3,J1,${KICAD10_3DMODEL_DIR}/Connector_USB.3dshapes/USB_C_Receptacle_Amphenol_12401610E4-2A.step,-90.0,"[0.0, 0.0, 0.0]","[1.0, 1.0, 1.0]",同规格官方替代（JAE 官方库无 STEP）
+4,J10,${KIPRJMOD}/models/JST_VH_B2P-VH_latch.wrl,0.0,"[0.0, 0.0, 0.0]","[1.0, 1.0, 1.0]",参数建模带锁扣
+5,J13,${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step,0.0,"[0.0, 0.0, 0.0]","[1.0, 1.0, 1.0]",通用 1x04 2.54mm
+6,J14,${KICAD10_3DMODEL_DIR}/Connector_SATA_SAS.3dshapes/SATA_Amphenol_10029364-001LF_Horizontal.step,180.0,"[0.0, 0.0, 0.0]","[0.295, 1.0, 0.65]",SlimSAS/OCuLink 视觉代理
+7,J15,${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step,0.0,"[0.0, 0.0, 0.0]","[0.492, 0.492, 1.0]",1x04 1.25mm 参数缩放代理
+8,J16,${KIPRJMOD}/models/JST_VH_B2P-VH_latch.wrl,180.0,"[0.0, 0.0, 0.0]","[1.0, 1.0, 1.0]",参数建模带锁扣（顶部出线）
+9,J6,${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_KK-254_AE-6410-02A_1x02_P2.54mm_Vertical.step,-90.0,"[0.0, -1.27, 0.0]","[1.0, 1.0, 1.0]",Molex KK-254 同系列带锁扣
+10,J9,${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step,0.0,"[0.0, 0.0, 0.0]","[1.0, 1.0, 1.0]",通用 1x04 2.54mm
+11,L1,${KICAD10_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_Sunlord_SWPA5020S.step,0.0,"[0.0, 0.0, 0.0]","[1.0, 1.0, 1.0]",5.0x5.0mm 同尺寸功率电感代理
+12,U1,${KICAD10_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/QFN-32-1EP_5x5mm_P0.5mm_EP3.3x3.3mm.step,0.0,"[0.0, 0.0, 0.0]","[1.0, 1.0, 1.0]",同封装 QFN-32
+13,U11,${KICAD10_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/QFN-42-1EP_5x6mm_P0.4mm_EP3.7x4.7mm.step,0.0,"[0.0, 0.0, 0.0]","[0.675, 1.48, 1.0]",同封装 QFN-42
+14,U12,${KICAD10_3DMODEL_DIR}/Package_SON.3dshapes/WSON-8-1EP_2x2mm_P0.5mm_EP0.9x1.6mm.step,0.0,"[0.0, 0.0, 0.0]","[1.0, 1.0, 1.0]",WSON-8 同封装代理
+15,U13,${KICAD10_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/DFN-6-1EP_1.2x1.2mm_P0.4mm_EP0.3x0.94mm.step,0.0,"[0.0, 0.0, 0.0]","[1.33, 1.08, 1.0]",DFN-6 近似封装
+16,U19,${KICAD10_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/UQFN-10_1.4x1.8mm_P0.4mm.step,0.0,"[0.0, 0.0, 0.0]","[1.0, 1.0, 1.0]",同封装 UQFN-10
+17,U27,${KICAD10_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/QFN-12-1EP_3x3mm_P0.5mm_EP1.65x1.65mm.step,0.0,"[0.0, 0.0, 0.0]","[0.667, 0.667, 1.0]",QFN-12 参数缩放代理
+18,U5,${KICAD10_3DMODEL_DIR}/Package_SO.3dshapes/SO-4_4.4x2.3mm_P1.27mm.step,0.0,"[0.0, 0.0, 0.0]","[0.75, 1.35, 1.0]",SO-4 视觉代理
+19,U6,${KICAD10_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/UQFN-10_1.4x1.8mm_P0.4mm.step,0.0,"[0.0, 0.0, 0.0]","[1.0, 1.0, 1.0]",同封装 UQFN-10

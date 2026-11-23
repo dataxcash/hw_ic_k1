@@ -1,0 +1,25 @@
+{
+  "board": {
+    "path": "trial_card007/rcore_r24_fab_20261123/delivery/board/k1_tapeout_candidate_r2_4_20261123.kicad_pcb",
+    "sha256": "e744096bc058cd62872b6f7ee70bc85441543eaeb676d4409df44b35f993bc20"
+  },
+  "counts": {
+    "footprints": 106,
+    "models": 91,
+    "nets": 90,
+    "tracks": 4282,
+    "vias": 435,
+    "zones": 33
+  },
+  "deterministic": true,
+  "electrical_sha256": "9efd27734c8adced249b5356155ab58bfc6c9e8902e025bcb9cb90a1016d12ad",
+  "fingerprint_sha256": "9efd27734c8adced249b5356155ab58bfc6c9e8902e025bcb9cb90a1016d12ad",
+  "mode": "electrical",
+  "models_sha256": "604b3fcbc0059495f76788d6631369b58faab21adfb37f874bf038dcdd042901",
+  "module": "board_fingerprint",
+  "schema": "rcore-board-fingerprint/v1",
+  "search": false,
+  "track_segment_sha256": "6b1a25d537ff8bebfbdd9ada7b7e476c1ae1c25d59d9b17d3de416945e086751",
+  "version": "1",
+  "zones_verbose_sha256": "3392ed3276fd9d7df6b84bb25a1ce40f2da41b9a30d5b8342bf0655976a572bb"
+}

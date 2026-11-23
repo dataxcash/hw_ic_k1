@@ -1,0 +1,4 @@
+Pair,Skew_mm,SkewGate,MinCenter_mm,Layer,Location_mm,SpeedClass,Disposition
+KEY_D,0.0693,PASS,0.4031,F.Cu,"[4.6, 21.4]",USB2 HS 480 Mb/s,WAIVER_GEOMETRIC
+PCIE_RX1,0.0,PASS,0.3162,F.Cu,"[6.8, 16.7]",PCIe 2.1 5 GT/s,WAIVER_GEOMETRIC
+PCIE_TX1,0.0,PASS,0.2,In2.Cu,"[40.05, 24.55]",PCIe 2.1 5 GT/s,WAIVER_GEOMETRIC

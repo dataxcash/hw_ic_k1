@@ -171,7 +171,7 @@ devices:
   L1:
     value: 3.3uH
     function: ECN-K1-DRAFT-1 TPS54628 buck 电感 (SW→VOUT, 3.3uH typ per datasheet Table 1)
-    footprint: Inductor_SMD:L_3.3uH_5.0x5.0mm
+    footprint: ForgeOS:L_3.3uH_5.0x5.0mm
     sch_pins: 2
     fp_pads: 2
     nets:
@@ -441,6 +441,14 @@ devices:
     fp_pads: 1
     nets:
     - GND
+  H5:
+    value: MountingHole_M2.5
+    footprint: ForgeOS:MountingHole_M2.5_NPTH
+    function: ECN-W5 安装孔 M2.5 NPTH Ø2.7 + keepout Ø5.0 (board-only, 板面对称 H1)
+    sch_pins: 0
+    fp_pads: 1
+    provenance: ECN-W5 #K1-REV-14; Batch0 board yaml sync (was R2.3 board-only)
+    nets: []
   J9:
     value: J_OOB_HEADER
     footprint: ForgeOS:PinHeader_1x04
@@ -1142,7 +1150,7 @@ devices:
     footprint: Package_DFN_QFN:DFN-6_1.6x1.3mm_P0.4mm
     sch_pins: 4
     fp_pads: 6
-    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    provenance: ECN-K1-DRAFT-9 staging promotion; Batch0 ForgeOS footprint authored 1x04 P1.25mm vertical THT (pads 1-4, 1.25mm pitch)
     nets:
     - GND
     - HOST_USB2_D_N
@@ -1151,10 +1159,10 @@ devices:
   J15:
     value: HOST_USB2_4P
     function: ECN-K1-DRAFT-9 HOST USB2 4-pin 接口
-    footprint: Connector_PinHeader_1.25mm:PinHeader_1x04_P1.25mm_Vertical
+    footprint: ForgeOS:PinHeader_1x04_P1.25mm_Vertical
     sch_pins: 4
     fp_pads: 4
-    provenance: ECN-K1-DRAFT-9 staging promotion; footprint geometry frozen in follow-up layout card
+    provenance: ECN-K1-DRAFT-9 staging promotion; Batch0 ForgeOS footprint authored 1x04 P1.25mm vertical THT (pads 1-4, 1.25mm pitch)
     nets:
     - GND
     - HOST_USB2_D_N
@@ -1312,10 +1320,10 @@ devices:
   U27:
     value: TPS2121
     function: R-17 双输入优先电源 mux — 12V 主路优先，12V 断自动切 5VSB，XCOMP 5us 快速切换
-    footprint: Package_DFN_QFN:VQFN-12-1EP_2x2mm_P0.5mm_EP0.9x0.9mm
+    footprint: ForgeOS:VQFN-12-1EP_2x2mm_P0.5mm_EP0.9x0.9mm
     sch_pins: 12
     fp_pads: 13
-    provenance: TI TPS2120/TPS2121 SLVSEA3F §6 Pin Functions, §9.3.7, §9.3.8, §10.3; ECN-K1-DRAFT-12
+    provenance: TI TPS2120/TPS2121 SLVSEA3F §6 Pin Functions, §9.3.7, §9.3.8, §10.3; ECN-K1-DRAFT-12; Batch0 ForgeOS footprint authored 12 pads + EP pad 13, 0.5mm pitch
     nets:
     - PWR_5V_MAIN
     - 5VSB_PROT
