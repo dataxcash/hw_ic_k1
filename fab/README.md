@@ -2,13 +2,15 @@
 
 ## 当前生产口径（2026-11-24）
 
-- 现行生产板：`fab/k1_tapeout_candidate_r2_4_ma_20261124.kicad_pcb`
-  - sha256 `8142683f6a5ddd4b9645627eb514785edb3798331925ca81234054d612c6460b`
-  - 电气指纹 `9efd27734c8adced249b5356155ab58bfc6c9e8902e025bcb9cb90a1016d12ad`（与旧板 `e744096b` 电气等价；仅 5 处 3D 模型挂载修正）
-- 生产包：`fab/k1_r2_4_fab_20261124/`（MA 版；验收/落盘证据见目录内 `LANDING_MANIFEST.json` / `LANDING_VERIFICATION.txt`）
-- 历史：`fab/k1_r2_4_fab_20261123/` 为 `e744096b` 被替代系（superseded，只读保留）；旧扁平三件套 `k1_tapeout_candidate_r2_4_20261123.*` 已删除（历史在 git）
-- 授权：`msg-20261124-081930-k1-mcp-report`
-
+- 现行生产板：`fab/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb`
+  - sha256 `a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f`
+  - 电气指纹 `9efd27734c8adced249b5356155ab58bfc6c9e8902e025bcb9cb90a1016d12ad`；track `6b1a25d537ff8bebfbdd9ada7b7e476c1ae1c25d59d9b17d3de416945e086751`（与 R2.4-MA `8142683f` 电气零变；仅 F.SilkS 位号字号/线宽整体降一号）
+  - 源 ALT `a4719b53…` 字节级副本；SPEC 2.1 同行，`production_release.board_sha256 = a4719b53…`
+- 生产包：`fab/k1_r2_4_2_fab_20261124/`（验收/落盘证据见目录内 `LANDING_MANIFEST.json` / `LANDING_VERIFICATION.txt`）
+- 历史：`fab/k1_r2_4_fab_20261124/`（R2.4-MA `8142683f`）标 **SUPERSEDED**，只读保留；旧扁平件 `k1_tapeout_candidate_r2_4_ma_20261124.*` 已 `git rm`（历史在 git）
+- 授权：`msg-20261124-105501-k1-mcp-report` / 判决 `K1-R242FAB-ACCEPT-20261124`
+- DRC 口径：R2.4.2 `109 = 3` 既有 J1 error + `106` warning，`unconnected=0`；`text_height` 15→61 系 owner 指定字号降档可预期告警，无新增硬错误
+- 厂商下单第三项确认：丝印最小线宽 `0.1mm`、极限字高 `0.65×49` / `0.25×1` 可产性
 
 | 件 | sha256(16) | 口径 / 用途 | 生成器 |
 |---|---|---|---|

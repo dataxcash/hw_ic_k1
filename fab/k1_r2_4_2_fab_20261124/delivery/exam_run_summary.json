@@ -1,0 +1,2039 @@
+{
+ "schema": "k1-card016-s3-exam-run/v2",
+ "card": "K1-CARD-016",
+ "phase": "R4-S3 + R5-S9 + M2-Rust-runner",
+ "exam_package": "/home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_016_r4_20261121/exam",
+ "rcore_cli": "/home/fila/jqdDev_2025/ic_hw/k1/../rcore/target/debug/rcore-cli",
+ "manifest_ok": true,
+ "manifest_failures": [],
+ "cases_total": 47,
+ "cases_passed": 47,
+ "cases_failed": [],
+ "pass": true,
+ "results": [
+  {
+   "case_id": "EX-PWR-01",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 0
+    },
+    {
+     "name": "report/anonymous_pad_audit/anonymous_pad_count",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/metrics/blocking_conflicts",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/metrics/board_refs",
+     "ok": true,
+     "detail": {
+      "actual": 106,
+      "expected": 106
+     }
+    },
+    {
+     "name": "report/metrics/documented_gap_refs",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/metrics/placed_refs",
+     "ok": true,
+     "detail": {
+      "actual": 101,
+      "expected": 101
+     }
+    },
+    {
+     "name": "report/metrics/truth_refs",
+     "ok": true,
+     "detail": {
+      "actual": 101,
+      "expected": 101
+     }
+    },
+    {
+     "name": "report/schema",
+     "ok": true,
+     "detail": {
+      "actual": "k1-pinmap-audit/v2",
+      "expected": "k1-pinmap-audit/v2"
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "PASS",
+      "expected": "PASS"
+     }
+    }
+   ],
+   "rc": 0,
+   "stderr": ""
+  },
+  {
+   "case_id": "EX-R24-G1-01",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 0
+    },
+    {
+     "name": "report/metrics/anonymous_pad_count",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/metrics/duplicate_refs",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/metrics/extra_refs",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/metrics/missing_refs",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/metrics/pad_numbers_unresolved",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/metrics/plan_refs",
+     "ok": true,
+     "detail": {
+      "actual": 101,
+      "expected": 101
+     }
+    },
+    {
+     "name": "report/metrics/sch_refs",
+     "ok": true,
+     "detail": {
+      "actual": 101,
+      "expected": 101
+     }
+    },
+    {
+     "name": "report/schema",
+     "ok": true,
+     "detail": {
+      "actual": "k1-placement-reconcile/v1",
+      "expected": "k1-placement-reconcile/v1"
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "PASS",
+      "expected": "PASS"
+     }
+    }
+   ],
+   "rc": 0,
+   "stderr": ""
+  },
+  {
+   "case_id": "EX-R24-G2-01",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 0
+    },
+    {
+     "name": "report/metrics/coverage_losses",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/metrics/double_assigned_refs",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/metrics/nets_missing",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/metrics/nets_total",
+     "ok": true,
+     "detail": {
+      "actual": 89,
+      "expected": 89
+     }
+    },
+    {
+     "name": "report/metrics/refs_missing",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/metrics/refs_total",
+     "ok": true,
+     "detail": {
+      "actual": 101,
+      "expected": 101
+     }
+    },
+    {
+     "name": "report/schema",
+     "ok": true,
+     "detail": {
+      "actual": "k1-construction-coverage/v1",
+      "expected": "k1-construction-coverage/v1"
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "PASS",
+      "expected": "PASS"
+     }
+    }
+   ],
+   "rc": 0,
+   "stderr": ""
+  },
+  {
+   "case_id": "EX-R24-G3-01",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 0
+    },
+    {
+     "name": "report/anonymous_pad_audit/anonymous_pad_count",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/metrics/blocking_conflicts",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/metrics/board_refs",
+     "ok": true,
+     "detail": {
+      "actual": 106,
+      "expected": 106
+     }
+    },
+    {
+     "name": "report/metrics/documented_gap_refs",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/metrics/placed_refs",
+     "ok": true,
+     "detail": {
+      "actual": 101,
+      "expected": 101
+     }
+    },
+    {
+     "name": "report/metrics/truth_refs",
+     "ok": true,
+     "detail": {
+      "actual": 101,
+      "expected": 101
+     }
+    },
+    {
+     "name": "report/schema",
+     "ok": true,
+     "detail": {
+      "actual": "k1-pinmap-audit/v2",
+      "expected": "k1-pinmap-audit/v2"
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "PASS",
+      "expected": "PASS"
+     }
+    }
+   ],
+   "rc": 0,
+   "stderr": ""
+  },
+  {
+   "case_id": "EX016-01",
+   "kind": "s1_planner_self_test",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc_zero_twice",
+     "ok": true
+    },
+    {
+     "name": "double_run_byte_identical",
+     "ok": true
+    },
+    {
+     "name": "matches_frozen_expected_bytes",
+     "ok": true
+    },
+    {
+     "name": "ok_true",
+     "ok": true
+    },
+    {
+     "name": "checks_exact",
+     "ok": true
+    },
+    {
+     "name": "search_random_false",
+     "ok": true
+    }
+   ],
+   "actual_sha256": "dde9760fa681635cdc245f9dc627c6d2fb0871aca5e23a1537da02d542c5e73d"
+  },
+  {
+   "case_id": "EX016-02",
+   "kind": "s2_frozen_response_replay",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc_zero_twice",
+     "ok": true,
+     "detail": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "report_pass",
+     "ok": true
+    },
+    {
+     "name": "errors_empty",
+     "ok": true
+    },
+    {
+     "name": "board_sha256",
+     "ok": true
+    },
+    {
+     "name": "report_canonical_sha256",
+     "ok": true
+    },
+    {
+     "name": "double_run_board_byte_identical",
+     "ok": true
+    },
+    {
+     "name": "double_run_report_canonical_identical",
+     "ok": true
+    },
+    {
+     "name": "covered_nets",
+     "ok": true
+    },
+    {
+     "name": "net_states",
+     "ok": true
+    },
+    {
+     "name": "machine_route_track_count",
+     "ok": true
+    },
+    {
+     "name": "machine_route_via_count",
+     "ok": true
+    }
+   ],
+   "board_sha256": "f222b7985a05d12b314bf40e883ee297f73585f94eaa933173ba3cf49c6c6842",
+   "report_canonical_sha256": "1eb3e3f1e801d850cc19f5e0914b466aa030daf927f74ef7fc7a1f622e148bcf"
+  },
+  {
+   "case_id": "EX016-03",
+   "kind": "s2_frozen_response_replay",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc_zero_twice",
+     "ok": true,
+     "detail": [
+      0,
+      0
+     ]
+    },
+    {
+     "name": "report_pass",
+     "ok": true
+    },
+    {
+     "name": "errors_empty",
+     "ok": true
+    },
+    {
+     "name": "board_sha256",
+     "ok": true
+    },
+    {
+     "name": "report_canonical_sha256",
+     "ok": true
+    },
+    {
+     "name": "double_run_board_byte_identical",
+     "ok": true
+    },
+    {
+     "name": "double_run_report_canonical_identical",
+     "ok": true
+    },
+    {
+     "name": "covered_nets",
+     "ok": true
+    },
+    {
+     "name": "net_states",
+     "ok": true
+    },
+    {
+     "name": "machine_route_track_count",
+     "ok": true
+    },
+    {
+     "name": "machine_route_via_count",
+     "ok": true
+    },
+    {
+     "name": "accepted_drc_pinned",
+     "ok": true
+    }
+   ],
+   "board_sha256": "5118858f7bfaaff59881ceb3f7f2cd2aad70da3ef0d543fb9e90fb4257f674ac",
+   "report_canonical_sha256": "1c70f30dcd7b7bed88b8e70d90611af9cfa10135eb084c3d04cd3d1b5d59fbfa"
+  },
+  {
+   "case_id": "EX020-01",
+   "kind": "orient_solver",
+   "pass": true,
+   "checks": [
+    {
+     "name": "solver_rc_zero_twice",
+     "ok": true,
+     "detail": [
+      null,
+      null
+     ]
+    },
+    {
+     "name": "solver_double_run_byte_identical",
+     "ok": true
+    },
+    {
+     "name": "expected_solution_match",
+     "ok": true,
+     "detail": []
+    },
+    {
+     "name": "solver_verdict_pass",
+     "ok": true
+    },
+    {
+     "name": "auto_corrected_J1",
+     "ok": true
+    },
+    {
+     "name": "assert_render_rc_zero",
+     "ok": true,
+     "detail": [
+      0,
+      null
+     ]
+    },
+    {
+     "name": "assert_render_verdict_pass",
+     "ok": true,
+     "detail": []
+    }
+   ],
+   "solved_sha256": "f333158bce7b0c8a06729b2c0be35d7e6134a138d45116aab502592c4bd5fe3d",
+   "solved_verdict": "PASS"
+  },
+  {
+   "case_id": "EX032-01",
+   "kind": "exam_runner_selftest",
+   "pass": true,
+   "checks": [
+    {
+     "name": "manifest_ok",
+     "ok": true
+    },
+    {
+     "name": "original_ten_cases_present",
+     "ok": true
+    },
+    {
+     "name": "case_count_includes_new_engine_cases",
+     "ok": true
+    },
+    {
+     "name": "summary_json_deterministic",
+     "ok": true
+    },
+    {
+     "name": "all_case_kinds_known",
+     "ok": true
+    },
+    {
+     "name": "fixture_hashes_checked",
+     "ok": true,
+     "detail": []
+    }
+   ]
+  },
+  {
+   "case_id": "EX033-01",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 0
+    },
+    {
+     "name": "report/flags_placed",
+     "ok": true,
+     "detail": {
+      "actual": [
+       "12V_IN"
+      ],
+      "expected": [
+       "12V_IN"
+      ]
+     }
+    },
+    {
+     "name": "report/root/sha256_16",
+     "ok": true,
+     "detail": {
+      "actual": "286ffd189539c478",
+      "expected": "286ffd189539c478"
+     }
+    },
+    {
+     "name": "report/symbol_lib/sha256_16",
+     "ok": true,
+     "detail": {
+      "actual": "503d97b1e4743313",
+      "expected": "503d97b1e4743313"
+     }
+    },
+    {
+     "name": "report/yaml_components",
+     "ok": true,
+     "detail": {
+      "actual": 101,
+      "expected": 101
+     }
+    },
+    {
+     "name": "report/yaml_nets",
+     "ok": true,
+     "detail": {
+      "actual": 89,
+      "expected": 89
+     }
+    },
+    {
+     "name": "file:K1_SCH.kicad_sym",
+     "ok": true,
+     "detail": {
+      "actual": "503d97b1e4743313d9f433543972d08ec5d42a1c7321504405e76e936e1d2ab2",
+      "expected": "503d97b1e4743313d9f433543972d08ec5d42a1c7321504405e76e936e1d2ab2"
+     }
+    },
+    {
+     "name": "file:connectors.kicad_sch",
+     "ok": true,
+     "detail": {
+      "actual": "54d104e2ceb719f814658a17c04271aa54a19095cf845356f78c75cfbc05153a",
+      "expected": "54d104e2ceb719f814658a17c04271aa54a19095cf845356f78c75cfbc05153a"
+     }
+    },
+    {
+     "name": "file:k1_sch.kicad_sch",
+     "ok": true,
+     "detail": {
+      "actual": "286ffd189539c4789903782afa80d6273d3be07bc05aabc5e0df3493cdf39d55",
+      "expected": "286ffd189539c4789903782afa80d6273d3be07bc05aabc5e0df3493cdf39d55"
+     }
+    },
+    {
+     "name": "file:mcu_sideband.kicad_sch",
+     "ok": true,
+     "detail": {
+      "actual": "8cbd4804851adc0b723280d6d724ed73bb7cebc8ef82308bce644d20c03ab0e4",
+      "expected": "8cbd4804851adc0b723280d6d724ed73bb7cebc8ef82308bce644d20c03ab0e4"
+     }
+    },
+    {
+     "name": "file:power_12v_dc_in_dcdc_5v_ldo_3v3.kicad_sch",
+     "ok": true,
+     "detail": {
+      "actual": "1e0db3d6fceaa5e1ad36a7d4e64f202aab062ac6ac470e4453ebc191bd67c1a3",
+      "expected": "1e0db3d6fceaa5e1ad36a7d4e64f202aab062ac6ac470e4453ebc191bd67c1a3"
+     }
+    },
+    {
+     "name": "file:power_decoupling_redriver_vcc.kicad_sch",
+     "ok": true,
+     "detail": {
+      "actual": "823836fe8f1333899d2f6477d5a7e00b7bde271035f6d653af45e6ae8239e866",
+      "expected": "823836fe8f1333899d2f6477d5a7e00b7bde271035f6d653af45e6ae8239e866"
+     }
+    },
+    {
+     "name": "file:power_input_mux_r_17_5vsb_standby.kicad_sch",
+     "ok": true,
+     "detail": {
+      "actual": "12f6923933b16cbbe57b107de3487fe644e04850fea1e3bde8ac7bbd30921d9a",
+      "expected": "12f6923933b16cbbe57b107de3487fe644e04850fea1e3bde8ac7bbd30921d9a"
+     }
+    }
+   ],
+   "rc": 0,
+   "stderr": ""
+  },
+  {
+   "case_id": "EX033-02",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 0
+    },
+    {
+     "name": "report/n_nets",
+     "ok": true,
+     "detail": {
+      "actual": 89,
+      "expected": 89
+     }
+    },
+    {
+     "name": "report/n_placements",
+     "ok": true,
+     "detail": {
+      "actual": 101,
+      "expected": 101
+     }
+    },
+    {
+     "name": "report/n_symbols",
+     "ok": true,
+     "detail": {
+      "actual": 47,
+      "expected": 47
+     }
+    },
+    {
+     "name": "file:k1_sch.yaml",
+     "ok": true,
+     "detail": {
+      "actual": "74af0780eb8a89b651d023a44272520fa3656183bd01e0d909d0786511899540",
+      "expected": "74af0780eb8a89b651d023a44272520fa3656183bd01e0d909d0786511899540"
+     }
+    }
+   ],
+   "rc": 0,
+   "stderr": ""
+  },
+  {
+   "case_id": "EX033-03",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 0
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "PASS",
+      "expected": "PASS"
+     }
+    }
+   ],
+   "rc": 0,
+   "stderr": ""
+  },
+  {
+   "case_id": "EX034-01",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 0
+    },
+    {
+     "name": "report/normalized_sha256",
+     "ok": true,
+     "detail": {
+      "actual": "0069dd1d981e06cda63eae3bfc33abf148d8eb1ecd772d28adba77acef5d6cfd",
+      "expected": "0069dd1d981e06cda63eae3bfc33abf148d8eb1ecd772d28adba77acef5d6cfd"
+     }
+    },
+    {
+     "name": "report/severity/error",
+     "ok": true,
+     "detail": {
+      "actual": 3,
+      "expected": 3
+     }
+    },
+    {
+     "name": "report/types/lib_footprint_issues",
+     "ok": true,
+     "detail": {
+      "actual": 16,
+      "expected": 16
+     }
+    },
+    {
+     "name": "report/unconnected",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/violations",
+     "ok": true,
+     "detail": {
+      "actual": 51,
+      "expected": 51
+     }
+    }
+   ],
+   "rc": 0,
+   "stderr": ""
+  },
+  {
+   "case_id": "EX034-02",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 0
+    },
+    {
+     "name": "report/counts/footprints",
+     "ok": true,
+     "detail": {
+      "actual": 60,
+      "expected": 60
+     }
+    },
+    {
+     "name": "report/counts/nets",
+     "ok": true,
+     "detail": {
+      "actual": 60,
+      "expected": 60
+     }
+    },
+    {
+     "name": "report/counts/tracks",
+     "ok": true,
+     "detail": {
+      "actual": 1627,
+      "expected": 1627
+     }
+    },
+    {
+     "name": "report/counts/vias",
+     "ok": true,
+     "detail": {
+      "actual": 274,
+      "expected": 274
+     }
+    },
+    {
+     "name": "report/counts/zones",
+     "ok": true,
+     "detail": {
+      "actual": 33,
+      "expected": 33
+     }
+    },
+    {
+     "name": "report/electrical_sha256",
+     "ok": true,
+     "detail": {
+      "actual": "4ab3e1fc9793b6e604c303dca1e5f4ac4a6785c4acaacaea27765929f5b15e9c",
+      "expected": "4ab3e1fc9793b6e604c303dca1e5f4ac4a6785c4acaacaea27765929f5b15e9c"
+     }
+    },
+    {
+     "name": "report/track_segment_sha256",
+     "ok": true,
+     "detail": {
+      "actual": "8274ea8f8a39788e5275b425091acde5aa39f9afe713c024371ca154c748c10f",
+      "expected": "8274ea8f8a39788e5275b425091acde5aa39f9afe713c024371ca154c748c10f"
+     }
+    }
+   ],
+   "rc": 0,
+   "stderr": ""
+  },
+  {
+   "case_id": "EX034-03",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 0
+    },
+    {
+     "name": "report/file_count",
+     "ok": true,
+     "detail": {
+      "actual": 113,
+      "expected": 113
+     }
+    },
+    {
+     "name": "report/pathset_sha256",
+     "ok": true,
+     "detail": {
+      "actual": "cc09bf955e4653809ffec989437f00b303a560d5afad457e3daf3f5a288da38b",
+      "expected": "cc09bf955e4653809ffec989437f00b303a560d5afad457e3daf3f5a288da38b"
+     }
+    }
+   ],
+   "rc": 0,
+   "stderr": ""
+  },
+  {
+   "case_id": "EX034-04",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 0
+    },
+    {
+     "name": "report/counts/mismatch",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/counts/total",
+     "ok": true,
+     "detail": {
+      "actual": 2,
+      "expected": 2
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "PASS",
+      "expected": "PASS"
+     }
+    }
+   ],
+   "rc": 0,
+   "stderr": ""
+  },
+  {
+   "case_id": "EX035-01",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 0
+    },
+    {
+     "name": "report/error_count",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/footprints_total",
+     "ok": true,
+     "detail": {
+      "actual": 106,
+      "expected": 106
+     }
+    },
+    {
+     "name": "report/model_count",
+     "ok": true,
+     "detail": {
+      "actual": 101,
+      "expected": 101
+     }
+    },
+    {
+     "name": "report/schema",
+     "ok": true,
+     "detail": {
+      "actual": "k1-model-alignment/v1",
+      "expected": "k1-model-alignment/v1"
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "PASS",
+      "expected": "PASS"
+     }
+    }
+   ],
+   "rc": 0,
+   "stderr": ""
+  },
+  {
+   "case_id": "NC-PWR-01",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_PINMAP_AUDIT_FAIL: E_PINMAP_UNKNOWN_CONFLICT"
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_PINMAP_AUDIT_FAIL: E_PINMAP_UNKNOWN_CONFLICT"
+  },
+  {
+   "case_id": "NC-R24-G1-01",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_PLACEMENT_RECONCILE_FAIL: E_PLACEMENT_MISSING_REF"
+    },
+    {
+     "name": "report/missing_refs",
+     "ok": true,
+     "detail": {
+      "actual": [
+       "C100"
+      ],
+      "expected": [
+       "C100"
+      ]
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_PLACEMENT_RECONCILE_FAIL: E_PLACEMENT_MISSING_REF"
+  },
+  {
+   "case_id": "NC-R24-G1-02",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_PLACEMENT_RECONCILE_FAIL: E_PLACEMENT_BOARD_MISSING,E_PLACEMENT_BOARD_YAML_MISSING,E_PLACEMENT_EXTRA_REF,E_PLACEMENT_PINMAP_MISSING"
+    },
+    {
+     "name": "report/extra_refs",
+     "ok": true,
+     "detail": {
+      "actual": [
+       "X999"
+      ],
+      "expected": [
+       "X999"
+      ]
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_PLACEMENT_RECONCILE_FAIL: E_PLACEMENT_BOARD_MISSING,E_PLACEMENT_BOARD_YAML_MISSING,E_PLACEMENT_EXTRA_REF,E_PLACEMENT_PINMAP_MISSING"
+  },
+  {
+   "case_id": "NC-R24-G1-03",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_PLACEMENT_RECONCILE_FAIL: E_PLACEMENT_DUPLICATE_REF"
+    },
+    {
+     "name": "report/duplicate_refs",
+     "ok": true,
+     "detail": {
+      "actual": [
+       "U1"
+      ],
+      "expected": [
+       "U1"
+      ]
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_PLACEMENT_RECONCILE_FAIL: E_PLACEMENT_DUPLICATE_REF"
+  },
+  {
+   "case_id": "NC-R24-G1-04",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_PLACEMENT_RECONCILE_FAIL: E_PLACEMENT_SCHEMA"
+    },
+    {
+     "name": "report/errors",
+     "ok": true,
+     "detail": {
+      "actual": [
+       "E_PLACEMENT_SCHEMA"
+      ],
+      "expected": [
+       "E_PLACEMENT_SCHEMA"
+      ]
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_PLACEMENT_RECONCILE_FAIL: E_PLACEMENT_SCHEMA"
+  },
+  {
+   "case_id": "NC-R24-G2-01",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_CONSTRUCTION_COVERAGE_FAIL: E_COVERAGE_NET_ORPHAN"
+    },
+    {
+     "name": "report/errors",
+     "ok": true,
+     "detail": {
+      "actual": [
+       "E_COVERAGE_NET_ORPHAN"
+      ],
+      "expected": [
+       "E_COVERAGE_NET_ORPHAN"
+      ]
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_CONSTRUCTION_COVERAGE_FAIL: E_COVERAGE_NET_ORPHAN"
+  },
+  {
+   "case_id": "NC-R24-G2-02",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_CONSTRUCTION_COVERAGE_FAIL: E_COVERAGE_DEVICE_ORPHAN"
+    },
+    {
+     "name": "report/errors",
+     "ok": true,
+     "detail": {
+      "actual": [
+       "E_COVERAGE_DEVICE_ORPHAN"
+      ],
+      "expected": [
+       "E_COVERAGE_DEVICE_ORPHAN"
+      ]
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_CONSTRUCTION_COVERAGE_FAIL: E_COVERAGE_DEVICE_ORPHAN"
+  },
+  {
+   "case_id": "NC-R24-G2-03",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_CONSTRUCTION_COVERAGE_FAIL: E_COVERAGE_DOUBLE_ASSIGN"
+    },
+    {
+     "name": "report/errors",
+     "ok": true,
+     "detail": {
+      "actual": [
+       "E_COVERAGE_DOUBLE_ASSIGN"
+      ],
+      "expected": [
+       "E_COVERAGE_DOUBLE_ASSIGN"
+      ]
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_CONSTRUCTION_COVERAGE_FAIL: E_COVERAGE_DOUBLE_ASSIGN"
+  },
+  {
+   "case_id": "NC-R24-G2-04",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_CONSTRUCTION_COVERAGE_FAIL: E_COVERAGE_GATE_MISSING"
+    },
+    {
+     "name": "report/errors",
+     "ok": true,
+     "detail": {
+      "actual": [
+       "E_COVERAGE_GATE_MISSING"
+      ],
+      "expected": [
+       "E_COVERAGE_GATE_MISSING"
+      ]
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_CONSTRUCTION_COVERAGE_FAIL: E_COVERAGE_GATE_MISSING"
+  },
+  {
+   "case_id": "NC-R24-G2-05",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_CONSTRUCTION_COVERAGE_FAIL: E_COVERAGE_BATCH_ORDER"
+    },
+    {
+     "name": "report/errors",
+     "ok": true,
+     "detail": {
+      "actual": [
+       "E_COVERAGE_BATCH_ORDER"
+      ],
+      "expected": [
+       "E_COVERAGE_BATCH_ORDER"
+      ]
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_CONSTRUCTION_COVERAGE_FAIL: E_COVERAGE_BATCH_ORDER"
+  },
+  {
+   "case_id": "NC-R24-G2-06",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 2
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_COVERAGE_EXEMPTION_UNJUSTIFIED: exemptions[0] missing reason"
+    }
+   ],
+   "rc": 2,
+   "stderr": "E_COVERAGE_EXEMPTION_UNJUSTIFIED: exemptions[0] missing reason"
+  },
+  {
+   "case_id": "NC-R24-G3-01",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_PINMAP_AUDIT_FAIL: E_PINMAP_UNRESOLVED_BLOCKER"
+    },
+    {
+     "name": "report/classes/unresolved_blocker",
+     "ok": true,
+     "detail": {
+      "actual": 8,
+      "expected": 8
+     }
+    },
+    {
+     "name": "report/metrics/documented_gap_refs",
+     "ok": true,
+     "detail": {
+      "actual": 46,
+      "expected": 46
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_PINMAP_AUDIT_FAIL: E_PINMAP_UNRESOLVED_BLOCKER"
+  },
+  {
+   "case_id": "NC-R24-G3-02",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_PINMAP_AUDIT_FAIL: E_PINMAP_DEVICE_SET_INCOMPLETE,E_PINMAP_BOARD_REF_COUNT_MISMATCH"
+    },
+    {
+     "name": "report/metrics/documented_gap_refs",
+     "ok": true,
+     "detail": {
+      "actual": 0,
+      "expected": 0
+     }
+    },
+    {
+     "name": "report/missing_unexpected/0",
+     "ok": true,
+     "detail": {
+      "actual": "C100",
+      "expected": "C100"
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_PINMAP_AUDIT_FAIL: E_PINMAP_DEVICE_SET_INCOMPLETE,E_PINMAP_BOARD_REF_COUNT_MISMATCH"
+  },
+  {
+   "case_id": "NC-R24-G3-03",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_PINMAP_AUDIT_FAIL: E_PINMAP_UNKNOWN_CONFLICT"
+    },
+    {
+     "name": "report/classes/conflict",
+     "ok": true,
+     "detail": {
+      "actual": 2,
+      "expected": 2
+     }
+    },
+    {
+     "name": "report/errors/0",
+     "ok": true,
+     "detail": {
+      "actual": "E_PINMAP_UNKNOWN_CONFLICT",
+      "expected": "E_PINMAP_UNKNOWN_CONFLICT"
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_PINMAP_AUDIT_FAIL: E_PINMAP_UNKNOWN_CONFLICT"
+  },
+  {
+   "case_id": "NC-R24-G3-04",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_PINMAP_AUDIT_FAIL: E_PINMAP_BOARD_ONLY_UNEXPECTED,E_PINMAP_ANONYMOUS_PAD,E_PINMAP_BOARD_REF_COUNT_MISMATCH"
+    },
+    {
+     "name": "report/anonymous_pad_audit/anonymous_pad_count",
+     "ok": true,
+     "detail": {
+      "actual": 1,
+      "expected": 1
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_PINMAP_AUDIT_FAIL: E_PINMAP_BOARD_ONLY_UNEXPECTED,E_PINMAP_ANONYMOUS_PAD,E_PINMAP_BOARD_REF_COUNT_MISMATCH"
+  },
+  {
+   "case_id": "NC-R24-G3-05",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_PINMAP_AUDIT_FAIL: E_PINMAP_BOARD_ONLY_UNEXPECTED,E_PINMAP_ANONYMOUS_PAD,E_PINMAP_BOARD_REF_COUNT_MISMATCH"
+    },
+    {
+     "name": "report/board_only_unexpected/0",
+     "ok": true,
+     "detail": {
+      "actual": "X999",
+      "expected": "X999"
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_PINMAP_AUDIT_FAIL: E_PINMAP_BOARD_ONLY_UNEXPECTED,E_PINMAP_ANONYMOUS_PAD,E_PINMAP_BOARD_REF_COUNT_MISMATCH"
+  },
+  {
+   "case_id": "NC-R24-G3-06",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 2
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_PINMAP_PROFILE_BOARD_MISMATCH: profile pins 0000000000000000000000000000000000000000000000000000000000000000, board is 215a017778cc225fb01d652a62bed910d3b62db59783e2c51260287bc398754c"
+    }
+   ],
+   "rc": 2,
+   "stderr": "E_PINMAP_PROFILE_BOARD_MISMATCH: profile pins 0000000000000000000000000000000000000000000000000000000000000000, board is 215a017778cc225fb01d652a62bed910d3b62db59783e2c51260287bc398754c"
+  },
+  {
+   "case_id": "NC016-01",
+   "kind": "engine_negative_control",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 2
+    },
+    {
+     "name": "named_stderr_prefix",
+     "ok": true,
+     "detail": "E_PLAN_BOARD_MISMATCH: pcb plan=0000000000000000000000000000000000000000000000000000000000000000 actual=70cb3252646af0452ace5be6ee8b45a1725f903cc2ff667537656a6ccc7ec3cb"
+    },
+    {
+     "name": "output_absent",
+     "ok": true
+    },
+    {
+     "name": "report_absent",
+     "ok": true
+    }
+   ],
+   "rc": 2,
+   "stderr": "E_PLAN_BOARD_MISMATCH: pcb plan=0000000000000000000000000000000000000000000000000000000000000000 actual=70cb3252646af0452ace5be6ee8b45a1725f903cc2ff667537656a6ccc7ec3cb"
+  },
+  {
+   "case_id": "NC016-02",
+   "kind": "engine_negative_control",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 2
+    },
+    {
+     "name": "named_stderr_prefix",
+     "ok": true,
+     "detail": "E_CLOSED_FORM_UNROUTABLE: SBU2 endpoint outside board at [99.0, 99.0]"
+    },
+    {
+     "name": "output_absent",
+     "ok": true
+    },
+    {
+     "name": "report_absent",
+     "ok": true
+    }
+   ],
+   "rc": 2,
+   "stderr": "E_CLOSED_FORM_UNROUTABLE: SBU2 endpoint outside board at [99.0, 99.0]"
+  },
+  {
+   "case_id": "NC016-03",
+   "kind": "engine_negative_control",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 2
+    },
+    {
+     "name": "named_stderr_prefix",
+     "ok": true,
+     "detail": "E_CLOSED_FORM_UNROUTABLE: SBU2 invalid via [12.9, 21.4]"
+    },
+    {
+     "name": "output_absent",
+     "ok": true
+    },
+    {
+     "name": "report_absent",
+     "ok": true
+    }
+   ],
+   "rc": 2,
+   "stderr": "E_CLOSED_FORM_UNROUTABLE: SBU2 invalid via [12.9, 21.4]"
+  },
+  {
+   "case_id": "NC016-04",
+   "kind": "engine_negative_control",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "report_required",
+     "ok": true
+    },
+    {
+     "name": "report_pass_false",
+     "ok": true
+    },
+    {
+     "name": "output_present",
+     "ok": true
+    },
+    {
+     "name": "named_error_prefixes",
+     "ok": true,
+     "detail": [
+      "E_PLAN_EXPECTED_COUNT_MISMATCH: machine_route_tracks expected 76 actual 75"
+     ]
+    }
+   ],
+   "rc": 1,
+   "stderr": ""
+  },
+  {
+   "case_id": "NC016-05",
+   "kind": "engine_negative_control",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "report_required",
+     "ok": true
+    },
+    {
+     "name": "report_pass_false",
+     "ok": true
+    },
+    {
+     "name": "output_present",
+     "ok": true
+    },
+    {
+     "name": "named_error_prefixes",
+     "ok": true,
+     "detail": [
+      "E_PLAN_EXPECTED_COUNT_MISMATCH: scope_routed expected 2 actual 1",
+      "E_PLAN_EXPECTED_COUNT_MISMATCH: scope_deferred expected 0 actual 1",
+      "E_PLAN_EXPECTED_COUNT_MISMATCH: single_ended_routed expected 2 actual 1",
+      "E_PLAN_EXPECTED_COUNT_MISMATCH: single_ended_deferred expected 0 actual 1",
+      "E_PLAN_EXPECTED_COUNT_MISMATCH: machine_route_tracks expected 75 actual 22",
+      "E_PLAN_EXPECTED_COUNT_MISMATCH: machine_route_vias expected 6 actual 2"
+     ]
+    }
+   ],
+   "rc": 1,
+   "stderr": ""
+  },
+  {
+   "case_id": "NC016-06",
+   "kind": "engine_negative_control",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 2
+    },
+    {
+     "name": "named_stderr_prefix",
+     "ok": true,
+     "detail": "E_CLOSED_FORM_UNROUTABLE: SBU2 anchor R39/2 is not a same-net pad"
+    },
+    {
+     "name": "output_absent",
+     "ok": true
+    },
+    {
+     "name": "report_absent",
+     "ok": true
+    }
+   ],
+   "rc": 2,
+   "stderr": "E_CLOSED_FORM_UNROUTABLE: SBU2 anchor R39/2 is not a same-net pad"
+  },
+  {
+   "case_id": "NC016-07",
+   "kind": "engine_negative_control",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 2
+    },
+    {
+     "name": "named_stderr_prefix",
+     "ok": true,
+     "detail": "E_CLOSED_FORM_GND_DELETION: rip_up contains GND zone 5872f4d5-8232-4d6a-aa26-9b473b9a4007"
+    },
+    {
+     "name": "output_absent",
+     "ok": true
+    },
+    {
+     "name": "report_absent",
+     "ok": true
+    }
+   ],
+   "rc": 2,
+   "stderr": "E_CLOSED_FORM_GND_DELETION: rip_up contains GND zone 5872f4d5-8232-4d6a-aa26-9b473b9a4007"
+  },
+  {
+   "case_id": "NC020-01",
+   "kind": "orient_negative_control",
+   "pass": true,
+   "checks": [
+    {
+     "name": "solver_rc_zero",
+     "ok": true,
+     "detail": null
+    },
+    {
+     "name": "assert_render_rc_expected",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "assert_render_verdict_expected",
+     "ok": true,
+     "detail": "FAIL"
+    },
+    {
+     "name": "named_errors_include",
+     "ok": true,
+     "detail": [
+      "E_ORIENT_OPENING_NOT_OUTWARD J1",
+      "E_ORIENT_NOT_AUTOCORRECTED J1"
+     ]
+    }
+   ],
+   "rc": 1,
+   "errors": [
+    "E_ORIENT_OPENING_NOT_OUTWARD J1",
+    "E_ORIENT_NOT_AUTOCORRECTED J1"
+   ]
+  },
+  {
+   "case_id": "NC032-01",
+   "kind": "exam_harness_negative_control",
+   "pass": true,
+   "checks": [
+    {
+     "name": "unknown_kind_fail_closed",
+     "ok": true,
+     "detail": "E_EXAM_CASE_KIND"
+    },
+    {
+     "name": "missing_original_cases_fail_closed",
+     "ok": true,
+     "detail": "E_EXAM_PACKAGE"
+    },
+    {
+     "name": "bad_pointer_fail_closed",
+     "ok": true,
+     "detail": "E_EXAM_PACKAGE"
+    },
+    {
+     "name": "bad_injection_op_fail_closed",
+     "ok": true,
+     "detail": "E_EXAM_PACKAGE"
+    },
+    {
+     "name": "negative_control_expected",
+     "ok": true
+    }
+   ]
+  },
+  {
+   "case_id": "NC033-01",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_SCH_NET: pin U1/A (card None) assigned to two nets: NET_A and NET_B"
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_SCH_NET: pin U1/A (card None) assigned to two nets: NET_A and NET_B"
+  },
+  {
+   "case_id": "NC034-01",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_DRC_NEW_HARD_ERROR: new_hard_error_count>0"
+    },
+    {
+     "name": "report/new_hard_error_count",
+     "ok": true,
+     "detail": {
+      "actual": 1,
+      "expected": 1
+     }
+    },
+    {
+     "name": "report/new_hard_error_types",
+     "ok": true,
+     "detail": {
+      "actual": [
+       "clearance"
+      ],
+      "expected": [
+       "clearance"
+      ]
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "BLOCKED",
+      "expected": "BLOCKED"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_DRC_NEW_HARD_ERROR: new_hard_error_count>0"
+  },
+  {
+   "case_id": "NC034-02",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_REDLINE_FAIL: E_REDLINE_SHA_MISMATCH"
+    },
+    {
+     "name": "report/counts/mismatch",
+     "ok": true,
+     "detail": {
+      "actual": 1,
+      "expected": 1
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_REDLINE_FAIL: E_REDLINE_SHA_MISMATCH"
+  },
+  {
+   "case_id": "NC035-01",
+   "kind": "cli_case",
+   "pass": true,
+   "checks": [
+    {
+     "name": "rc",
+     "ok": true,
+     "detail": 1
+    },
+    {
+     "name": "stderr_prefix",
+     "ok": true,
+     "detail": "E_MODEL_ALIGNMENT_FAIL: E_MODEL_ALIGNMENT_CENTER_OFFSET"
+    },
+    {
+     "name": "report/error_count",
+     "ok": true,
+     "detail": {
+      "actual": 1,
+      "expected": 1
+     }
+    },
+    {
+     "name": "report/errors/0/code",
+     "ok": true,
+     "detail": {
+      "actual": "E_MODEL_ALIGNMENT_CENTER_OFFSET",
+      "expected": "E_MODEL_ALIGNMENT_CENTER_OFFSET"
+     }
+    },
+    {
+     "name": "report/errors/0/ref",
+     "ok": true,
+     "detail": {
+      "actual": "J16",
+      "expected": "J16"
+     }
+    },
+    {
+     "name": "report/schema",
+     "ok": true,
+     "detail": {
+      "actual": "k1-model-alignment/v1",
+      "expected": "k1-model-alignment/v1"
+     }
+    },
+    {
+     "name": "report/verdict",
+     "ok": true,
+     "detail": {
+      "actual": "FAIL",
+      "expected": "FAIL"
+     }
+    }
+   ],
+   "rc": 1,
+   "stderr": "E_MODEL_ALIGNMENT_FAIL: E_MODEL_ALIGNMENT_CENTER_OFFSET"
+  }
+ ]
+}

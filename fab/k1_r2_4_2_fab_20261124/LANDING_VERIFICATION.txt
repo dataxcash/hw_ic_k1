@@ -1,0 +1,46 @@
+# K1 R2.4.2 LANDING VERIFICATION
+# generated: 2026-11-24T10:56:13+0800
+
+## 1. package tree byte-for-byte
+$ diff -qr trial_card007/rcore_silk_shrink_pkg_20261124/delivery fab/k1_r2_4_2_fab_20261124/delivery
+RESULT: 0 differences
+source_files=81 landed_files=81
+
+## 2. package SHA table
+sha_ok=79 / 79
+./spec/SPEC_k1.json: OK
+./spec/SPEC_k1.json.sha256: OK
+./test/k1_r2_4_2.ipc356: OK
+
+## 3. flat 4/4 byte-equal
+OK  k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb  a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f
+OK  k1_tapeout_candidate_r2_4_2_20261124.kicad_pro  e3fc72d2f203cf989b4bb51c0f93c7dc09ad0ccd669ed18fd41a3f104230499a
+OK  k1_tapeout_candidate_r2_4_2_20261124.kicad_prl  bc50709185fb12fa8d1764929f0eb09f8f2e41acf8fda42535ef6abff47e00d4
+OK  k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb.sha256  9354c89bad5a71628036b0eba7867c1ff191798d31a845d5922ee3d360648deb
+a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f  fab/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb
+
+## 4. ZIP integrity
+    testing: SI_WAIVERS_3_R2.4.2.csv   OK
+    testing: SHA256SUMS.txt           OK
+No errors detected in compressed data of /home/fila/jqdDev_2025/ic_hw/k1/fab/k1_r2_4_2_fab_20261124/delivery/k1_r2_4_2_fab_package_20261124.zip.
+zip_entries=91
+zip_sha256=f71583c5d183eab75b5f58aefff9ac63bd0419e1cd20ba6c67496428088c0d9d
+
+## 5. redlines
+b59bcb8a3b53870c0aee97f6f9f108c85de39f20b820fa86e1f00cd2d8671180  k1_revB_RB1b4c_final_38u.kicad_pcb
+8142683f6a5ddd4b9645627eb514785edb3798331925ca81234054d612c6460b  fab/k1_tapeout_candidate_r2_4_ma_20261124.kicad_pcb
+k1_head=d2f21cc
+rcore_head=3d7b0cf
+foreman_commits=0
+
+## 6. spec identity
+3d9b633a40677ebe495ebed9e21ff3cd178147b9e1ef818dc31a535f4df0a95a  pm_gate/artifacts/k1/L3/SPEC_k1.json
+3d9b633a40677ebe495ebed9e21ff3cd178147b9e1ef818dc31a535f4df0a95a  /home/fila/jqdDev_2025/ic_hw/k1/fab/k1_r2_4_2_fab_20261124/delivery/spec/SPEC_k1.json
+SPEC copies byte-equal: true
+spec_version=2.1 release=R2.4.2 board_sha256=a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f
+
+
+## 5b. redline 落盘树口径
+在落盘树就地校验：9/9 具名项 sha 命中；`r24_ma_superseded_board` 因工单第 3 条 git rm 无实体文件，改由 git 对象核验：
+$ git cat-file -p HEAD:fab/k1_tapeout_candidate_r2_4_ma_20261124.kicad_pcb | sha256sum
+8142683f6a5ddd4b9645627eb514785edb3798331925ca81234054d612c6460b  -

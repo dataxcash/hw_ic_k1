@@ -1,0 +1,748 @@
+{
+ "schema": "k1-r242-fab-landing-manifest/v1",
+ "landing_root": "fab/k1_r2_4_2_fab_20261124",
+ "authorization": "msg-20261124-105501-k1-mcp-report / K1-R242FAB-ACCEPT-20261124",
+ "source_package": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery",
+ "production_board_sha256": "a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f",
+ "electrical_sha256": "9efd27734c8adced249b5356155ab58bfc6c9e8902e025bcb9cb90a1016d12ad",
+ "track_segment_sha256": "6b1a25d537ff8bebfbdd9ada7b7e476c1ae1c25d59d9b17d3de416945e086751",
+ "spec": {
+  "worktree": "pm_gate/artifacts/k1/L3/SPEC_k1.json",
+  "worktree_sha256": "3d9b633a40677ebe495ebed9e21ff3cd178147b9e1ef818dc31a535f4df0a95a",
+  "package": "delivery/spec/SPEC_k1.json",
+  "package_sha256": "3d9b633a40677ebe495ebed9e21ff3cd178147b9e1ef818dc31a535f4df0a95a",
+  "spec_version": "2.1",
+  "release": "R2.4.2",
+  "board_sha256": "a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f"
+ },
+ "supersedes": {
+  "release": "R2.4-MA",
+  "package": "fab/k1_r2_4_fab_20261124/",
+  "board_sha256": "8142683f6a5ddd4b9645627eb514785edb3798331925ca81234054d612c6460b",
+  "flat_removed": [
+   "fab/k1_tapeout_candidate_r2_4_ma_20261124.kicad_pcb",
+   "fab/k1_tapeout_candidate_r2_4_ma_20261124.kicad_pro",
+   "fab/k1_tapeout_candidate_r2_4_ma_20261124.kicad_prl",
+   "fab/k1_tapeout_candidate_r2_4_ma_20261124.kicad_pcb.sha256"
+  ]
+ },
+ "package_zip": {
+  "path": "delivery/k1_r2_4_2_fab_package_20261124.zip",
+  "sha256": "f71583c5d183eab75b5f58aefff9ac63bd0419e1cd20ba6c67496428088c0d9d",
+  "bytes": 12443561,
+  "entries": 91
+ },
+ "package_sha_table": {
+  "path": "delivery/SHA256SUMS.txt",
+  "sha256": "5306459915cdfc14820f94ba601847459fb6c27c324ca13c4d19034a508c6f75",
+  "entries": 79,
+  "ok": 79
+ },
+ "file_count": 87,
+ "files": [
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/AS_BUILT_NOTES_R2.4.2.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/AS_BUILT_NOTES_R2.4.2.json",
+   "sha256": "13052ed191993a6f3b52adcd6898fa7b7f815c360aa5f646bbd591ba6c4c1dfa",
+   "bytes": 43600,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/AS_BUILT_NOTES_R2.4.2.md",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/AS_BUILT_NOTES_R2.4.2.md",
+   "sha256": "d0116162fbfed899fb74d7171fbf591f3cd25519fdfa1f90ad21811f2fbe950c",
+   "bytes": 17796,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/CONSISTENCY_REPORT.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/CONSISTENCY_REPORT.json",
+   "sha256": "89765b95f9424aa56b18bd8df790410e79fca977ef6c32a1197f3df78aebf6e4",
+   "bytes": 16181,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/LEGACY_DIFF_PAIRS_R2.4.2.csv",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/LEGACY_DIFF_PAIRS_R2.4.2.csv",
+   "sha256": "df8cbb01a523d25d4819978824473b5cc98dfa3db04f5d31a909d2917090d184",
+   "bytes": 424,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/MODEL_SUBSTITUTIONS_19_R2.4.2.csv",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/MODEL_SUBSTITUTIONS_19_R2.4.2.csv",
+   "sha256": "10aca57f1c1901c65b89a5836b2611ed938b739ea5d0f64df08159b32ad95e45",
+   "bytes": 3423,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/PACKAGE_README.md",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/PACKAGE_README.md",
+   "sha256": "dd0a88744d00592d7a4c2b311726ba006e254a42670c3936c4553bf054449167",
+   "bytes": 3705,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/SHA256SUMS.txt",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/SHA256SUMS.txt",
+   "sha256": "5306459915cdfc14820f94ba601847459fb6c27c324ca13c4d19034a508c6f75",
+   "bytes": 8296,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/SI_WAIVERS_3_R2.4.2.csv",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/SI_WAIVERS_3_R2.4.2.csv",
+   "sha256": "5b6a4a70749c2d1bdbbea7339ded942738de203faf976b1e7f902ec10cbb3c31",
+   "bytes": 314,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/WARNING_LEDGER_106_R2.4.2.csv",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/WARNING_LEDGER_106_R2.4.2.csv",
+   "sha256": "81b30415eae7b5b80c1394e7b3a173ff592c6b66dd34a6d656dcae1a9408b9f3",
+   "bytes": 14658,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb",
+   "sha256": "a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f",
+   "bytes": 1593148,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb.sha256",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb.sha256",
+   "sha256": "9354c89bad5a71628036b0eba7867c1ff191798d31a845d5922ee3d360648deb",
+   "bytes": 113,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_prl",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_prl",
+   "sha256": "bc50709185fb12fa8d1764929f0eb09f8f2e41acf8fda42535ef6abff47e00d4",
+   "bytes": 2308,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pro",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pro",
+   "sha256": "e3fc72d2f203cf989b4bb51c0f93c7dc09ad0ccd669ed18fd41a3f104230499a",
+   "bytes": 11483,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/models/JST_VH_B2P-VH_latch.wrl",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/board/models/JST_VH_B2P-VH_latch.wrl",
+   "sha256": "20631d85bdcdd8eb332869da4d6b4de86c1ed1cb0643d75e4d9c710f795d0b8e",
+   "bytes": 1665,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board_diff_vs_r24_ma.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/board_diff_vs_r24_ma.json",
+   "sha256": "14cdce00bd1bdf63133af29c034c6b5ffc87a545d5eebaa2aabd76bf68fb6257",
+   "bytes": 1077,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board_stats.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/board_stats.json",
+   "sha256": "6b188a791c322a8efe5608cbb001347d000cf103cb6cc56648f10103be9cdcd3",
+   "bytes": 640,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board_stats.txt",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/board_stats.txt",
+   "sha256": "b7e3c6a43b6af453ee7ed083f01ea85f74dfecd7b23230604308cb31352e8237",
+   "bytes": 572,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/bom/k1_tapeout_r2_4_2_BOM_assembly_101.csv",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/bom/k1_tapeout_r2_4_2_BOM_assembly_101.csv",
+   "sha256": "e1455007193803c76318c3e0c64008350cb74f31930578b5721988f08e623838",
+   "bytes": 6783,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/bom/k1_tapeout_r2_4_2_BOM_grouped.csv",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/bom/k1_tapeout_r2_4_2_BOM_grouped.csv",
+   "sha256": "7f1a76f0f70dce7df90d607b0b1c42cdfcecc4abf1354c3802880d3220530858",
+   "bytes": 3285,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/bom/k1_tapeout_r2_4_2_BOM_per_ref.csv",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/bom/k1_tapeout_r2_4_2_BOM_per_ref.csv",
+   "sha256": "05966bfaededd6e1ade9764dc524f952d73eb61e18f0a41c551ff782615bb46a",
+   "bytes": 7333,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/bom/k1_tapeout_r2_4_2_BOM_refset.csv",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/bom/k1_tapeout_r2_4_2_BOM_refset.csv",
+   "sha256": "7db4849421ac6bd31851f3d6d6e6fef2b04b3ed0a878d672b44b48c4f6538080",
+   "bytes": 409,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/bom/k1_tapeout_r2_4_2_BOM_summary.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/bom/k1_tapeout_r2_4_2_BOM_summary.json",
+   "sha256": "ebf90f11534859e757c2e6bac198c0f81947d1c07e0e34ceda1e00500a3461ab",
+   "bytes": 617,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/drill/drill_report.txt",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/drill/drill_report.txt",
+   "sha256": "11dd4dfa0078f6968272ba54ea8f268ccb5d72952e9b35fb86e2b753ac63129c",
+   "bytes": 2656,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/drill/k1_tapeout_candidate_r2_4_2_20261124-NPTH.drl",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/drill/k1_tapeout_candidate_r2_4_2_20261124-NPTH.drl",
+   "sha256": "a0d587eaced6decebca385010bb8f094a782f464e9229123e03108e88cdcb175",
+   "bytes": 714,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/drill/k1_tapeout_candidate_r2_4_2_20261124-PTH.drl",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/drill/k1_tapeout_candidate_r2_4_2_20261124-PTH.drl",
+   "sha256": "bac10f696ae1decf46fdfe8c52a9222a6210ddc9a3a37ba224568d7d713e2335",
+   "bytes": 3756,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/drill/k1_tapeout_candidate_r2_4_2_20261124-back-in1.drl",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/drill/k1_tapeout_candidate_r2_4_2_20261124-back-in1.drl",
+   "sha256": "12d09a4833be9c63d1b92954457be1aece2c4b56fccf39c572ec68b5689fb305",
+   "bytes": 379,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/drill/k1_tapeout_candidate_r2_4_2_20261124-back-in2.drl",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/drill/k1_tapeout_candidate_r2_4_2_20261124-back-in2.drl",
+   "sha256": "4abbaea3ef462809eb8d2dd85a13b07daecf83a0764c69633da4657510c31284",
+   "bytes": 973,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/drill/k1_tapeout_candidate_r2_4_2_20261124-front-in1.drl",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/drill/k1_tapeout_candidate_r2_4_2_20261124-front-in1.drl",
+   "sha256": "8ca06c68180554c34eedf6f023c492ff82904033ca68d12d19615f2f37800f59",
+   "bytes": 1436,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/drill/k1_tapeout_candidate_r2_4_2_20261124-front-in2.drl",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/drill/k1_tapeout_candidate_r2_4_2_20261124-front-in2.drl",
+   "sha256": "008a32b986a97f96530818a1006d8ae268cffaa09d391b67ecc8f1a356498a02",
+   "bytes": 1321,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/drill/k1_tapeout_candidate_r2_4_2_20261124-in1-in2.drl",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/drill/k1_tapeout_candidate_r2_4_2_20261124-in1-in2.drl",
+   "sha256": "2b47fe040359cff1077dfb485f05ed3145af7db7fffb68d389e37cebf04bd081",
+   "bytes": 695,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/exam_list.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/exam_list.json",
+   "sha256": "dbfd7f0c0f371a7e9125f860a215e40d040371c57f7f4fd8d385a233adc9eaf1",
+   "bytes": 9530,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/exam_run_summary.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/exam_run_summary.json",
+   "sha256": "7047ab70616ebe44e95425e6fa1bdbd16a5162a9ca7170452fd6ea4d6b0a6abe",
+   "bytes": 39208,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/exam_verify.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/exam_verify.json",
+   "sha256": "e3755ffbf225cfe52576bbc9facdc35dd2aefa2bac2bcb1182d2a0333be8092d",
+   "bytes": 404,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/fingerprint.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/fingerprint.json",
+   "sha256": "55310c90d5495124d1eb355456e991686633ec5b3b118584b1c8d8aefd69e542",
+   "bytes": 1004,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gate/g1.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gate/g1.json",
+   "sha256": "a57659f34e3701b4d0c38f10c3dc2743e524cd9a58a09a434a66b1e7d6e0ecb7",
+   "bytes": 1484,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gate/g2.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gate/g2.json",
+   "sha256": "648a42184c71229c706f4ead1c1ddb67fabebba9960fb3b30963fbaea0b51175",
+   "bytes": 978,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gate/g3.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gate/g3.json",
+   "sha256": "5f529f21a06ed3eba6a15d980f3827a1363c1c18669d56dfa03cc7150e9e5fbc",
+   "bytes": 3242,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gate_r24_2.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gate_r24_2.json",
+   "sha256": "1167a2700ad860cbdbe4ddee272f345d98c6f6276d7d635219325ba4432a0bcb",
+   "bytes": 7404,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-B_Cu.gbl",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-B_Cu.gbl",
+   "sha256": "5f2a0c7cadce87ff27646170fbecef49c53229451f438c490e5f93720ec5845d",
+   "bytes": 57927,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-B_Fab.gbr",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-B_Fab.gbr",
+   "sha256": "08f0a09fbebba5923d9122053540b28e0364626724ed0d44f1cda581a290b28d",
+   "bytes": 463,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-B_Mask.gbs",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-B_Mask.gbs",
+   "sha256": "9f98eca985d25e43a8171e0eca764be4203961bcd2743c8905dbf7baed6c8d6a",
+   "bytes": 2650,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-B_Paste.gbp",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-B_Paste.gbp",
+   "sha256": "bef71b9b667d416198e369432e3e1c88667612e6e6447e735746ba33de369498",
+   "bytes": 481,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-B_Silkscreen.gbo",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-B_Silkscreen.gbo",
+   "sha256": "d45535aa583ec4580d30bfcbe6854879090f21992094c25e024c4930d815672e",
+   "bytes": 482,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-Edge_Cuts.gm1",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-Edge_Cuts.gm1",
+   "sha256": "1e0d6406d57af3601c9d51ceeef6183e344090c4bb577414149eff2399ceadf5",
+   "bytes": 643,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-F_Cu.gtl",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-F_Cu.gtl",
+   "sha256": "f722e8612096bc35fed5cb5c2395d28ebe5bdd83bd3cf259087a5624dfa94021",
+   "bytes": 177579,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-F_Fab.gbr",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-F_Fab.gbr",
+   "sha256": "23f999ba142778f9e623531a34bf904ead7a0edcd17a416134a504bb1e1e6e3c",
+   "bytes": 489719,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-F_Mask.gts",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-F_Mask.gts",
+   "sha256": "315b8f67eabdc5bedd99c88d55d3487dd981fdcc17c01b124ad5f10979be53ba",
+   "bytes": 18684,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-F_Paste.gtp",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-F_Paste.gtp",
+   "sha256": "befdf10b079fd6ed13ce45c7ffe2ccd3f10e69f0730ecaaee7bfd8773059abf8",
+   "bytes": 17868,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-F_Silkscreen.gto",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-F_Silkscreen.gto",
+   "sha256": "6f2566e3c8d5a305e0d6b5ffbf411d210a76f397b5692ce672dedcc3aae966ef",
+   "bytes": 194152,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-In1_Cu.g1",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-In1_Cu.g1",
+   "sha256": "86e8508ceab70dae65684d7f3a4b6b13e45219ed5767ae25ae463be15382f577",
+   "bytes": 357572,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-In2_Cu.g2",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-In2_Cu.g2",
+   "sha256": "43ab8f454ffecefc5c23dc95abf27095bdc9b590929764c0be168746d245330a",
+   "bytes": 110906,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-job.gbrjob",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/gerbers/k1_tapeout_candidate_r2_4_2_20261124-job.gbrjob",
+   "sha256": "ae9d11532a77cb0a2adc51646d295ea9029b9e13548ae15bc92d2a7c336e5ac4",
+   "bytes": 4320,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/k1_r24_asbuilt_profile_r242.yaml",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/k1_r24_asbuilt_profile_r242.yaml",
+   "sha256": "03e459cedfd5d9254477a11347903e2832d7f046f0ae4a1761b83122ff98f86a",
+   "bytes": 3460,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/k1_r2_4_2_fab_package_20261124.zip",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/k1_r2_4_2_fab_package_20261124.zip",
+   "sha256": "f71583c5d183eab75b5f58aefff9ac63bd0419e1cd20ba6c67496428088c0d9d",
+   "bytes": 12443561,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/manifest.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/manifest.json",
+   "sha256": "04b2fbe90a5656ded3d97ada0223422ceacf04004dff85ef8b70377fc6d5d65a",
+   "bytes": 9078,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/model_alignment.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/model_alignment.json",
+   "sha256": "35a7ae1a94e7eadfe9313df79c0ddd8b8b1ea765050e16611c6be68387317e24",
+   "bytes": 198107,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/pos/k1_tapeout_r2_4_2_pos_back.csv",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/pos/k1_tapeout_r2_4_2_pos_back.csv",
+   "sha256": "7565b037b9375e5a5070ba77a93488768c56409db7c519ace55cc83bb2f74819",
+   "bytes": 35,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/pos/k1_tapeout_r2_4_2_pos_both.csv",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/pos/k1_tapeout_r2_4_2_pos_both.csv",
+   "sha256": "553439aeb8783ceedfece2fb34cb0caa022e8ee35ef9ac0641f06659ee767f21",
+   "bytes": 7060,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/pos/k1_tapeout_r2_4_2_pos_front.csv",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/pos/k1_tapeout_r2_4_2_pos_front.csv",
+   "sha256": "553439aeb8783ceedfece2fb34cb0caa022e8ee35ef9ac0641f06659ee767f21",
+   "bytes": 7060,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/pos/k1_tapeout_r2_4_2_pos_smd_both.csv",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/pos/k1_tapeout_r2_4_2_pos_smd_both.csv",
+   "sha256": "4fdff3bd5734a75485cd1d517ac84fa32c0f4c6fd933cc74ba7fc41103c83641",
+   "bytes": 6563,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/redline_manifest.yaml",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/redline_manifest.yaml",
+   "sha256": "b650c188300dff1fc9288553e782ef37829df5b175866e86dfa3b892c8b308bc",
+   "bytes": 1758,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/redline_report.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/redline_report.json",
+   "sha256": "fd8fe6c42167cecd29687c6b43090d87ac111587cb4ae8b37e6e82d171bc6f13",
+   "bytes": 5156,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/K1-CARD-R242-01-full-board-4k.png",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/renders/K1-CARD-R242-01-full-board-4k.png",
+   "sha256": "feb025148f898fc7dbcee732c5a5b7e5ddbf7732ba19d829077cc0db452aa910",
+   "bytes": 3322975,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/K1-CARD-R242-02-h5-closeup-4k.png",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/renders/K1-CARD-R242-02-h5-closeup-4k.png",
+   "sha256": "5be90f726f83b8be2cca7bceac5b5734838dfed526a7115c2add133baa0f218d",
+   "bytes": 766349,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/K1-CARD-R242-03-top-iso-4k.png",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/renders/K1-CARD-R242-03-top-iso-4k.png",
+   "sha256": "f60fe7537d6eb7c2847dd0ab86f22a8b35130851c2575320786589576a9dce47",
+   "bytes": 2427588,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/K1-CARD-R242-04-bottom-iso-4k.png",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/renders/K1-CARD-R242-04-bottom-iso-4k.png",
+   "sha256": "35545e8296df21c4fc9f889ca0f8fe4e85de7609c562b3ce6f91b949fce443a0",
+   "bytes": 2181831,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/K1-CARD-R242-05-top-flat-4k.png",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/renders/K1-CARD-R242-05-top-flat-4k.png",
+   "sha256": "43a38f2f4ef3d40498224aa8ffb70c92afd45ad52ca1c3bbc09d6d0ef2383011",
+   "bytes": 1785657,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/K1-CARD-R242-06-j15-closeup-4k.png",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/renders/K1-CARD-R242-06-j15-closeup-4k.png",
+   "sha256": "863ebbe128d3c67fbf458f60318545f57f22be969ed1e733cbd1f50c5685726c",
+   "bytes": 496007,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/K1-CARD-R242-07-j16-closeup-4k.png",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/renders/K1-CARD-R242-07-j16-closeup-4k.png",
+   "sha256": "0ed2a40af23db9549a6128f2632e6cd6da08bba290f4403803533b3b819cb5e7",
+   "bytes": 905479,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/prov/01-full-board.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/renders/prov/01-full-board.json",
+   "sha256": "a4d6dbe5eee6a752d88a396dac24b4f33fc95a58d5bc60c921fa35f54403c688",
+   "bytes": 1552,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/prov/02-h5-closeup.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/renders/prov/02-h5-closeup.json",
+   "sha256": "807d514834c6a4a2d099810ed706cd186262615d8061a5b521b828d7b5ba364b",
+   "bytes": 1551,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/prov/03-top-iso.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/renders/prov/03-top-iso.json",
+   "sha256": "8c56e54b4769ce0495a440d13e5f9aca5a7b6e4ca10bcdbd7fe2ef1acf97ee96",
+   "bytes": 1546,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/prov/04-bottom-iso.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/renders/prov/04-bottom-iso.json",
+   "sha256": "8cbd600dfe1ed0025cdecec2f45d2fc8d020e46438e7efd26060f9f745e825a9",
+   "bytes": 1558,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/prov/05-top-flat.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/renders/prov/05-top-flat.json",
+   "sha256": "217ac836efac99b49dc020b71936f56cd7d99064e82384341b44f232ba8e4a77",
+   "bytes": 1529,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/prov/06-j15-closeup.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/renders/prov/06-j15-closeup.json",
+   "sha256": "ea5ff1bef961f12a681eaffaae9fdba0366506f3e559c66d34d9fc4efeb9b839",
+   "bytes": 1554,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/prov/07-j16-closeup.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/renders/prov/07-j16-closeup.json",
+   "sha256": "d18814c0131784522b5f378e6d49162da12d5eddbaf573a02130e92dff0e1eff",
+   "bytes": 1553,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/render_manifest.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/renders/render_manifest.json",
+   "sha256": "76a6e9766ad35372f4264786a8150b55f2cc34aec543130fc120a7e68ba992d1",
+   "bytes": 7417,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/silk_check.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/silk_check.json",
+   "sha256": "3f40f03da790cec06944c2fcb85f72fd55f3bd332265162393cc0697d911bbb8",
+   "bytes": 22677,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/spec/SPEC_k1.json",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/spec/SPEC_k1.json",
+   "sha256": "3d9b633a40677ebe495ebed9e21ff3cd178147b9e1ef818dc31a535f4df0a95a",
+   "bytes": 142602,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/spec/SPEC_k1.json.sha256",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/spec/SPEC_k1.json.sha256",
+   "sha256": "e960fb368789b11f70b059a1e782fe21b2707ee7a06651fe000cf938bc8d47fd",
+   "bytes": 79,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "package",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/test/k1_r2_4_2.ipc356",
+   "landed": "fab/k1_r2_4_2_fab_20261124/delivery/test/k1_r2_4_2.ipc356",
+   "sha256": "2841f12556414c61bd8da701df227f6d407abaab5dbbd698cbf556f23e94abc4",
+   "bytes": 67831,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "flat",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb",
+   "landed": "fab/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb",
+   "sha256": "a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f",
+   "bytes": 1593148,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "flat",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pro",
+   "landed": "fab/k1_tapeout_candidate_r2_4_2_20261124.kicad_pro",
+   "sha256": "e3fc72d2f203cf989b4bb51c0f93c7dc09ad0ccd669ed18fd41a3f104230499a",
+   "bytes": 11483,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "flat",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_prl",
+   "landed": "fab/k1_tapeout_candidate_r2_4_2_20261124.kicad_prl",
+   "sha256": "bc50709185fb12fa8d1764929f0eb09f8f2e41acf8fda42535ef6abff47e00d4",
+   "bytes": 2308,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "flat",
+   "source": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb.sha256",
+   "landed": "fab/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb.sha256",
+   "sha256": "9354c89bad5a71628036b0eba7867c1ff191798d31a845d5922ee3d360648deb",
+   "bytes": 113,
+   "source_equals_landed": true
+  },
+  {
+   "kind": "aux",
+   "source": "generated landing readme",
+   "landed": "fab/k1_r2_4_2_fab_20261124/LANDING_README.md",
+   "sha256": "fde11fbcb69d8b06211f9de7a2fd5ef63150bf99576d8f9496e63886a7ed4ed3",
+   "bytes": 3407,
+   "source_equals_landed": null
+  },
+  {
+   "kind": "aux",
+   "source": "generated landing verification",
+   "landed": "fab/k1_r2_4_2_fab_20261124/LANDING_VERIFICATION.txt",
+   "sha256": "e2fea24e6d72006f848fe2b2a34e6715fe42f3e0cdef092377aa9ed6d1ec9f33",
+   "bytes": 2384,
+   "source_equals_landed": null
+  }
+ ],
+ "redlines": {
+  "true_board_sha256": "b59bcb8a3b53870c0aee97f6f9f108c85de39f20b820fa86e1f00cd2d8671180",
+  "k1_head": "d2f21cc",
+  "rcore_head": "3d7b0cf",
+  "foreman_commits": 0
+ },
+ "landed_at": "2026-11-24T10:56:13+08:00",
+ "state": "LANDED_STAGED_AWAITING_SUPERVISOR_VERIFY"
+}

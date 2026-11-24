@@ -1,0 +1,171 @@
+{
+ "schema": "k1-r242-fab-package-manifest/v1",
+ "package": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery",
+ "landing_target": "fab/k1_r2_4_2_fab_20261124/",
+ "generated": "2026-11-24",
+ "generator": "foreman-k1-01",
+ "workorder": "supervisor msg-20261124-103927-k1-mcp-report / #SILK-SHRINK-PKG",
+ "accept_evidence": "doc/evidence/K1-SILKSHRINK-ACCEPT-20261124.json",
+ "previous_production_board": {
+  "release": "R2.4-MA",
+  "path": "fab/k1_tapeout_candidate_r2_4_ma_20261124.kicad_pcb",
+  "sha256": "8142683f6a5ddd4b9645627eb514785edb3798331925ca81234054d612c6460b"
+ },
+ "production_board": {
+  "path": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb",
+  "sha256": "a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f",
+  "bytes": 1593148
+ },
+ "source_candidate": {
+  "path": "trial_card007/rcore_silk_shrink_20261124/delivery/alt_ladder/k1_tapeout_candidate_r2_4_ma_silkshrink_ladder_20261124.kicad_pcb",
+  "sha256": "a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f",
+  "bytes_equal": true
+ },
+ "electrical_equivalence": {
+  "electrical_sha256": "9efd27734c8adced249b5356155ab58bfc6c9e8902e025bcb9cb90a1016d12ad",
+  "track_segment_sha256": "6b1a25d537ff8bebfbdd9ada7b7e476c1ae1c25d59d9b17d3de416945e086751",
+  "board_diff_equal": {
+   "electrical_sha256": true,
+   "footprints": true,
+   "nets": true,
+   "track_segment_sha256": true,
+   "tracks": true,
+   "zones": true
+  },
+  "diff_report": "delivery/board_diff_vs_r24_ma.json",
+  "silk_only": true
+ },
+ "spec": {
+  "file": "delivery/spec/SPEC_k1.json",
+  "sha256": "3d9b633a40677ebe495ebed9e21ff3cd178147b9e1ef818dc31a535f4df0a95a",
+  "spec_version": "2.1",
+  "production_release_board_sha256": "a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f",
+  "worktree_path": "pm_gate/artifacts/k1/L3/SPEC_k1.json",
+  "worktree_sha256": "3d9b633a40677ebe495ebed9e21ff3cd178147b9e1ef818dc31a535f4df0a95a"
+ },
+ "fingerprint": {
+  "electrical_sha256": "9efd27734c8adced249b5356155ab58bfc6c9e8902e025bcb9cb90a1016d12ad",
+  "track_segment_sha256": "6b1a25d537ff8bebfbdd9ada7b7e476c1ae1c25d59d9b17d3de416945e086751",
+  "deterministic": true,
+  "counts": {
+   "footprints": 106,
+   "models": 101,
+   "nets": 90,
+   "tracks": 4282,
+   "vias": 435,
+   "zones": 33
+  },
+  "file": "delivery/fingerprint.json"
+ },
+ "model_alignment": {
+  "verdict": "PASS",
+  "footprints_total": 106,
+  "footprints_with_models": 101,
+  "error_count": 0,
+  "file": "delivery/model_alignment.json"
+ },
+ "gates": {
+  "verdict": "PASS",
+  "G1": {
+   "report_sha256": "a57659f34e3701b4d0c38f10c3dc2743e524cd9a58a09a434a66b1e7d6e0ecb7",
+   "schema": "k1-placement-reconcile/v1",
+   "verdict": "PASS"
+  },
+  "G2": {
+   "report_sha256": "648a42184c71229c706f4ead1c1ddb67fabebba9960fb3b30963fbaea0b51175",
+   "schema": "k1-construction-coverage/v1",
+   "verdict": "PASS"
+  },
+  "G3": {
+   "report_sha256": "5f529f21a06ed3eba6a15d980f3827a1363c1c18669d56dfa03cc7150e9e5fbc",
+   "schema": "k1-pinmap-audit/v2",
+   "verdict": "PASS"
+  },
+  "file": "delivery/gate_r24_2.json",
+  "subreports": "delivery/gate/"
+ },
+ "silk_check": {
+  "verdict": "PASS",
+  "footprints": 106,
+  "file": "delivery/silk_check.json"
+ },
+ "redline": {
+  "verdict": "PASS",
+  "counts": {
+   "mismatch": 0,
+   "missing": 0,
+   "ok": 10,
+   "total": 10
+  },
+  "files": [
+   "delivery/redline_manifest.yaml",
+   "delivery/redline_report.json"
+  ]
+ },
+ "drc": {
+  "unconnected": 0,
+  "violations": 109,
+  "errors": 3,
+  "warnings": 106,
+  "text_height_warnings": 61,
+  "normalized_sha256": "b5eec6da9a1eb0631e5c53662b62aaecb85625e7d17ce5b07a646c080483f318",
+  "double_run_identical": true,
+  "previous_r24_ma": {
+   "violations": 65,
+   "errors": 3,
+   "warnings": 62,
+   "text_height_warnings": 15
+  }
+ },
+ "exam": {
+  "cases_total": 47,
+  "cases_passed": 47,
+  "manifest_ok": true,
+  "package": "trial_card007/rcore_016_r4_20261121/exam",
+  "files": [
+   "delivery/exam_verify.json",
+   "delivery/exam_list.json",
+   "delivery/exam_run_summary.json"
+  ],
+  "logs": "logs/exam_run.log"
+ },
+ "cargo": {
+  "reference_log": "logs/cargo_test_silkshrink_20261124.log",
+  "passed": 512,
+  "failed": 0,
+  "test_binaries": 34,
+  "note": "no source code changed since the green full-workspace run; package build is Python/kicad-cli only"
+ },
+ "kicad_cli": "10.0.5",
+ "generation_commands": {
+  "board_copy": "cp trial_card007/rcore_silk_shrink_20261124/delivery/alt_ladder/k1_tapeout_candidate_r2_4_ma_silkshrink_ladder_20261124.kicad_pcb trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb  # byte copy, no resave",
+  "gate": "rcore-cli board gate --profile r24-full --sch boards/k1_sch.yaml --plan trial_card007/rcore_r24_full_20261123/out/placement_plan_101.json --board-yaml boards/k1_board.yaml --pinmap boards/k1_pinmap.yaml --board trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb --batch-plan trial_card007/rcore_r24_full_20261123/out/r24_batch_plan.json --asbuilt-profile trial_card007/rcore_silk_shrink_pkg_20261124/delivery/k1_r24_asbuilt_profile_r242.yaml --allow-ref H1 --allow-ref H2 --allow-ref H3 --allow-ref H4 --allow-ref H5 --out trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gate_r24_2.json --subreport-dir trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gate",
+  "silk": "rcore-cli board silk-check --in trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb --out trial_card007/rcore_silk_shrink_pkg_20261124/delivery/silk_check.json",
+  "model_alignment": "rcore-cli board model-alignment --board trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb --project-root trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board --model-root /home/fila/jqdDev_2025/ic_hw/AppDir/share/kicad/3dmodels --expect-footprints 106 --expect-models 101 --out trial_card007/rcore_silk_shrink_pkg_20261124/delivery/model_alignment.json",
+  "fingerprint": "rcore-cli board fingerprint --in trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb --out trial_card007/rcore_silk_shrink_pkg_20261124/delivery/fingerprint.json",
+  "redline": "rcore-cli board redline --manifest trial_card007/rcore_silk_shrink_pkg_20261124/delivery/redline_manifest.yaml --out trial_card007/rcore_silk_shrink_pkg_20261124/delivery/redline_report.json",
+  "board_diff": "rcore-cli board diff --before fab/k1_tapeout_candidate_r2_4_ma_20261124.kicad_pcb --after trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb --out trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board_diff_vs_r24_ma.json",
+  "gerbers": "kicad-cli pcb export gerbers --output trial_card007/rcore_silk_shrink_pkg_20261124/delivery/gerbers --layers F.Cu,In1.Cu,In2.Cu,B.Cu,F.Paste,B.Paste,F.Silkscreen,B.Silkscreen,F.Mask,B.Mask,Edge.Cuts,F.Fab,B.Fab --check-zones trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb",
+  "drill": "kicad-cli pcb export drill --format excellon --excellon-units mm --excellon-separate-th --generate-report --report-path trial_card007/rcore_silk_shrink_pkg_20261124/delivery/drill/drill_report.txt -o trial_card007/rcore_silk_shrink_pkg_20261124/delivery/drill trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb",
+  "pos": "kicad-cli pcb export pos --format csv --units mm --side both|front|back|both+smd -o trial_card007/rcore_silk_shrink_pkg_20261124/delivery/pos/k1_tapeout_r2_4_2_pos_*.csv trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb",
+  "bom": "work/make_bom.py (pcbnew inventory)",
+  "ipc356": "kicad-cli pcb export ipcd356 -o trial_card007/rcore_silk_shrink_pkg_20261124/delivery/test/k1_r2_4_2.ipc356 trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb",
+  "render": "work/render_r242.py (7 views; -D KICAD10_3DMODEL_DIR=/home/fila/jqdDev_2025/ic_hw/AppDir/share/kicad/3dmodels)",
+  "render_audit": "rcore-cli board render-audit --in <render.png> --manifest <prov.json> --baseline <R2.4-MA render> --out logs/render_audit/NN.json",
+  "drc": "kicad-cli pcb drc --format json --output logs/drc_runN.json trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb ; rcore-cli drc normalize --in logs/drc_runN.json --out logs/drc_normN.json",
+  "spec": "pm_gate/artifacts/k1/L3/SPEC_k1.json spec_version 2.1 with production_release pointing to a4719b53"
+ },
+ "counts": {
+  "gerber_files": 14,
+  "drill_files": 7,
+  "pos_both_rows": 101,
+  "bom_total_refs": 106,
+  "bom_assembly_refs": 101,
+  "renders": 7,
+  "renders_4k_class": true,
+  "renders_opaque": true,
+  "render_audit_pass": 7
+ },
+ "sha_table": "delivery/SHA256SUMS.txt",
+ "zip": "delivery/k1_r2_4_2_fab_package_20261124.zip"
+}

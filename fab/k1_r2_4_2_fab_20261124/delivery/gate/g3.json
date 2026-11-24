@@ -1,0 +1,151 @@
+{
+  "anonymous_pad_audit": {
+    "anonymous_pad_count": 0,
+    "anonymous_pad_footprints": [],
+    "definition": "anonymous_pad_count counts pads on placeholder footprints that have no numbered pads at all; unnumbered shield/thermal pads on real library footprints are informational only",
+    "unnumbered_mechanical_pads": 33
+  },
+  "board": "/home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb",
+  "board_only_allowed": [
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "H5"
+  ],
+  "board_only_unexpected": [],
+  "board_sha256": "a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f",
+  "classes": {
+    "known_truth_defect": 12
+  },
+  "command": "rcore board pinmap-audit",
+  "critical_findings": [],
+  "detail": {
+    "known_truth_defect": [
+      {
+        "board": "",
+        "pad": "14",
+        "ref": "U11",
+        "truth": "GND"
+      },
+      {
+        "board": "",
+        "pad": "19",
+        "ref": "U11",
+        "truth": "GND"
+      },
+      {
+        "board": "",
+        "pad": "21",
+        "ref": "U11",
+        "truth": "GND"
+      },
+      {
+        "board": "",
+        "pad": "39",
+        "ref": "U11",
+        "truth": "GND"
+      },
+      {
+        "board": "",
+        "pad": "4",
+        "ref": "U11",
+        "truth": "GND"
+      },
+      {
+        "board": "",
+        "pad": "41",
+        "ref": "U11",
+        "truth": "GND"
+      },
+      {
+        "board": "",
+        "pad": "1",
+        "ref": "U9",
+        "truth": "GND"
+      },
+      {
+        "board": "",
+        "pad": "10",
+        "ref": "U9",
+        "truth": "GND"
+      },
+      {
+        "board": "",
+        "pad": "2",
+        "ref": "U9",
+        "truth": "GND"
+      },
+      {
+        "board": "",
+        "pad": "3",
+        "ref": "U9",
+        "truth": "GND"
+      },
+      {
+        "board": "",
+        "pad": "4",
+        "ref": "U9",
+        "truth": "GND"
+      },
+      {
+        "board": "",
+        "pad": "6",
+        "ref": "U9",
+        "truth": "GND"
+      }
+    ]
+  },
+  "device_set_completeness": {
+    "allow_refs": [
+      "H1",
+      "H2",
+      "H3",
+      "H4",
+      "H5"
+    ],
+    "allow_refs_missing": [],
+    "board_only_allowed": [
+      "H1",
+      "H2",
+      "H3",
+      "H4",
+      "H5"
+    ],
+    "board_only_unexpected": [],
+    "board_refs": 106,
+    "complete": true,
+    "missing_unexpected": [],
+    "placed_refs": 101,
+    "require_complete_device_set": true,
+    "truth_refs": 101
+  },
+  "documented_gaps": [],
+  "errors": [],
+  "metrics": {
+    "anonymous_pad_count": 0,
+    "blocking_conflicts": 0,
+    "board_refs": 106,
+    "documented_gap_refs": 0,
+    "expected_pad_floor": 405,
+    "pad_differences": 12,
+    "pads_compared": 439,
+    "placed_refs": 101,
+    "truth_refs": 101
+  },
+  "missing_unexpected": [],
+  "profile": "/home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/k1_r24_asbuilt_profile_r242.yaml",
+  "profile_board_match": true,
+  "schema": "k1-pinmap-audit/v2",
+  "single_pad_nets": {
+    "REFCLK_N": [
+      "J14/A12"
+    ],
+    "REFCLK_P": [
+      "J14/A11"
+    ]
+  },
+  "truth": "boards/k1_sch.yaml",
+  "verdict": "PASS",
+  "violations": []
+}

@@ -1,0 +1,71 @@
+# K1 R2.4-full Batch0 net-aware placement-candidate exception ledger.
+#
+# Purpose: pinmap-audit standing gate for the R2.4-full target.  This profile
+# is pinned to the Batch0 synthetic placement candidate -- it is NOT a fab
+# artifact.  Unlike the R2.3 ledger, documented_gap_refs and unresolved_refs
+# are empty: the candidate carries all 101 functional devices with
+# schematic-truth pad nets, so any missing ref or pad conflict is a hard gate
+# failure.
+#
+# Board: trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb
+# Truth: boards/k1_sch.yaml (design intent, ECN-9/ECN-12 executed on paper)
+schema: k1-asbuilt-profile/v1
+board: trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb
+board_sha256: a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f
+truth: boards/k1_sch.yaml
+date: '2026-11-24'
+
+adjudications:
+  C1:
+    title: USB2 bridge is now placed in the synthetic candidate
+    ruling: CLOSED_IN_CANDIDATE
+    detail: U19/U18/D5/D6 are placed with truth nets; the Batch0 candidate is net-aware and used only for G1/G2/G3 and capacity validation.
+  C2:
+    title: U6_OE_N polarity carried by firmware
+    ruling: ACCEPT_AS_BUILT + FIRMWARE_ACTIVE_LOW
+    detail: Same active-low policy as R2.3; net semantics already named U6_OE_N in truth.
+  C3:
+    title: R2.4 Batch1 routed power-tree candidate
+    ruling: CLOSED_IN_CANDIDATE
+    detail: U27/U24/U28 plus L1/R47/R48/C95-C106 are placed and netted from k1_sch.yaml.  Fab-level Batch1 still owns the physical ECO.
+  C4:
+    title: U8 padout represented in the candidate
+    ruling: CLOSED_IN_CANDIDATE
+    detail: Candidate pads are re-netted to the ECN-1 TPS54628 truth pinout.  The physical R2.3 board is untouched; Batch1 lands the fab ECO.
+  C5:
+    title: R2.4 Batch4 final full-board candidate (Batch3 baseline + AUTH_LED_K stitch + differential-pair length tuning + warning/courtyard cleanup)
+    ruling: CLOSED_IN_CANDIDATE
+    detail: All functional nets are routed to zero unconnected; AUTH_LED_K was closed by an In2-B.Cu stitch via plus stub, and all five R24 functional differential pairs are length-tuned to skew <= 0.0693 mm. Center-min geometry waivers are recorded in the Batch4 report.  U19/U20/U21/U22/U25/U26/U28 and their passives carry k1_sch.yaml truth nets.
+  C6:
+    title: R2.4 model-alignment render-only correction (J14/J15/J16/J9/J13 model mounts)
+    ruling: CLOSED_IN_CANDIDATE
+    detail: Five (model ...) blocks corrected on the mounted render lineage; electrical/pad/track/zone content byte-identical to e744096b. Production release R2.4.2 board sha a4719b53 (silk-only vs 8142683f).
+
+documented_gap_refs: []
+
+board_only_whitelist: [H1, H2, H3, H4, H5]
+
+known_truth_defect_refs:
+  U9: 'ECN-9 legacy one-to-many GND/NC symbol mapping (U9/GND, U9/NC)'
+  U11: 'ECN-9 legacy one-to-many GND symbol mapping (U11/GND x6)'
+
+accepted_net_renames:
+  J14_RX0_N: OCuLink_RX0_N
+  J14_RX0_P: OCuLink_RX0_P
+  J14_RX1_N: OCuLink_RX1_N
+  J14_RX1_P: OCuLink_RX1_P
+  J14_TX0_N: OCuLink_TX0_N
+  J14_TX0_P: OCuLink_TX0_P
+  J14_TX1_N: OCuLink_TX1_N
+  J14_TX1_P: OCuLink_TX1_P
+
+accepted_pad_overrides:
+  - {ref: U6, pad: '6', truth: U6_OE_N, board: SBU_EN, ruling: C2}
+  - {ref: R40, pad: '2', truth: MCU_USB_D_P, board: KEY_D_P, ruling: C1}
+
+truth_single_member_nets: [REFCLK_P, REFCLK_N]
+
+power_tree_accepted_refs: []
+power_tree_r17_nets: []
+
+unresolved_refs: {}

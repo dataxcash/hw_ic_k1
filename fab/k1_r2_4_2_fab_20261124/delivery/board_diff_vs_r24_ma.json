@@ -1,0 +1,31 @@
+{
+  "added_nets": [],
+  "added_track_uuids": [],
+  "after": {
+    "electrical_sha256": "9efd27734c8adced249b5356155ab58bfc6c9e8902e025bcb9cb90a1016d12ad",
+    "path": "/home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb",
+    "track_segment_sha256": "6b1a25d537ff8bebfbdd9ada7b7e476c1ae1c25d59d9b17d3de416945e086751"
+  },
+  "before": {
+    "electrical_sha256": "9efd27734c8adced249b5356155ab58bfc6c9e8902e025bcb9cb90a1016d12ad",
+    "path": "fab/k1_tapeout_candidate_r2_4_ma_20261124.kicad_pcb",
+    "track_segment_sha256": "6b1a25d537ff8bebfbdd9ada7b7e476c1ae1c25d59d9b17d3de416945e086751"
+  },
+  "changed_footprints": [],
+  "changed_track_uuids": [],
+  "deterministic": true,
+  "equal": {
+    "electrical_sha256": true,
+    "footprints": true,
+    "nets": true,
+    "track_segment_sha256": true,
+    "tracks": true,
+    "zones": true
+  },
+  "module": "board_diff",
+  "removed_nets": [],
+  "removed_track_uuids": [],
+  "schema": "rcore-board-diff/v1",
+  "search": false,
+  "version": "1"
+}

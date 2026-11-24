@@ -1,0 +1,19 @@
+{
+ "schema": "k1-r242-board-stats/v1",
+ "board": "trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb",
+ "sha256": "a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f",
+ "bytes": 1593148,
+ "counts": {
+  "footprints": 106,
+  "models": 101,
+  "nets": 90,
+  "tracks": 4282,
+  "vias": 435,
+  "zones": 33
+ },
+ "electrical_sha256": "9efd27734c8adced249b5356155ab58bfc6c9e8902e025bcb9cb90a1016d12ad",
+ "track_segment_sha256": "6b1a25d537ff8bebfbdd9ada7b7e476c1ae1c25d59d9b17d3de416945e086751",
+ "bom_total_refs": 106,
+ "bom_assembly_refs": 101,
+ "bom_npth_mechanical_refs": 5
+}

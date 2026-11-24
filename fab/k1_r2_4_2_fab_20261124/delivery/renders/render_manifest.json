@@ -1,0 +1,94 @@
+{
+ "schema": "k1-r242-render-manifest/v1",
+ "renderer": "kicad-cli pcb render 10.0.5",
+ "source_board": "/home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb",
+ "source_board_sha256": "a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f",
+ "define_var": "KICAD10_3DMODEL_DIR=/home/fila/jqdDev_2025/ic_hw/AppDir/share/kicad/3dmodels",
+ "background": "opaque",
+ "quality": "high",
+ "count": 7,
+ "all_4k_class": true,
+ "all_opaque": true,
+ "dimensions_note": "requested 3840x2160; actual 3808x2128 (kicad-cli 10.0.5 renders 4K-class with margin)",
+ "j1_status": "J1 production board uses Amphenol 12401610E4-2A substitute model (JAE official STEP absent); pads/electrical unchanged",
+ "renders": [
+  {
+   "num": "01",
+   "view": "full-board",
+   "file": "delivery/renders/K1-CARD-R242-01-full-board-4k.png",
+   "sha256": "feb025148f898fc7dbcee732c5a5b7e5ddbf7732ba19d829077cc0db452aa910",
+   "width_actual": 3808,
+   "height_actual": 2128,
+   "provenance": "delivery/renders/prov/01-full-board.json",
+   "baseline": "fab/k1_r2_4_fab_20261124/delivery/renders/K1-CARD-R24MA-01-full-board-4k.png",
+   "render_command": "/home/fila/jqdDev_2025/ic_hw/AppDir/bin/kicad-cli pcb render -o /home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/K1-CARD-R242-01-full-board-4k.png -w 3840 -h 2160 --side top --rotate -35,0,30 --zoom 1.05 --background opaque --quality high --floor -D KICAD10_3DMODEL_DIR=/home/fila/jqdDev_2025/ic_hw/AppDir/share/kicad/3dmodels /home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb"
+  },
+  {
+   "num": "02",
+   "view": "h5-closeup",
+   "file": "delivery/renders/K1-CARD-R242-02-h5-closeup-4k.png",
+   "sha256": "5be90f726f83b8be2cca7bceac5b5734838dfed526a7115c2add133baa0f218d",
+   "width_actual": 3808,
+   "height_actual": 2128,
+   "provenance": "delivery/renders/prov/02-h5-closeup.json",
+   "baseline": "fab/k1_r2_4_fab_20261124/delivery/renders/K1-CARD-R24MA-02-h5-closeup-4k.png",
+   "render_command": "/home/fila/jqdDev_2025/ic_hw/AppDir/bin/kicad-cli pcb render -o /home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/K1-CARD-R242-02-h5-closeup-4k.png -w 3840 -h 2160 --side top --zoom 4 --pivot -3.2,-2.1,0 --background opaque --quality high --floor -D KICAD10_3DMODEL_DIR=/home/fila/jqdDev_2025/ic_hw/AppDir/share/kicad/3dmodels /home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb"
+  },
+  {
+   "num": "03",
+   "view": "top-iso",
+   "file": "delivery/renders/K1-CARD-R242-03-top-iso-4k.png",
+   "sha256": "f60fe7537d6eb7c2847dd0ab86f22a8b35130851c2575320786589576a9dce47",
+   "width_actual": 3808,
+   "height_actual": 2128,
+   "provenance": "delivery/renders/prov/03-top-iso.json",
+   "baseline": "fab/k1_r2_4_fab_20261124/delivery/renders/K1-CARD-R24MA-03-top-iso-4k.png",
+   "render_command": "/home/fila/jqdDev_2025/ic_hw/AppDir/bin/kicad-cli pcb render -o /home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/K1-CARD-R242-03-top-iso-4k.png -w 3840 -h 2160 --side top --rotate -45,0,45 --zoom 1.05 --background opaque --quality high --floor -D KICAD10_3DMODEL_DIR=/home/fila/jqdDev_2025/ic_hw/AppDir/share/kicad/3dmodels /home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb"
+  },
+  {
+   "num": "04",
+   "view": "bottom-iso",
+   "file": "delivery/renders/K1-CARD-R242-04-bottom-iso-4k.png",
+   "sha256": "35545e8296df21c4fc9f889ca0f8fe4e85de7609c562b3ce6f91b949fce443a0",
+   "width_actual": 3808,
+   "height_actual": 2128,
+   "provenance": "delivery/renders/prov/04-bottom-iso.json",
+   "baseline": "fab/k1_r2_4_fab_20261124/delivery/renders/K1-CARD-R24MA-04-bottom-iso-4k.png",
+   "render_command": "/home/fila/jqdDev_2025/ic_hw/AppDir/bin/kicad-cli pcb render -o /home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/K1-CARD-R242-04-bottom-iso-4k.png -w 3840 -h 2160 --side bottom --rotate -45,0,45 --zoom 1.05 --background opaque --quality high --floor -D KICAD10_3DMODEL_DIR=/home/fila/jqdDev_2025/ic_hw/AppDir/share/kicad/3dmodels /home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb"
+  },
+  {
+   "num": "05",
+   "view": "top-flat",
+   "file": "delivery/renders/K1-CARD-R242-05-top-flat-4k.png",
+   "sha256": "43a38f2f4ef3d40498224aa8ffb70c92afd45ad52ca1c3bbc09d6d0ef2383011",
+   "width_actual": 3808,
+   "height_actual": 2128,
+   "provenance": "delivery/renders/prov/05-top-flat.json",
+   "baseline": "fab/k1_r2_4_fab_20261124/delivery/renders/K1-CARD-R24MA-05-top-flat-4k.png",
+   "render_command": "/home/fila/jqdDev_2025/ic_hw/AppDir/bin/kicad-cli pcb render -o /home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/K1-CARD-R242-05-top-flat-4k.png -w 3840 -h 2160 --side top --zoom 1.3 --background opaque --quality high --floor -D KICAD10_3DMODEL_DIR=/home/fila/jqdDev_2025/ic_hw/AppDir/share/kicad/3dmodels /home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb"
+  },
+  {
+   "num": "06",
+   "view": "j15-closeup",
+   "file": "delivery/renders/K1-CARD-R242-06-j15-closeup-4k.png",
+   "sha256": "863ebbe128d3c67fbf458f60318545f57f22be969ed1e733cbd1f50c5685726c",
+   "width_actual": 3808,
+   "height_actual": 2128,
+   "provenance": "delivery/renders/prov/06-j15-closeup.json",
+   "baseline": "fab/k1_r2_4_fab_20261124/delivery/renders/K1-CARD-R24MA-06-j15-closeup-4k.png",
+   "render_command": "/home/fila/jqdDev_2025/ic_hw/AppDir/bin/kicad-cli pcb render -o /home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/K1-CARD-R242-06-j15-closeup-4k.png -w 3840 -h 2160 --side top --zoom 5 --pivot 2.88,-2.18,0 --background opaque --quality high --floor -D KICAD10_3DMODEL_DIR=/home/fila/jqdDev_2025/ic_hw/AppDir/share/kicad/3dmodels /home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb"
+  },
+  {
+   "num": "07",
+   "view": "j16-closeup",
+   "file": "delivery/renders/K1-CARD-R242-07-j16-closeup-4k.png",
+   "sha256": "0ed2a40af23db9549a6128f2632e6cd6da08bba290f4403803533b3b819cb5e7",
+   "width_actual": 3808,
+   "height_actual": 2128,
+   "provenance": "delivery/renders/prov/07-j16-closeup.json",
+   "baseline": "fab/k1_r2_4_fab_20261124/delivery/renders/K1-CARD-R24MA-07-j16-closeup-4k.png",
+   "render_command": "/home/fila/jqdDev_2025/ic_hw/AppDir/bin/kicad-cli pcb render -o /home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/renders/K1-CARD-R242-07-j16-closeup-4k.png -w 3840 -h 2160 --side top --zoom 5 --pivot 2.08,1.86,0 --background opaque --quality high --floor -D KICAD10_3DMODEL_DIR=/home/fila/jqdDev_2025/ic_hw/AppDir/share/kicad/3dmodels /home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb"
+  }
+ ],
+ "mounted_board_sha256": "a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f"
+}

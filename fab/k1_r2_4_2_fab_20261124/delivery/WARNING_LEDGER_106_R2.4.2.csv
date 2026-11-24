@@ -1,0 +1,107 @@
+No,Severity,Type,Description,Items
+1,warning,via_dangling,Via is not connected or connected on only one layer,Blind via [SBU1] on In2.Cu - B.Cu
+2,warning,track_dangling,Track has unconnected end,"Track [SBU_EN] on F.Cu, length 0.1414 mm"
+3,warning,track_dangling,Track has unconnected end,"Track [SBU1_INT] on F.Cu, length 8.5500 mm"
+4,warning,isolated_copper,Isolated copper fill,"Zone [PWR_5V_MAIN] on B.Cu, priority 101"
+5,warning,isolated_copper,Isolated copper fill,"Zone [PWR_5V_MAIN] on B.Cu, priority 101"
+6,warning,isolated_copper,Isolated copper fill,"Zone [VBUS] on In2.Cu, priority 103"
+7,warning,isolated_copper,Isolated copper fill,"Zone [VBUS] on In2.Cu, priority 106"
+8,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint J14
+9,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint U11
+10,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint H4
+11,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint J15
+12,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint U5
+13,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint H5
+14,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint J9
+15,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint J1
+16,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint J13
+17,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint U9
+18,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint H3
+19,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint U1
+20,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint L1
+21,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint U18
+22,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint E1
+23,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint H1
+24,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint U6
+25,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint J6
+26,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint H2
+27,warning,lib_footprint_issues,The footprint library 'ForgeOS' is not enabled in the current configuration,Footprint U19
+28,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of U14
+29,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of U12
+30,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5000 mm),Reference field of R3
+31,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of D1
+32,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of J14
+33,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of U11
+34,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of D4
+35,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of H4
+36,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of U13
+37,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of R31
+38,warning,text_thickness,Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0750 mm),Reference field of R43
+39,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.3000 mm),Reference field of R43
+40,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of R44
+41,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5000 mm),Reference field of R1
+42,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of R28
+43,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of C89
+44,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of U5
+45,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of H5
+46,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of R16
+47,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of J10
+48,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of J9
+49,warning,text_thickness,Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0750 mm),Reference field of R42
+50,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.3000 mm),Reference field of R42
+51,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of J1
+52,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.4000 mm),Reference field of C85
+53,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of R35
+54,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of J13
+55,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of R29
+56,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of C73
+57,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of R40
+58,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.5000 mm),Reference field of R37
+59,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.4000 mm),Reference field of R39
+60,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.4000 mm),Reference field of R46
+61,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of U9
+62,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of U8
+63,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of H3
+64,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of R32
+65,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of C94
+66,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of R21
+67,warning,text_thickness,Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0750 mm),Reference field of C86
+68,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.3000 mm),Reference field of C86
+69,warning,text_thickness,Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0750 mm),Reference field of U1
+70,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.3000 mm),Reference field of U1
+71,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of E1
+72,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of R30
+73,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of H1
+74,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of U6
+75,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of C88
+76,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of U10
+77,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of C87
+78,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of C90
+79,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of J6
+80,warning,text_thickness,Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0625 mm),Reference field of D3
+81,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.2500 mm),Reference field of D3
+82,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of Q2
+83,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of H2
+84,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of C93
+85,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of U19
+86,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of C91
+87,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of C92
+88,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of R41
+89,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of R45
+90,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of Q1
+91,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of R36
+92,warning,text_thickness,Text thickness out of range (board setup constraints silk text thickness min thickness 0.0800 mm; actual 0.0750 mm),Reference field of R38
+93,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.3000 mm),Reference field of R38
+94,warning,text_height,Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm),Reference field of D2
+95,warning,silk_overlap,Silkscreen clearance,Reference field of C94 | Reference field of C103
+96,warning,silk_overlap,Silkscreen clearance,Reference field of H4 | Reference field of C102
+97,warning,silk_overlap,Silkscreen clearance,Reference field of U26 | Reference field of R59
+98,warning,silk_overlap,Silkscreen clearance,Reference field of R61 | Reference field of R57
+99,warning,silk_overlap,Silkscreen clearance,Reference field of U14 | Reference field of U27
+100,warning,silk_overlap,Silkscreen clearance,Reference field of R49 | Reference field of U24
+101,warning,silk_overlap,Silkscreen clearance,Reference field of R60 | Reference field of C97
+102,warning,silk_overlap,Silkscreen clearance,Reference field of R3 | Reference field of R36
+103,warning,silk_overlap,Silkscreen clearance,Reference field of R1 | Reference field of R36
+104,warning,silk_over_copper,Silkscreen clipped by solder mask,Segment of L1 on F.Silkscreen | Pad 1 [PWR_5V_SW] of L1 on F.Cu
+105,warning,silk_over_copper,Silkscreen clipped by solder mask,Segment of L1 on F.Silkscreen | Pad 2 [PWR_5V_MAIN] of L1 on F.Cu
+106,warning,copper_sliver,Copper sliver (F.Cu),

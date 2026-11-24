@@ -1,0 +1,33 @@
+schema: rcore-redline-manifest/v1
+root: ../../..
+entries:
+  - name: true_board_frozen
+    path: k1_revB_RB1b4c_final_38u.kicad_pcb
+    sha256: b59bcb8a3b53870c0aee97f6f9f108c85de39f20b820fa86e1f00cd2d8671180
+  - name: r23_fab_baseline
+    path: fab/k1_tapeout_candidate_r2_3_20261122.kicad_pcb
+    sha256: 553c63bf8573dcd126c4c5ce61fbf9fa1d927d26bab7e157d6666a801b6f1b56
+  - name: r24_old_production_board
+    path: fab/k1_r2_4_fab_20261123/delivery/board/k1_tapeout_candidate_r2_4_20261123.kicad_pcb
+    sha256: e744096bc058cd62872b6f7ee70bc85441543eaeb676d4409df44b35f993bc20
+  - name: r24_ma_superseded_board
+    path: fab/k1_tapeout_candidate_r2_4_ma_20261124.kicad_pcb
+    sha256: 8142683f6a5ddd4b9645627eb514785edb3798331925ca81234054d612c6460b
+  - name: r242_source_alt
+    path: trial_card007/rcore_silk_shrink_20261124/delivery/alt_ladder/k1_tapeout_candidate_r2_4_ma_silkshrink_ladder_20261124.kicad_pcb
+    sha256: a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f
+  - name: r242_package_board
+    path: trial_card007/rcore_silk_shrink_pkg_20261124/delivery/board/k1_tapeout_candidate_r2_4_2_20261124.kicad_pcb
+    sha256: a4719b536a81d42ea346f87207fb5af7ccaa3b1cd20c39c2a58295a0d45eaf8f
+  - name: k1_sch_yaml
+    path: boards/k1_sch.yaml
+    sha256: 74af0780eb8a89b651d023a44272520fa3656183bd01e0d909d0786511899540
+  - name: k1_board_yaml_106
+    path: boards/k1_board.yaml
+    sha256: 21288feb9b2b162937f1d0ec4c7f2483498046a100d3d39f8740d44a175a9737
+  - name: k1_pinmap_yaml
+    path: boards/k1_pinmap.yaml
+    sha256: eeaba1c8f70fb6c3b5f4d1d0307d8c2f12eb8257cb3eaf08f7b6c69d52879543
+  - name: spec_k1_2_1
+    path: pm_gate/artifacts/k1/L3/SPEC_k1.json
+    sha256: 3d9b633a40677ebe495ebed9e21ff3cd178147b9e1ef818dc31a535f4df0a95a
