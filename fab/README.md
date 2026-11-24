@@ -1,5 +1,15 @@
 # `k1/fab/` —— 制造输入件（K1 项目面）
 
+## 当前生产口径（2026-11-24）
+
+- 现行生产板：`fab/k1_tapeout_candidate_r2_4_ma_20261124.kicad_pcb`
+  - sha256 `8142683f6a5ddd4b9645627eb514785edb3798331925ca81234054d612c6460b`
+  - 电气指纹 `9efd27734c8adced249b5356155ab58bfc6c9e8902e025bcb9cb90a1016d12ad`（与旧板 `e744096b` 电气等价；仅 5 处 3D 模型挂载修正）
+- 生产包：`fab/k1_r2_4_fab_20261124/`（MA 版；验收/落盘证据见目录内 `LANDING_MANIFEST.json` / `LANDING_VERIFICATION.txt`）
+- 历史：`fab/k1_r2_4_fab_20261123/` 为 `e744096b` 被替代系（superseded，只读保留）；旧扁平三件套 `k1_tapeout_candidate_r2_4_20261123.*` 已删除（历史在 git）
+- 授权：`msg-20261124-081930-k1-mcp-report`
+
+
 | 件 | sha256(16) | 口径 / 用途 | 生成器 |
 |---|---|---|---|
 | `k1_v1_bom.csv` | `2b7b2554f835689e` | **ref 集 BOM**（`Ref` 头 + **每行一 ref**，**37 refs**）：满足 `_shared/eda_core/pipeline/checks.py::check_bom_consistent` 的消费口径（`row[0].split(",")`），是 `k1/pipeline.yaml` 安装的**具名前置**（#K2-49 §二 M3 前置） | `k1/tools/k1_p4_bom_gen_v1.py`（K2 同构移植） |

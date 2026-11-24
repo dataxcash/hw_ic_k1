@@ -1,0 +1,10 @@
+{
+ "external_inputs_checked": 47,
+ "failures": [],
+ "files_checked": 124,
+ "manifest": "/home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_016_r4_20261121/exam/EXAM-SHA256.json",
+ "manifest_sha256": "13e0759936db163a4c0e927cfc089b73a09cfeba55b6e43fdc19f8a072c70761",
+ "package": "/home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_016_r4_20261121/exam",
+ "pass": true,
+ "schema": "k1-exam-verify/v1"
+}

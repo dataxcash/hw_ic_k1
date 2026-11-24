@@ -1,11 +1,13 @@
 ![K1 R2.4 tapeout candidate — 3D top-flat render (4K)](doc/images/k1-r23-top-flat-4k.png)
-*K1 R2.4 full-function tapeout candidate — 3D top-flat render (4K). Owner-approved
+*K1 R2.4-MA full-function production release — 3D top-flat render (4K). Owner-approved
 full-function build: all 101 functional devices placed (106 footprints incl. 5
 mounting holes), all 90 nets fully routed (0 unconnected), 0 new hard DRC errors
 (3 pre-existing J1 Type-C baseline waivers). Auth latch, dual-input power
 (12V priority / 5VSB standby) and gated 5V Type-C output are implemented and
-firmware-covered (145 host checks). Gerbers, drills, POS, BOM and IPC-356 in
-`fab/k1_r2_4_fab_20261123/`; differential-pair SI waivers and the 62-item
+firmware-covered (145 host checks). Production board 8142683f (electrically
+identical to e744096b; connector 3D models re-aligned, guarded by the rcore
+model-alignment gate). Gerbers, drills, POS, BOM and IPC-356 in
+`fab/k1_r2_4_fab_20261124/`; differential-pair SI waivers and the 62-item
 warning ledger are disclosed in the package as-built notes.*
 
 Open-source hardware — KiCad design files for the **K1 Master Gate Card**,

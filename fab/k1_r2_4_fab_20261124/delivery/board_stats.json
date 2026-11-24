@@ -1,0 +1,261 @@
+{
+  "metadata": {
+    "date": "2026-11-24T08:07:13",
+    "generator": "KiCad 10.0.5",
+    "project": "k1_tapeout_candidate_r2_4_ma_20261124",
+    "board_name": "k1_tapeout_candidate_r2_4_ma_20261124"
+  },
+  "board": {
+    "has_outline": true,
+    "width": "70.0000 mm",
+    "height": "48.0000 mm",
+    "area": "3360.00 mm²",
+    "front_component_density": "32.38",
+    "back_component_density": "2.97",
+    "front_copper_area": "1131.544 mm²",
+    "back_copper_area": "383.594 mm²",
+    "min_track_clearance": "0.1000 mm",
+    "min_track_width": "0.0900 mm",
+    "min_drill_diameter": "0.1000 mm",
+    "board_thickness": "1.6000 mm",
+    "front_footprint_area": "1087.956 mm²",
+    "back_footprint_area": "99.775 mm²",
+    "front_footprint_density": "32.38",
+    "back_footprint_density": "2.97"
+  },
+  "pads": {
+    "通孔": 24,
+    "贴片": 469,
+    "连接器": 0,
+    "非电镀孔_(npth)": 13,
+    "半孔": 0,
+    "压接": 0
+  },
+  "vias": {
+    "": 22
+  },
+  "components": {
+    "直插_(tht)": {
+      "front": 6,
+      "back": 0,
+      "total": 6
+    },
+    "贴片": {
+      "front": 95,
+      "back": 0,
+      "total": 95
+    },
+    "未指定": {
+      "front": 5,
+      "back": 0,
+      "total": 5
+    },
+    "total": {
+      "front": 106,
+      "back": 0,
+      "total": 106
+    }
+  },
+  "drill_holes": [
+    {
+      "count": 162,
+      "shape": "圆形",
+      "x_size": "0.2000 mm",
+      "y_size": "0.2000 mm",
+      "plated": true,
+      "source": "过孔",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 71,
+      "shape": "圆形",
+      "x_size": "0.2000 mm",
+      "y_size": "0.2000 mm",
+      "plated": true,
+      "source": "过孔",
+      "start_layer": "F.Cu",
+      "stop_layer": "In2.Cu"
+    },
+    {
+      "count": 52,
+      "shape": "圆形",
+      "x_size": "0.2000 mm",
+      "y_size": "0.2000 mm",
+      "plated": true,
+      "source": "过孔",
+      "start_layer": "In2.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 40,
+      "shape": "圆形",
+      "x_size": "0.2000 mm",
+      "y_size": "0.2000 mm",
+      "plated": true,
+      "source": "过孔",
+      "start_layer": "F.Cu",
+      "stop_layer": "In1.Cu"
+    },
+    {
+      "count": 37,
+      "shape": "圆形",
+      "x_size": "0.3000 mm",
+      "y_size": "0.3000 mm",
+      "plated": true,
+      "source": "过孔",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 30,
+      "shape": "圆形",
+      "x_size": "0.2000 mm",
+      "y_size": "0.2000 mm",
+      "plated": true,
+      "source": "过孔",
+      "start_layer": "In1.Cu",
+      "stop_layer": "In2.Cu"
+    },
+    {
+      "count": 19,
+      "shape": "圆形",
+      "x_size": "0.1000 mm",
+      "y_size": "0.1000 mm",
+      "plated": true,
+      "source": "过孔",
+      "start_layer": "F.Cu",
+      "stop_layer": "In1.Cu"
+    },
+    {
+      "count": 16,
+      "shape": "圆形",
+      "x_size": "0.3000 mm",
+      "y_size": "0.3000 mm",
+      "plated": true,
+      "source": "过孔",
+      "start_layer": "F.Cu",
+      "stop_layer": "In1.Cu"
+    },
+    {
+      "count": 10,
+      "shape": "圆形",
+      "x_size": "0.8000 mm",
+      "y_size": "0.8000 mm",
+      "plated": true,
+      "source": "焊盘",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 5,
+      "shape": "圆形",
+      "x_size": "0.2000 mm",
+      "y_size": "0.2000 mm",
+      "plated": true,
+      "source": "过孔",
+      "start_layer": "In1.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 5,
+      "shape": "圆形",
+      "x_size": "2.7000 mm",
+      "y_size": "2.7000 mm",
+      "plated": false,
+      "source": "焊盘",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 4,
+      "shape": "圆形",
+      "x_size": "1.7000 mm",
+      "y_size": "1.7000 mm",
+      "plated": true,
+      "source": "焊盘",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 4,
+      "shape": "圆形",
+      "x_size": "0.6600 mm",
+      "y_size": "0.6600 mm",
+      "plated": false,
+      "source": "焊盘",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 4,
+      "shape": "槽",
+      "x_size": "0.8000 mm",
+      "y_size": "1.3000 mm",
+      "plated": true,
+      "source": "焊盘",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 4,
+      "shape": "圆形",
+      "x_size": "0.4000 mm",
+      "y_size": "0.4000 mm",
+      "plated": true,
+      "source": "焊盘",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 3,
+      "shape": "圆形",
+      "x_size": "0.1000 mm",
+      "y_size": "0.1000 mm",
+      "plated": true,
+      "source": "过孔",
+      "start_layer": "F.Cu",
+      "stop_layer": "In2.Cu"
+    },
+    {
+      "count": 2,
+      "shape": "槽",
+      "x_size": "0.5500 mm",
+      "y_size": "0.9500 mm",
+      "plated": true,
+      "source": "焊盘",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 2,
+      "shape": "圆形",
+      "x_size": "1.3000 mm",
+      "y_size": "1.3000 mm",
+      "plated": false,
+      "source": "焊盘",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 1,
+      "shape": "槽",
+      "x_size": "0.8500 mm",
+      "y_size": "0.6000 mm",
+      "plated": false,
+      "source": "焊盘",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    },
+    {
+      "count": 1,
+      "shape": "圆形",
+      "x_size": "0.6000 mm",
+      "y_size": "0.6000 mm",
+      "plated": false,
+      "source": "焊盘",
+      "start_layer": "F.Cu",
+      "stop_layer": "B.Cu"
+    }
+  ]
+}

@@ -1,0 +1,300 @@
+{
+ "cases": [
+  {
+   "case_id": "EX-PWR-01",
+   "kind": "cli_case",
+   "relpath": "cases/EX-PWR-01-batch1.json",
+   "title": "R2.4 Batch1 power-tree positive: U8 padout/U27 dual-input/U24 work rail netlist truth, C3 deviation=0"
+  },
+  {
+   "case_id": "EX-R24-G1-01",
+   "kind": "cli_case",
+   "relpath": "cases/EX-R24-G1-01.json",
+   "title": "R2.4 G1 positive: 101/101 placement reconcile, zero anonymous pads"
+  },
+  {
+   "case_id": "EX-R24-G2-01",
+   "kind": "cli_case",
+   "relpath": "cases/EX-R24-G2-01.json",
+   "title": "R2.4 G2 positive: 89/89 nets and 101/101 refs covered"
+  },
+  {
+   "case_id": "EX-R24-G3-01",
+   "kind": "cli_case",
+   "relpath": "cases/EX-R24-G3-01.json",
+   "title": "R2.4 G3 positive: 101 functional + H1-H5, 405 pad floor, anonymous=0"
+  },
+  {
+   "case_id": "EX016-01",
+   "kind": "s1_planner_self_test",
+   "relpath": "cases/EX016-01-s1-mechanisms.json",
+   "title": "S1 four-mechanism deterministic planner exam (tie order / give-way / targeted-rip fallback / bounded termination)"
+  },
+  {
+   "case_id": "EX016-02",
+   "kind": "s2_frozen_response_replay",
+   "relpath": "cases/EX016-02-s2-full-frozen-replay.json",
+   "title": "S2 full-board frozen self_astar response replayed by rcore layout construct (dual-run)"
+  },
+  {
+   "case_id": "EX016-03",
+   "kind": "s2_frozen_response_replay",
+   "relpath": "cases/EX016-03-s2-orig-frozen-replay.json",
+   "title": "S2 original-problem frozen self_astar response replayed by rcore layout construct (graduation substrate)"
+  },
+  {
+   "case_id": "EX020-01",
+   "kind": "orient_solver",
+   "relpath": "cases/EX020-01-orient-solver.json",
+   "title": "朝向解算器：四家族 registry→解析解→渲染断言（J1 错朝向自动纠正）"
+  },
+  {
+   "case_id": "EX032-01",
+   "kind": "exam_runner_selftest",
+   "relpath": "cases/EX032-01-rust-exam-runner.json",
+   "title": "M2 Rust EXAM runner self-test: manifest-bound, deterministic, all kinds registered, original ten cases present"
+  },
+  {
+   "case_id": "EX033-01",
+   "kind": "cli_case",
+   "relpath": "cases/EX033-01.json",
+   "title": "E4 原理图生成：Rust sch generate 对 Python 冻结产物逐字节 parity（7 文件）"
+  },
+  {
+   "case_id": "EX033-02",
+   "kind": "cli_case",
+   "relpath": "cases/EX033-02.json",
+   "title": "E4 原理图再生：Rust sch regen 对 k1_sch.yaml 逐字节 parity"
+  },
+  {
+   "case_id": "EX033-03",
+   "kind": "cli_case",
+   "relpath": "cases/EX033-03.json",
+   "title": "E4 sch check：盘上件与再生结果一致"
+  },
+  {
+   "case_id": "EX034-01",
+   "kind": "cli_case",
+   "relpath": "cases/EX034-01.json",
+   "title": "E5 DRC normalize：51 违例/3 error/归一 SHA 与监理历史解析器一致"
+  },
+  {
+   "case_id": "EX034-02",
+   "kind": "cli_case",
+   "relpath": "cases/EX034-02.json",
+   "title": "E5 board fingerprint：R2.1 电气/走线 SHA 与 pcbnew oracle 一致"
+  },
+  {
+   "case_id": "EX034-03",
+   "kind": "cli_case",
+   "relpath": "cases/EX034-03.json",
+   "title": "E5 board pathset：golden 113 文件 cc09bf95 引擎内建复核"
+  },
+  {
+   "case_id": "EX034-04",
+   "kind": "cli_case",
+   "relpath": "cases/EX034-04.json",
+   "title": "E5 redline：R2.1 板 + k1_sch.yaml 双钉板 PASS"
+  },
+  {
+   "case_id": "EX035-01",
+   "kind": "cli_case",
+   "relpath": "cases/EX035-01-model-alignment.json",
+   "title": "G4 model-alignment 正例：全板 106fp/101 models 模型包络对齐 PASS"
+  },
+  {
+   "case_id": "NC-PWR-01",
+   "kind": "cli_case",
+   "relpath": "cases/NC-PWR-01-batch1.json",
+   "title": "R2.4 Batch1 power-tree negative: swapped U8 pad1/pad2 must be rejected (fail-closed)"
+  },
+  {
+   "case_id": "NC-R24-G1-01",
+   "kind": "cli_case",
+   "relpath": "cases/NC-R24-G1-01.json",
+   "title": "G1 negative: drop C100 -> E_PLACEMENT_MISSING_REF"
+  },
+  {
+   "case_id": "NC-R24-G1-02",
+   "kind": "cli_case",
+   "relpath": "cases/NC-R24-G1-02.json",
+   "title": "G1 negative: add X999 -> E_PLACEMENT_EXTRA_REF"
+  },
+  {
+   "case_id": "NC-R24-G1-03",
+   "kind": "cli_case",
+   "relpath": "cases/NC-R24-G1-03.json",
+   "title": "G1 negative: duplicate U1 -> E_PLACEMENT_DUPLICATE_REF"
+  },
+  {
+   "case_id": "NC-R24-G1-04",
+   "kind": "cli_case",
+   "relpath": "cases/NC-R24-G1-04.json",
+   "title": "G1 negative: missing batch -> E_PLACEMENT_SCHEMA"
+  },
+  {
+   "case_id": "NC-R24-G2-01",
+   "kind": "cli_case",
+   "relpath": "cases/NC-R24-G2-01.json",
+   "title": "G2 negative: drop AUTH_OK_PULSE -> E_COVERAGE_NET_ORPHAN"
+  },
+  {
+   "case_id": "NC-R24-G2-02",
+   "kind": "cli_case",
+   "relpath": "cases/NC-R24-G2-02.json",
+   "title": "G2 negative: drop R49 -> E_COVERAGE_DEVICE_ORPHAN"
+  },
+  {
+   "case_id": "NC-R24-G2-03",
+   "kind": "cli_case",
+   "relpath": "cases/NC-R24-G2-03.json",
+   "title": "G2 negative: U20 in two batches -> E_COVERAGE_DOUBLE_ASSIGN"
+  },
+  {
+   "case_id": "NC-R24-G2-04",
+   "kind": "cli_case",
+   "relpath": "cases/NC-R24-G2-04.json",
+   "title": "G2 negative: Batch3 exit empty -> E_COVERAGE_GATE_MISSING"
+  },
+  {
+   "case_id": "NC-R24-G2-05",
+   "kind": "cli_case",
+   "relpath": "cases/NC-R24-G2-05.json",
+   "title": "G2 negative: Batch1 entry points at Batch2 -> E_COVERAGE_BATCH_ORDER"
+  },
+  {
+   "case_id": "NC-R24-G2-06",
+   "kind": "cli_case",
+   "relpath": "cases/NC-R24-G2-06.json",
+   "title": "G2 negative: exemption without reason -> rc=2 E_COVERAGE_EXEMPTION_UNJUSTIFIED"
+  },
+  {
+   "case_id": "NC-R24-G3-01",
+   "kind": "cli_case",
+   "relpath": "cases/NC-R24-G3-01.json",
+   "title": "G3 negative: frozen R2.3 seed fails with 8 U8 blockers + 46 documented gaps"
+  },
+  {
+   "case_id": "NC-R24-G3-02",
+   "kind": "cli_case",
+   "relpath": "cases/NC-R24-G3-02.json",
+   "title": "G3 negative: C100 footprint removed -> missing_unexpected names C100"
+  },
+  {
+   "case_id": "NC-R24-G3-03",
+   "kind": "cli_case",
+   "relpath": "cases/NC-R24-G3-03.json",
+   "title": "G3 negative: swap U1 pad1/pad2 nets -> named conflict"
+  },
+  {
+   "case_id": "NC-R24-G3-04",
+   "kind": "cli_case",
+   "relpath": "cases/NC-R24-G3-04.json",
+   "title": "G3 negative: anonymous placeholder -> E_PINMAP_ANONYMOUS_PAD"
+  },
+  {
+   "case_id": "NC-R24-G3-05",
+   "kind": "cli_case",
+   "relpath": "cases/NC-R24-G3-05.json",
+   "title": "G3 negative: board-only X999 -> board_only_unexpected"
+  },
+  {
+   "case_id": "NC-R24-G3-06",
+   "kind": "cli_case",
+   "relpath": "cases/NC-R24-G3-06.json",
+   "title": "G3 negative: profile board sha mismatch -> rc=2"
+  },
+  {
+   "case_id": "NC016-01",
+   "kind": "engine_negative_control",
+   "relpath": "cases/NC016-01-stale-plan.json",
+   "title": "stale plan PCB fingerprint injection"
+  },
+  {
+   "case_id": "NC016-02",
+   "kind": "engine_negative_control",
+   "relpath": "cases/NC016-02-orphan-endpoint.json",
+   "title": "machine-route orphan endpoint injection (outside board)"
+  },
+  {
+   "case_id": "NC016-03",
+   "kind": "engine_negative_control",
+   "relpath": "cases/NC016-03-invalid-via.json",
+   "title": "machine-route invalid via (empty layer pair) injection"
+  },
+  {
+   "case_id": "NC016-04",
+   "kind": "engine_negative_control",
+   "relpath": "cases/NC016-04-count-mismatch.json",
+   "title": "expected-count self-report lie injection (machine_route_tracks 75 -> 76)"
+  },
+  {
+   "case_id": "NC016-05",
+   "kind": "engine_negative_control",
+   "relpath": "cases/NC016-05-deferred-state.json",
+   "title": "deferred-state lie injection (routed row relabelled deferred without plan support)"
+  },
+  {
+   "case_id": "NC016-06",
+   "kind": "engine_negative_control",
+   "relpath": "cases/NC016-06-duplicate-net.json",
+   "title": "duplicate/misbound net injection (second route rebound to first net)"
+  },
+  {
+   "case_id": "NC016-07",
+   "kind": "engine_negative_control",
+   "relpath": "cases/NC016-07-gnd-deletion.json",
+   "title": "GND deletion guard injection (rip_up contains GND zone while machine routes exist)"
+  },
+  {
+   "case_id": "NC020-01",
+   "kind": "orient_negative_control",
+   "relpath": "cases/NC020-01-orient-uncorrected.json",
+   "title": "负控·未纠正错朝向：J1 保持 +90° 必须被 assert_render 拒收"
+  },
+  {
+   "case_id": "NC032-01",
+   "kind": "exam_harness_negative_control",
+   "relpath": "cases/NC032-01-exam-harness-negative.json",
+   "title": "M2 Rust EXAM harness negative control: unknown kind / missing original ten / bad pointer / bad injection op must all fail closed"
+  },
+  {
+   "case_id": "NC033-01",
+   "kind": "cli_case",
+   "relpath": "cases/NC033-01.json",
+   "title": "E4 负控：同一引脚落两网 → E_SCH_NET，不产出半成品"
+  },
+  {
+   "case_id": "NC034-01",
+   "kind": "cli_case",
+   "relpath": "cases/NC034-01.json",
+   "title": "E5 负控：注入新硬错 → E_DRC_NEW_HARD_ERROR rc=1"
+  },
+  {
+   "case_id": "NC034-02",
+   "kind": "cli_case",
+   "relpath": "cases/NC034-02.json",
+   "title": "E5 负控：redline SHA 漂移 → E_REDLINE_FAIL rc=1"
+  },
+  {
+   "case_id": "NC035-01",
+   "kind": "cli_case",
+   "relpath": "cases/NC035-01-model-align-tampered.json",
+   "title": "G4 负控：J16 模型 offset 被篡改 5mm → E_MODEL_ALIGNMENT_CENTER_OFFSET rc=1"
+  }
+ ],
+ "cases_total": 47,
+ "kinds": [
+  "cli_case",
+  "engine_negative_control",
+  "exam_harness_negative_control",
+  "exam_runner_selftest",
+  "orient_negative_control",
+  "orient_solver",
+  "s1_planner_self_test",
+  "s2_frozen_response_replay"
+ ],
+ "manifest_sha256": "13e0759936db163a4c0e927cfc089b73a09cfeba55b6e43fdc19f8a072c70761",
+ "package": "/home/fila/jqdDev_2025/ic_hw/k1/trial_card007/rcore_016_r4_20261121/exam",
+ "schema": "k1-exam-list/v1"
+}

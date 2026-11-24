@@ -1,0 +1,63 @@
+#VRML V2.0 utf8
+# body 8.08 x 7.02 x 8.5
+Transform {
+  translation 0.779528 0.551181 1.673228
+  children [
+    Shape {
+      appearance Appearance { material Material { diffuseColor 0.90 0.90 0.86 shininess 0.25 } }
+      geometry Box { size 3.181102 2.763780 3.346457 }
+    }
+  ]
+}
+# latch tongue local -Y (3.7 mm class)
+Transform {
+  translation 0.779528 -1.165354 1.673228
+  children [
+    Shape {
+      appearance Appearance { material Material { diffuseColor 0.84 0.84 0.80 shininess 0.25 } }
+      geometry Box { size 2.236220 0.669291 3.346457 }
+    }
+  ]
+}
+# lock ramp local +Y
+Transform {
+  translation 0.787402 2.167323 2.696850
+  children [
+    Shape {
+      appearance Appearance { material Material { diffuseColor 0.84 0.84 0.80 shininess 0.25 } }
+      geometry Box { size 1.968504 0.468504 1.299213 }
+    }
+  ]
+}
+# lock ramp chamfer step
+Transform {
+  translation 0.787402 2.303150 1.929134
+  children [
+    Shape {
+      appearance Appearance { material Material { diffuseColor 0.84 0.84 0.80 shininess 0.25 } }
+      geometry Box { size 1.968504 0.196850 0.236220 }
+    }
+  ]
+}
+# pin1 post
+Transform {
+  translation 0.000000 0.000000 0.177165
+  rotation 1 0 0 1.5707963
+  children [
+    Shape {
+      appearance Appearance { material Material { diffuseColor 0.75 0.72 0.62 shininess 0.7 } }
+      geometry Cylinder { radius 0.275591 height 1.614173 }
+    }
+  ]
+}
+# pin2 post
+Transform {
+  translation 1.559055 0.000000 0.177165
+  rotation 1 0 0 1.5707963
+  children [
+    Shape {
+      appearance Appearance { material Material { diffuseColor 0.75 0.72 0.62 shininess 0.7 } }
+      geometry Cylinder { radius 0.275591 height 1.614173 }
+    }
+  ]
+}

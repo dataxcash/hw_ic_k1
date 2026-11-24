@@ -1,0 +1,37 @@
+{
+  "batch_ids": [
+    "Batch0",
+    "Batch1",
+    "Batch2",
+    "Batch3",
+    "Batch4"
+  ],
+  "command": "rcore board construction-coverage",
+  "coverage_losses": [],
+  "double_assigned_refs": [],
+  "engine_run_id": "4aa8fa4e0d444ee7c46ff93117d9532471098bdbfac3ed2a20edae48cc238ba3",
+  "errors": [],
+  "generated_at": null,
+  "inputs": {
+    "batch_plan": "c8ebfc7d87406cce04241494bc4924d145ffc00ba74e7f0811740e58fdb9d4c2",
+    "plan": "a6c5c9d26873bf91d90f358ab7378501ea8af95a58258b39a20558c6c188cf50",
+    "sch": "74af0780eb8a89b651d023a44272520fa3656183bd01e0d909d0786511899540"
+  },
+  "metrics": {
+    "batch_gate_errors": 0,
+    "batches": 5,
+    "coverage_losses": 0,
+    "double_assigned_refs": 0,
+    "nets_covered": 89,
+    "nets_missing": 0,
+    "nets_total": 89,
+    "refs_covered": 101,
+    "refs_missing": 0,
+    "refs_total": 101
+  },
+  "missing_nets": [],
+  "missing_refs": [],
+  "schema": "k1-construction-coverage/v1",
+  "verdict": "PASS",
+  "violations": []
+}

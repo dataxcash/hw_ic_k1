@@ -1,0 +1,269 @@
+{
+  "command": "rcore board gate",
+  "failures": [],
+  "gates": {
+    "G1": {
+      "report_sha256": "d97b25dfdb5369271f069c28471880777fc83590177b40b48a673291426a8522",
+      "schema": "k1-placement-reconcile/v1",
+      "verdict": "PASS"
+    },
+    "G2": {
+      "report_sha256": "648a42184c71229c706f4ead1c1ddb67fabebba9960fb3b30963fbaea0b51175",
+      "schema": "k1-construction-coverage/v1",
+      "verdict": "PASS"
+    },
+    "G3": {
+      "report_sha256": "e007f5988ebcb043f92b4f8adb7c5a996925573a36735d72f3e5cd1b0d7d7a1a",
+      "schema": "k1-pinmap-audit/v2",
+      "verdict": "PASS"
+    }
+  },
+  "profile": "r24-full",
+  "reports": {
+    "G1": {
+      "anonymous_pad_footprints": [],
+      "board_only_allowed": [
+        "H1",
+        "H2",
+        "H3",
+        "H4",
+        "H5"
+      ],
+      "board_only_unexpected": [],
+      "command": "rcore board placement-reconcile",
+      "duplicate_refs": [],
+      "engine_run_id": "ae6c1c0b4ddae8534677c1afccb986bfcdc75788250a93ec9ca7805665ea6df6",
+      "errors": [],
+      "extra_refs": [],
+      "generated_at": null,
+      "inputs": {
+        "board": "8142683f6a5ddd4b9645627eb514785edb3798331925ca81234054d612c6460b",
+        "board_yaml": "21288feb9b2b162937f1d0ec4c7f2483498046a100d3d39f8740d44a175a9737",
+        "pinmap": "eeaba1c8f70fb6c3b5f4d1d0307d8c2f12eb8257cb3eaf08f7b6c69d52879543",
+        "plan": "a6c5c9d26873bf91d90f358ab7378501ea8af95a58258b39a20558c6c188cf50",
+        "sch": "74af0780eb8a89b651d023a44272520fa3656183bd01e0d909d0786511899540"
+      },
+      "metrics": {
+        "anonymous_pad_count": 0,
+        "batch_counts": {
+          "auth": 15,
+          "existing": 55,
+          "power": 26,
+          "usb2": 5
+        },
+        "batch_counts_canonical": {
+          "Batch1": 26,
+          "Batch2": 15,
+          "Batch3": 5,
+          "existing_r23": 55
+        },
+        "board_refs": 106,
+        "duplicate_refs": 0,
+        "extra_refs": 0,
+        "missing_refs": 0,
+        "pad_numbers_resolved": 436,
+        "pad_numbers_unresolved": 0,
+        "pinmap_pads": 436,
+        "pinmap_refs": 101,
+        "plan_refs": 101,
+        "sch_refs": 101,
+        "unnumbered_mechanical_pads": 33
+      },
+      "missing_refs": [],
+      "schema": "k1-placement-reconcile/v1",
+      "unresolved_pads": [],
+      "verdict": "PASS",
+      "violations": []
+    },
+    "G2": {
+      "batch_ids": [
+        "Batch0",
+        "Batch1",
+        "Batch2",
+        "Batch3",
+        "Batch4"
+      ],
+      "command": "rcore board construction-coverage",
+      "coverage_losses": [],
+      "double_assigned_refs": [],
+      "engine_run_id": "4aa8fa4e0d444ee7c46ff93117d9532471098bdbfac3ed2a20edae48cc238ba3",
+      "errors": [],
+      "generated_at": null,
+      "inputs": {
+        "batch_plan": "c8ebfc7d87406cce04241494bc4924d145ffc00ba74e7f0811740e58fdb9d4c2",
+        "plan": "a6c5c9d26873bf91d90f358ab7378501ea8af95a58258b39a20558c6c188cf50",
+        "sch": "74af0780eb8a89b651d023a44272520fa3656183bd01e0d909d0786511899540"
+      },
+      "metrics": {
+        "batch_gate_errors": 0,
+        "batches": 5,
+        "coverage_losses": 0,
+        "double_assigned_refs": 0,
+        "nets_covered": 89,
+        "nets_missing": 0,
+        "nets_total": 89,
+        "refs_covered": 101,
+        "refs_missing": 0,
+        "refs_total": 101
+      },
+      "missing_nets": [],
+      "missing_refs": [],
+      "schema": "k1-construction-coverage/v1",
+      "verdict": "PASS",
+      "violations": []
+    },
+    "G3": {
+      "anonymous_pad_audit": {
+        "anonymous_pad_count": 0,
+        "anonymous_pad_footprints": [],
+        "definition": "anonymous_pad_count counts pads on placeholder footprints that have no numbered pads at all; unnumbered shield/thermal pads on real library footprints are informational only",
+        "unnumbered_mechanical_pads": 33
+      },
+      "board": "trial_card007/rcore_r24_fab_20261124/delivery/board/k1_tapeout_candidate_r2_4_ma_20261124.kicad_pcb",
+      "board_only_allowed": [
+        "H1",
+        "H2",
+        "H3",
+        "H4",
+        "H5"
+      ],
+      "board_only_unexpected": [],
+      "board_sha256": "8142683f6a5ddd4b9645627eb514785edb3798331925ca81234054d612c6460b",
+      "classes": {
+        "known_truth_defect": 12
+      },
+      "command": "rcore board pinmap-audit",
+      "critical_findings": [],
+      "detail": {
+        "known_truth_defect": [
+          {
+            "board": "",
+            "pad": "14",
+            "ref": "U11",
+            "truth": "GND"
+          },
+          {
+            "board": "",
+            "pad": "19",
+            "ref": "U11",
+            "truth": "GND"
+          },
+          {
+            "board": "",
+            "pad": "21",
+            "ref": "U11",
+            "truth": "GND"
+          },
+          {
+            "board": "",
+            "pad": "39",
+            "ref": "U11",
+            "truth": "GND"
+          },
+          {
+            "board": "",
+            "pad": "4",
+            "ref": "U11",
+            "truth": "GND"
+          },
+          {
+            "board": "",
+            "pad": "41",
+            "ref": "U11",
+            "truth": "GND"
+          },
+          {
+            "board": "",
+            "pad": "1",
+            "ref": "U9",
+            "truth": "GND"
+          },
+          {
+            "board": "",
+            "pad": "10",
+            "ref": "U9",
+            "truth": "GND"
+          },
+          {
+            "board": "",
+            "pad": "2",
+            "ref": "U9",
+            "truth": "GND"
+          },
+          {
+            "board": "",
+            "pad": "3",
+            "ref": "U9",
+            "truth": "GND"
+          },
+          {
+            "board": "",
+            "pad": "4",
+            "ref": "U9",
+            "truth": "GND"
+          },
+          {
+            "board": "",
+            "pad": "6",
+            "ref": "U9",
+            "truth": "GND"
+          }
+        ]
+      },
+      "device_set_completeness": {
+        "allow_refs": [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "H5"
+        ],
+        "allow_refs_missing": [],
+        "board_only_allowed": [
+          "H1",
+          "H2",
+          "H3",
+          "H4",
+          "H5"
+        ],
+        "board_only_unexpected": [],
+        "board_refs": 106,
+        "complete": true,
+        "missing_unexpected": [],
+        "placed_refs": 101,
+        "require_complete_device_set": true,
+        "truth_refs": 101
+      },
+      "documented_gaps": [],
+      "errors": [],
+      "metrics": {
+        "anonymous_pad_count": 0,
+        "blocking_conflicts": 0,
+        "board_refs": 106,
+        "documented_gap_refs": 0,
+        "expected_pad_floor": 405,
+        "pad_differences": 12,
+        "pads_compared": 439,
+        "placed_refs": 101,
+        "truth_refs": 101
+      },
+      "missing_unexpected": [],
+      "profile": "trial_card007/rcore_r24_fab_20261124/delivery/k1_r24_batch4_asbuilt_profile_ma.yaml",
+      "profile_board_match": true,
+      "schema": "k1-pinmap-audit/v2",
+      "single_pad_nets": {
+        "REFCLK_N": [
+          "J14/A12"
+        ],
+        "REFCLK_P": [
+          "J14/A11"
+        ]
+      },
+      "truth": "boards/k1_sch.yaml",
+      "verdict": "PASS",
+      "violations": []
+    }
+  },
+  "schema": "k1-r24-gate-report/v1",
+  "verdict": "PASS"
+}
